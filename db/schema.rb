@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_16_181537) do
+ActiveRecord::Schema.define(version: 2022_09_16_183612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,10 +21,20 @@ ActiveRecord::Schema.define(version: 2022_09_16_181537) do
     t.text "LastName"
     t.integer "PhoneNumber"
     t.text "Email"
+    t.bigint "Status_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "status_id", null: false
+    t.bigint "account_id", null: false
+    t.index ["Status_id"], name: "index_accounts_on_Status_id"
+    t.index ["account_id"], name: "index_accounts_on_account_id"
     t.index ["status_id"], name: "index_accounts_on_status_id"
+  end
+
+  create_table "authentications", force: :cascade do |t|
+    t.text "password"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "statuses", force: :cascade do |t|
@@ -33,5 +43,6 @@ ActiveRecord::Schema.define(version: 2022_09_16_181537) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "accounts", "accounts"
   add_foreign_key "accounts", "statuses"
 end
