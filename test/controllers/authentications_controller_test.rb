@@ -17,7 +17,7 @@ class AuthenticationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create authentication" do
     assert_difference('Authentication.count') do
-      post authentications_url, params: { authentication: { password: @authentication.password } }
+      post authentications_url, params: { authentication: { account_id: @authentication.account_id, password: @authentication.password } }
     end
 
     assert_redirected_to authentication_url(Authentication.last)
@@ -34,7 +34,7 @@ class AuthenticationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update authentication" do
-    patch authentication_url(@authentication), params: { authentication: { password: @authentication.password } }
+    patch authentication_url(@authentication), params: { authentication: { account_id: @authentication.account_id, password: @authentication.password } }
     assert_redirected_to authentication_url(@authentication)
   end
 

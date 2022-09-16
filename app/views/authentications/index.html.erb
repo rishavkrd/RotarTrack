@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Account</th>
       <th>Password</th>
       <th colspan="3"></th>
     </tr>
@@ -13,6 +14,7 @@
   <tbody>
     <% @authentications.each do |authentication| %>
       <tr>
+        <td><%= authentication.account_id %></td>
         <td><%= authentication.password %></td>
         <td><%= link_to 'Show', authentication %></td>
         <td><%= link_to 'Edit', edit_authentication_path(authentication) %></td>

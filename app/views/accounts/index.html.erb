@@ -10,6 +10,7 @@
       <th>Lastname</th>
       <th>Phonenumber</th>
       <th>Email</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
         <td><%= account.LastName %></td>
         <td><%= account.PhoneNumber %></td>
         <td><%= account.Email %></td>
+        <td><%= account.Status_id %></td>
         <td><%= link_to 'Show', account %></td>
         <td><%= link_to 'Edit', edit_account_path(account) %></td>
         <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>

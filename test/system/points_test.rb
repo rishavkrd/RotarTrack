@@ -14,6 +14,8 @@ class PointsTest < ApplicationSystemTestCase
     visit points_url
     click_on "New Point"
 
+    fill_in "Account", with: @point.account_id
+    fill_in "Event", with: @point.event_id
     click_on "Create Point"
 
     assert_text "Point was successfully created"
@@ -24,6 +26,8 @@ class PointsTest < ApplicationSystemTestCase
     visit points_url
     click_on "Edit", match: :first
 
+    fill_in "Account", with: @point.account_id
+    fill_in "Event", with: @point.event_id
     click_on "Update Point"
 
     assert_text "Point was successfully updated"

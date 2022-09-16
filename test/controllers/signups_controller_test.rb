@@ -17,7 +17,7 @@ class SignupsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create signup" do
     assert_difference('Signup.count') do
-      post signups_url, params: { signup: { Pickup: @signup.Pickup } }
+      post signups_url, params: { signup: { Signup: @signup.Signup, account_id: @signup.account_id, event_id: @signup.event_id } }
     end
 
     assert_redirected_to signup_url(Signup.last)
@@ -34,7 +34,7 @@ class SignupsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update signup" do
-    patch signup_url(@signup), params: { signup: { Pickup: @signup.Pickup } }
+    patch signup_url(@signup), params: { signup: { Signup: @signup.Signup, account_id: @signup.account_id, event_id: @signup.event_id } }
     assert_redirected_to signup_url(@signup)
   end
 

@@ -14,6 +14,7 @@ class AuthenticationsTest < ApplicationSystemTestCase
     visit authentications_url
     click_on "New Authentication"
 
+    fill_in "Account", with: @authentication.account_id
     fill_in "Password", with: @authentication.password
     click_on "Create Authentication"
 
@@ -25,6 +26,7 @@ class AuthenticationsTest < ApplicationSystemTestCase
     visit authentications_url
     click_on "Edit", match: :first
 
+    fill_in "Account", with: @authentication.account_id
     fill_in "Password", with: @authentication.password
     click_on "Update Authentication"
 
