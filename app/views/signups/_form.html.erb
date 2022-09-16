@@ -1,0 +1,22 @@
+<%= form_with(model: signup) do |form| %>
+  <% if signup.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(signup.errors.count, "error") %> prohibited this signup from being saved:</h2>
+
+      <ul>
+        <% signup.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Pickup %>
+    <%= form.check_box :Pickup %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

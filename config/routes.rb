@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :signups
   resources :events
   resources :authentications
   resources :accounts
