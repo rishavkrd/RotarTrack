@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_16_184806) do
+ActiveRecord::Schema.define(version: 2022_09_16_185141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 2022_09_16_184806) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "points", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "event_id", null: false
+    t.bigint "account_id", null: false
+    t.index ["account_id"], name: "index_points_on_account_id"
+    t.index ["event_id"], name: "index_points_on_event_id"
+  end
+
   create_table "signups", force: :cascade do |t|
     t.boolean "Pickup"
     t.datetime "created_at", precision: 6, null: false
@@ -66,6 +75,8 @@ ActiveRecord::Schema.define(version: 2022_09_16_184806) do
 
   add_foreign_key "accounts", "accounts"
   add_foreign_key "accounts", "statuses"
+  add_foreign_key "points", "accounts"
+  add_foreign_key "points", "events"
   add_foreign_key "signups", "accounts"
   add_foreign_key "signups", "events"
 end
