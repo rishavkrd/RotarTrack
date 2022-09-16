@@ -65,6 +65,6 @@ class AuthenticationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def authentication_params
-      params.require(:authentication).permit(:password)
+      params.require(:authentication).permit(:account_id, :password)
     end
 end

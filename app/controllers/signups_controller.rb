@@ -65,6 +65,6 @@ class SignupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def signup_params
-      params.require(:signup).permit(:Pickup)
+      params.require(:signup).permit(:account_id, :event_id, :Signup)
     end
 end
