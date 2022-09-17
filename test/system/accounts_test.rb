@@ -18,8 +18,8 @@ class AccountsTest < ApplicationSystemTestCase
     fill_in "Firstname", with: @account.FirstName
     fill_in "Lastname", with: @account.LastName
     fill_in "Phonenumber", with: @account.PhoneNumber
-    fill_in "Status", with: @account.Status_id
     fill_in "Uin", with: @account.UIN
+    fill_in "Status", with: @account.status_id
     click_on "Create Account"
 
     assert_text "Account was successfully created"
@@ -34,8 +34,8 @@ class AccountsTest < ApplicationSystemTestCase
     fill_in "Firstname", with: @account.FirstName
     fill_in "Lastname", with: @account.LastName
     fill_in "Phonenumber", with: @account.PhoneNumber
-    fill_in "Status", with: @account.Status_id
     fill_in "Uin", with: @account.UIN
+    fill_in "Status", with: @account.status_id
     click_on "Update Account"
 
     assert_text "Account was successfully updated"

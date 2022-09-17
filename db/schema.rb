@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_16_190035) do
+ActiveRecord::Schema.define(version: 2022_09_17_034647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,13 +21,9 @@ ActiveRecord::Schema.define(version: 2022_09_16_190035) do
     t.text "LastName"
     t.integer "PhoneNumber"
     t.text "Email"
-    t.bigint "Status_id"
+    t.bigint "status_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "status_id", null: false
-    t.bigint "account_id", null: false
-    t.index ["Status_id"], name: "index_accounts_on_Status_id"
-    t.index ["account_id"], name: "index_accounts_on_account_id"
     t.index ["status_id"], name: "index_accounts_on_status_id"
   end
 
@@ -51,20 +47,20 @@ ActiveRecord::Schema.define(version: 2022_09_16_190035) do
   end
 
   create_table "points", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.bigint "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "event_id", null: false
-    t.bigint "account_id", null: false
     t.index ["account_id"], name: "index_points_on_account_id"
     t.index ["event_id"], name: "index_points_on_event_id"
   end
 
   create_table "signups", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.bigint "account_id", null: false
     t.boolean "Pickup"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "account_id", null: false
-    t.bigint "event_id", null: false
     t.index ["account_id"], name: "index_signups_on_account_id"
     t.index ["event_id"], name: "index_signups_on_event_id"
   end
@@ -75,7 +71,6 @@ ActiveRecord::Schema.define(version: 2022_09_16_190035) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "accounts", "accounts"
   add_foreign_key "accounts", "statuses"
   add_foreign_key "authentications", "accounts"
   add_foreign_key "points", "accounts"
