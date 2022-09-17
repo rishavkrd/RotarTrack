@@ -14,7 +14,7 @@ class SignupsTest < ApplicationSystemTestCase
     visit signups_url
     click_on "New Signup"
 
-    check "Signup" if @signup.Signup
+    check "Pickup" if @signup.Pickup
     fill_in "Account", with: @signup.account_id
     fill_in "Event", with: @signup.event_id
     click_on "Create Signup"
@@ -27,7 +27,7 @@ class SignupsTest < ApplicationSystemTestCase
     visit signups_url
     click_on "Edit", match: :first
 
-    check "Signup" if @signup.Signup
+    check "Pickup" if @signup.Pickup
     fill_in "Account", with: @signup.account_id
     fill_in "Event", with: @signup.event_id
     click_on "Update Signup"

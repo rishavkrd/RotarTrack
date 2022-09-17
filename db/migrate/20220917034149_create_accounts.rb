@@ -6,7 +6,7 @@ class CreateAccounts < ActiveRecord::Migration[6.1]
       t.text :LastName
       t.integer :PhoneNumber
       t.text :Email
-      t.references :Status, null: false, foreign_key: true
+      t.references :status, null: false, foreign_key: true
 
       t.timestamps
     end
