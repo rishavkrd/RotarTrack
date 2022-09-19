@@ -1,6 +1,14 @@
 <section class="jumbotron  text-center">
-  <h1>Welcome</h1>
+  <h1>Welcome to Dashboard</h1>
+      <%= button_to 'Logout', 'auth/logout', method: :get %>
 </section>
+<div>
+    <%= link_to 'Accounts', accounts_path %>
+    <%= link_to 'Events', events_path %>
+    <%= link_to 'Points', points_path %>
+    <%= link_to 'Sign Ups', signups_path %>
+    <%= link_to 'Statuses', statuses_path %>
+</div>
 <section class="container">
   <div class="panel panel-default">
     <div class="panel-heading">Normalized User Profile</div>
