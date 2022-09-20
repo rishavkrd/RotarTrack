@@ -2,4 +2,4 @@
 development:
   auth0_domain: rotartrack.us.auth0.com
   auth0_client_id: giksZR9ko8z8SrwI6Y8RolkR0SaySMJO
-  auth0_client_secret: 
+  auth0_client_secret: $(AUTH0_SECRET)
