@@ -1,0 +1,5 @@
+<section class="jumbotron text-center">
+  <h1> Welcome to RotarTrak</h2>
+  <%= button_to 'Login', '/auth/auth0', method: :post, class: 'btn btn-success btn-lg', id: 'qsLoginBtn' unless session[:userinfo].present? %>
+    <%= button_to 'Logout', 'auth/logout', method: :get %>
+</section>
