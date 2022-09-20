@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+=begin
 RSpec.describe 'Creating a status', type: :feature do
   scenario 'valid inputs' do
     visit new_status_path
@@ -9,3 +9,4 @@ RSpec.describe 'Creating a status', type: :feature do
     expect(page).to have_content('Officer')
   end
 end
+=end

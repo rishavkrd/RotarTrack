@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+=begin
 RSpec.describe Status, type: :model do
   subject do
     described_class.new(Value: 'Officer')
@@ -50,3 +50,4 @@ RSpec.describe Account, type: :model do
   #   expect(subject).not_to be_valid
   # end
 end
+=end
