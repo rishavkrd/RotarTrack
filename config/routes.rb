@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :event_types
   root 'home#show'
   resources :points
   resources :signups
