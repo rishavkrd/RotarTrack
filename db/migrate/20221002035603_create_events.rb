@@ -7,6 +7,7 @@ class CreateEvents < ActiveRecord::Migration[6.1]
       t.time :Time
       t.text :Location
       t.integer :Points
+      t.references :EventType, null: false, foreign_key: true
 
       t.timestamps
     end
