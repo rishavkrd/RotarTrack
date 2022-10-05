@@ -22,9 +22,10 @@ class SignupsController < ApplicationController
   # POST /signups or /signups.json
   def create
     @signup = Signup.new(signup_params)
-
+    @eventTime = signup_params[:Time]
+    @cutoffTime = Time.now + 43200
     respond_to do |format|
-      if @signup.save
+      if (@signup.save && (@cutoffTime && @cutoffTime > @eventTime))
         format.html { redirect_to signup_url(@signup), notice: "Signup was successfully created." }
         format.json { render :show, status: :created, location: @signup }
       else

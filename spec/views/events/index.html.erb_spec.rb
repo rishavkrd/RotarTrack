@@ -8,14 +8,14 @@ RSpec.describe "events/index", type: :view do
         Description: "MyText",
         Location: "MyText",
         Points: 2,
-        EventType: nil
+        type: nil
       ),
       Event.create!(
         Title: "MyText",
         Description: "MyText",
         Location: "MyText",
         Points: 2,
-        EventType: nil
+        type: nil
       )
     ])
   end
