@@ -27,12 +27,6 @@ ActiveRecord::Schema.define(version: 2022_09_22_034647) do
     t.index ["status_id"], name: "index_accounts_on_status_id"
   end
 
-  create_table "event_types", force: :cascade do |t|
-    t.text "Type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "events", force: :cascade do |t|
     t.text "Title"
     t.text "Description"
@@ -40,10 +34,10 @@ ActiveRecord::Schema.define(version: 2022_09_22_034647) do
     t.time "Time"
     t.text "Location"
     t.integer "Points"
-    t.bigint "event_type_id", null: false
+    t.bigint "type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_type_id"], name: "index_events_on_event_type_id"
+    t.index ["type_id"], name: "index_events_on_type_id"
   end
 
   create_table "points", force: :cascade do |t|
@@ -71,8 +65,14 @@ ActiveRecord::Schema.define(version: 2022_09_22_034647) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "types", force: :cascade do |t|
+    t.text "Value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "accounts", "statuses"
-  add_foreign_key "events", "event_types"
+  add_foreign_key "events", "types"
   add_foreign_key "points", "accounts"
   add_foreign_key "points", "events"
   add_foreign_key "signups", "accounts"

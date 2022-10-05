@@ -7,7 +7,7 @@ RSpec.describe "events/show", type: :view do
       Description: "MyText",
       Location: "MyText",
       Points: 2,
-      EventType: nil
+      type: nil
     ))
   end
 

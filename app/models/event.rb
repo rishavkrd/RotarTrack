@@ -1,3 +1,3 @@
 class Event < ApplicationRecord
-  belongs_to :EventType
+  belongs_to :type
 end
