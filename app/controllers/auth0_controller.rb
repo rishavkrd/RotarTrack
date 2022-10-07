@@ -26,9 +26,9 @@ class Auth0Controller < ApplicationController
   def logout_url
     request_params = {
       returnTo: root_url,
-      client_id: AUTH0_CONFIG['auth0_client_id']
+      client_id: 'giksZR9ko8z8SrwI6Y8RolkR0SaySMJO'
     }
 
-    URI::HTTPS.build(host: AUTH0_CONFIG['auth0_domain'], path: '/v2/logout', query: request_params.to_query).to_s
+    URI::HTTPS.build(host: 'rotartrack.us.auth0.com', path: '/v2/logout', query: request_params.to_query).to_s
   end
 end
