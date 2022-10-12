@@ -7,8 +7,7 @@ class Auth0Controller < ApplicationController
     auth_info = request.env['omniauth.auth']
     session[:userinfo] = auth_info['extra']['raw_info']
 
-    # Redirect to the URL you want after successful auth
-    redirect_to '/dashboard'
+    find_or_create
   end
 
   def failure
@@ -31,4 +30,18 @@ class Auth0Controller < ApplicationController
 
     URI::HTTPS.build(host: 'rotartrack.us.auth0.com', path: '/v2/logout', query: request_params.to_query).to_s
   end
+
+  def find_or_create
+      info = request.env.fetch('omniauth.auth').fetch('info')
+      user_email = info.fetch('email')
+      user = Account.find_by(Email: user_email)
+  
+      unless user
+        redirect_to '/profile/create'
+        else
+          redirect_to '/dashboard'
+          return user
+      end
+  end
+
 end
