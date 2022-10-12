@@ -1,4 +1,5 @@
 class PointsController < ApplicationController
+  include Secured
   before_action :set_point, only: %i[ show edit update destroy ]
 
   # GET /points or /points.json

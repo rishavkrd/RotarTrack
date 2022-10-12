@@ -1,7 +1,7 @@
 class ProfileController < ApplicationController
-    include Secured
 
     def create
+        redirect_to '/' unless session[:userinfo].present?
         @user = session[:userinfo]
         @account = Account.new
     end

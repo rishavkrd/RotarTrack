@@ -1,4 +1,5 @@
 class SignupsController < ApplicationController
+  include Secured
   before_action :set_signup, only: %i[ show edit update destroy ]
 
   # GET /signups or /signups.json
