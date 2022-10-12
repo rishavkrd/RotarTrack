@@ -1,11 +1,12 @@
-#location: spec/feature/integration_spec.rb
 require 'rails_helper'
-RSpec.describe 'Creating a book', type: :feature do
-  scenario 'valid inputs ' do
-    visit new_book_path
-    fill_in 'Title', with: 'harry potter'
-    click_on 'Create Book'
-    visit books_path
-    expect(page).to have_content('harry potter')
-  end
+begin
+# RSpec.describe 'Creating a status', type: :feature do
+#   scenario 'valid inputs' do
+#     visit new_status_path
+#     fill_in 'Value', with: 'Officer'
+#     click_on 'Create Status'
+#     visit statuses_path
+#     expect(page).to have_content('Officer')
+#   end
+# end
 end
