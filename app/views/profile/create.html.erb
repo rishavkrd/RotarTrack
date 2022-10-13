@@ -33,8 +33,21 @@
     <%= form.label "UIN" %>
     <%= form.number_field :UIN %>
   </div>
+  
+  <div>
+  <p>
+  <strong>Email:</strong>
+  <%= @user["email"] %>
+  </p>
 
+  <p>
+  <strong>Status:</strong>
+  Member
+  </p>
+  </div>
   <div class="actions">
     <%= form.submit "Create your Account" %>
   </div>
+
+  
 <% end %>
