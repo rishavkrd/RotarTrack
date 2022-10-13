@@ -6,13 +6,12 @@
     <%= link_to 'User Dashboard', accounts_path %>
     <%= link_to 'Create New Event', new_event_path %>
     <%= link_to 'Help', '/dashboard/help' %>
-    <%= link_to 'View My Profile (link to be updated)', accounts_path %>
-    <%= link_to 'Edit Profile (link to be updated)', accounts_path %>
+
 </div>
 <div>
   <h3> My Profile </h3>
-    <%= link_to 'View My Profile **fix link**', accounts_path %>
-    <%= link_to 'Edit Profile **fix link**', accounts_path %>
+    <%= link_to 'View My Profile', account_path(@account) %>
+    <%= link_to 'Edit Profile', edit_account_path(@account) %>
     <%= button_to 'Logout', 'auth/logout', method: :get %>
 </div>
 <div>

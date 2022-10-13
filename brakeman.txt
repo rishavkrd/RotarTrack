@@ -1,0 +1,40 @@
+
+== Brakeman Report ==
+
+Application Path: /csce431
+Rails Version: 6.1.7
+Brakeman Version: 5.1.1
+Scan Date: 2022-10-12 03:45:25 +0000
+Duration: 73.257782 seconds
+Checks Run: BasicAuth, BasicAuthTimingAttack, CSRFTokenForgeryCVE, ContentTag, CookieSerialization, CreateWith, CrossSiteScripting, DefaultRoutes, Deserialize, DetailedExceptions, DigestDoS, DynamicFinders, EscapeFunction, Evaluation, Execute, FileAccess, FileDisclosure, FilterSkipping, ForgerySetting, HeaderDoS, I18nXSS, JRubyXML, JSONEncoding, JSONEntityEscape, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, MimeTypeDoS, ModelAttrAccessible, ModelAttributes, ModelSerialize, NestedAttributes, NestedAttributesBypass, NumberToCurrency, PageCachingCVE, PermitAttributes, QuoteTableName, Redirect, RegexDoS, Render, RenderDoS, RenderInline, ResponseSplitting, RouteDoS, SQL, SQLCVEs, SSLVerify, SafeBufferManipulation, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionManipulation, SessionSettings, SimpleFormat, SingleQuotes, SkipBeforeFilter, SprocketsPathTraversal, StripTags, SymbolDoSCVE, TemplateInjection, TranslateBug, UnsafeReflection, UnsafeReflectionMethods, ValidationRegex, VerbConfusion, WithoutProtection, XMLDoS, YAMLParsing
+
+== Overview ==
+
+Controllers: 10
+Models: 7
+Templates: 36
+Errors: 0
+Security Warnings: 2
+
+== Warning Types ==
+
+Mass Assignment: 2
+
+== Warnings ==
+
+Confidence: High
+Category: Mass Assignment
+Check: PermitAttributes
+Message: Potentially dangerous key allowed for mass assignment
+Code: params.require(:point).permit(:account_id, :event_id)
+File: app/controllers/points_controller.rb
+Line: 68
+
+Confidence: High
+Category: Mass Assignment
+Check: PermitAttributes
+Message: Potentially dangerous key allowed for mass assignment
+Code: params.require(:signup).permit(:event_id, :account_id, :Pickup)
+File: app/controllers/signups_controller.rb
+Line: 69
+

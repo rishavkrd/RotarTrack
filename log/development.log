@@ -1,0 +1,2937 @@
+  [1m[35m (2275.9ms)[0m  [1m[35mCREATE DATABASE "test_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (2060.8ms)[0m  [1m[35mCREATE DATABASE "test_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (27.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (19.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTypes (20220917061107)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (27.3ms)[0m  [1m[35mCREATE TABLE "types" ("id" bigserial primary key, "Value" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220917061107"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEvents (20220918061309)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (20.8ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "Title" text, "Description" text, "Date" date, "Time" time, "Location" text, "Points" integer, "type_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c6c031df6e"
+FOREIGN KEY ("type_id")
+  REFERENCES "types" ("id")
+)[0m
+  [1m[35m (10.2ms)[0m  [1m[35mCREATE INDEX "index_events_on_type_id" ON "events" ("type_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220918061309"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateStatuses (20220919033633)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (23.4ms)[0m  [1m[35mCREATE TABLE "statuses" ("id" bigserial primary key, "Value" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220919033633"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAccounts (20220920034149)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (25.3ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "UIN" integer, "FirstName" text, "LastName" text, "PhoneNumber" integer, "Email" text, "status_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_77d18abef7"
+FOREIGN KEY ("status_id")
+  REFERENCES "statuses" ("id")
+)[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_status_id" ON "accounts" ("status_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220920034149"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSignups (20220921034439)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.8ms)[0m  [1m[35mCREATE TABLE "signups" ("id" bigserial primary key, "event_id" bigint NOT NULL, "account_id" bigint NOT NULL, "Pickup" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_872531dfe1"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+, CONSTRAINT "fk_rails_3ec5de34fa"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+)[0m
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE INDEX "index_signups_on_event_id" ON "signups" ("event_id")[0m
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE INDEX "index_signups_on_account_id" ON "signups" ("account_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220921034439"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePoints (20220922034647)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.2ms)[0m  [1m[35mCREATE TABLE "points" ("id" bigserial primary key, "account_id" bigint NOT NULL, "event_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e7c3d0176a"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+, CONSTRAINT "fk_rails_97f9f862c2"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+)[0m
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE INDEX "index_points_on_account_id" ON "points" ("account_id")[0m
+  [1m[35m (10.3ms)[0m  [1m[35mCREATE INDEX "index_points_on_event_id" ON "points" ("event_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220922034647"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-05 19:52:55.642366"], ["updated_at", "2022-10-05 19:52:55.642366"]]
+  [1m[36mTRANSACTION (8.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 172.17.0.1 at 2022-10-05 19:53:42 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 18.4ms | Allocations: 974)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+yarn run v1.22.11
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+
+/usr/local/bin/ruby: warning: shebang line ending with \r may cause problems
+error Command "webpack" not found.
+
+  Rendered layout layouts/application.html.erb (Duration: 3473.2ms | Allocations: 42819)
+Completed 500 Internal Server Error in 3650ms (ActiveRecord: 0.0ms | Allocations: 50248)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /csce431/RotarTrack/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     7:     <%= csp_meta_tag %>
+     8: 
+     9:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    10:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    11:   </head>
+    12: 
+    13:   <body>
+  
+app/views/layouts/application.html.erb:10
+Started GET "/" for 172.17.0.1 at 2022-10-05 20:04:05 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 11.1ms | Allocations: 868)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /csce431/RotarTrack/public/packs
+[Webpacker] Hash: 0fe7dcd9d8f9ebcf52de
+Version: webpack 4.46.0
+Time: 18126ms
+Built at: 10/05/2022 8:04:38 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-2e212f7c8f867558ac6e.js    121 KiB  application  [emitted] [immutable]  application
+js/application-2e212f7c8f867558ac6e.js.map    136 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-2e212f7c8f867558ac6e.js js/application-2e212f7c8f867558ac6e.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 492 bytes {application} [built]
+    + 3 hidden modules
+
+  Rendered layout layouts/application.html.erb (Duration: 32492.3ms | Allocations: 11163)
+Completed 200 OK in 32579ms (Views: 32523.4ms | ActiveRecord: 0.0ms | Allocations: 17619)
+
+
+Started POST "/auth/auth0" for 172.17.0.1 at 2022-10-05 20:04:42 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/auth/auth0/callback?code=71ixCQ8t-5xZU5mw1RZMXp1BTdVT3LffRvMQzxRszEZR9&state=49c7cf4555ff25d06e1d20bdece942ee439e4250024df92b" for 172.17.0.1 at 2022-10-05 20:04:43 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Auth0Controller#callback as HTML
+  Parameters: {"code"=>"71ixCQ8t-5xZU5mw1RZMXp1BTdVT3LffRvMQzxRszEZR9", "state"=>"49c7cf4555ff25d06e1d20bdece942ee439e4250024df92b"}
+Redirected to http://127.0.0.1:3000/dashboard
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 239)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:04:44 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 5.9ms | Allocations: 634)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 123.4ms | Allocations: 4718)
+Completed 200 OK in 136ms (Views: 127.7ms | ActiveRecord: 0.0ms | Allocations: 6030)
+
+
+Started GET "/events" for 172.17.0.1 at 2022-10-05 20:04:50 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:20
+  Rendered events/index.html.erb within layouts/application (Duration: 17.4ms | Allocations: 2874)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 141.3ms | Allocations: 6958)
+Completed 200 OK in 239ms (Views: 140.5ms | ActiveRecord: 6.1ms | Allocations: 10176)
+
+
+Started GET "/events/new" for 172.17.0.1 at 2022-10-05 20:04:52 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 249.6ms | Allocations: 11741)
+  Rendered events/new.html.erb within layouts/application (Duration: 259.2ms | Allocations: 12144)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 400.5ms | Allocations: 16164)
+Completed 200 OK in 420ms (Views: 401.8ms | ActiveRecord: 2.8ms | Allocations: 21327)
+
+
+Started POST "/events" for 172.17.0.1 at 2022-10-05 20:05:22 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "event"=>{"Title"=>"Party for Fall students", "Description"=>"This is being organized for party with fall students", "Date(1i)"=>"2022", "Date(2i)"=>"11", "Date(3i)"=>"5", "Time(1i)"=>"2022", "Time(2i)"=>"10", "Time(3i)"=>"5", "Time(4i)"=>"03", "Time(5i)"=>"00", "Location"=>"MSC", "Points"=>"2", "type_id"=>"1"}, "commit"=>"Create Event"}
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/events_controller.rb:27:in `block in create'
+  [1m[36mType Load (1.2ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/events_controller.rb:27:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 16.3ms | Allocations: 6342)
+  Rendered events/new.html.erb within layouts/application (Duration: 17.9ms | Allocations: 6469)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 152.0ms | Allocations: 10429)
+Completed 422 Unprocessable Entity in 342ms (Views: 153.5ms | ActiveRecord: 9.8ms | Allocations: 22669)
+
+
+Started GET "/events" for 172.17.0.1 at 2022-10-05 20:05:26 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:20
+  Rendered events/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 956)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 166.3ms | Allocations: 4817)
+Completed 200 OK in 170ms (Views: 167.2ms | ActiveRecord: 1.2ms | Allocations: 5337)
+
+
+Started GET "/events/new" for 172.17.0.1 at 2022-10-05 20:05:29 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 10.0ms | Allocations: 5670)
+  Rendered events/new.html.erb within layouts/application (Duration: 11.2ms | Allocations: 5789)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 138.9ms | Allocations: 9638)
+Completed 200 OK in 141ms (Views: 140.0ms | ActiveRecord: 0.0ms | Allocations: 10133)
+
+
+Started GET "/events" for 172.17.0.1 at 2022-10-05 20:05:30 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:20
+  Rendered events/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 938)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 132.1ms | Allocations: 4813)
+Completed 200 OK in 134ms (Views: 132.4ms | ActiveRecord: 0.9ms | Allocations: 5310)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:05:31 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 272)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 126.1ms | Allocations: 4134)
+Completed 200 OK in 129ms (Views: 127.7ms | ActiveRecord: 0.0ms | Allocations: 4614)
+
+
+Started GET "/event_types" for 172.17.0.1 at 2022-10-05 20:05:40 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (uninitialized constant EventTypesController
+Did you mean?  EventsController):
+  
+Started GET "/types" for 172.17.0.1 at 2022-10-05 20:05:54 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TypesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering types/index.html.erb within layouts/application
+  [1m[36mType Load (3.0ms)[0m  [1m[34mSELECT "types".* FROM "types"[0m
+  ↳ app/views/types/index.html.erb:14
+  Rendered types/index.html.erb within layouts/application (Duration: 14.6ms | Allocations: 1397)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 209.6ms | Allocations: 5466)
+Completed 200 OK in 229ms (Views: 213.4ms | ActiveRecord: 3.0ms | Allocations: 6783)
+
+
+Started GET "/types/new" for 172.17.0.1 at 2022-10-05 20:05:56 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TypesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering types/new.html.erb within layouts/application
+  Rendered types/_form.html.erb (Duration: 4.9ms | Allocations: 1146)
+  Rendered types/new.html.erb within layouts/application (Duration: 15.9ms | Allocations: 1506)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 147.7ms | Allocations: 5356)
+Completed 200 OK in 163ms (Views: 148.8ms | ActiveRecord: 0.0ms | Allocations: 7734)
+
+
+Started POST "/types" for 172.17.0.1 at 2022-10-05 20:06:00 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TypesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "type"=>{"Value"=>"Meet"}, "commit"=>"Create Type"}
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/types_controller.rb:27:in `block in create'
+  [1m[36mType Create (2.8ms)[0m  [1m[32mINSERT INTO "types" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Meet"], ["created_at", "2022-10-05 20:06:01.073174"], ["updated_at", "2022-10-05 20:06:01.073174"]]
+  ↳ app/controllers/types_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/types_controller.rb:27:in `block in create'
+Redirected to http://127.0.0.1:3000/types/1
+Completed 302 Found in 39ms (ActiveRecord: 18.4ms | Allocations: 3192)
+
+
+Started GET "/types/1" for 172.17.0.1 at 2022-10-05 20:06:01 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TypesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mType Load (1.2ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/types_controller.rb:63:in `set_type'
+  Rendering layout layouts/application.html.erb
+  Rendering types/show.html.erb within layouts/application
+  Rendered types/show.html.erb within layouts/application (Duration: 4.2ms | Allocations: 277)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 131.8ms | Allocations: 4138)
+Completed 200 OK in 152ms (Views: 132.8ms | ActiveRecord: 1.2ms | Allocations: 5646)
+
+
+Started GET "/types" for 172.17.0.1 at 2022-10-05 20:06:03 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TypesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering types/index.html.erb within layouts/application
+  [1m[36mType Load (0.9ms)[0m  [1m[34mSELECT "types".* FROM "types"[0m
+  ↳ app/views/types/index.html.erb:14
+  Rendered types/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1089)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 103.6ms | Allocations: 4950)
+Completed 200 OK in 105ms (Views: 103.7ms | ActiveRecord: 0.9ms | Allocations: 5435)
+
+
+Started GET "/types/new" for 172.17.0.1 at 2022-10-05 20:06:05 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TypesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering types/new.html.erb within layouts/application
+  Rendered types/_form.html.erb (Duration: 1.5ms | Allocations: 638)
+  Rendered types/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 757)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 124.1ms | Allocations: 4632)
+Completed 200 OK in 127ms (Views: 125.4ms | ActiveRecord: 0.0ms | Allocations: 5118)
+
+
+Started POST "/types" for 172.17.0.1 at 2022-10-05 20:06:08 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TypesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "type"=>{"Value"=>"Party"}, "commit"=>"Create Type"}
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/types_controller.rb:27:in `block in create'
+  [1m[36mType Create (1.6ms)[0m  [1m[32mINSERT INTO "types" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Party"], ["created_at", "2022-10-05 20:06:09.054132"], ["updated_at", "2022-10-05 20:06:09.054132"]]
+  ↳ app/controllers/types_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/types_controller.rb:27:in `block in create'
+Redirected to http://127.0.0.1:3000/types/2
+Completed 302 Found in 25ms (ActiveRecord: 13.4ms | Allocations: 2695)
+
+
+Started GET "/types/2" for 172.17.0.1 at 2022-10-05 20:06:09 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TypesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mType Load (1.1ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/types_controller.rb:63:in `set_type'
+  Rendering layout layouts/application.html.erb
+  Rendering types/show.html.erb within layouts/application
+  Rendered types/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 124)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 121.2ms | Allocations: 4011)
+Completed 200 OK in 128ms (Views: 122.5ms | ActiveRecord: 1.1ms | Allocations: 5200)
+
+
+Started GET "/" for 172.17.0.1 at 2022-10-05 20:06:15 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 114)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 180.0ms | Allocations: 3975)
+Completed 200 OK in 183ms (Views: 181.9ms | ActiveRecord: 0.0ms | Allocations: 4441)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:06:19 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 270)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 177.2ms | Allocations: 4131)
+Completed 200 OK in 181ms (Views: 179.5ms | ActiveRecord: 0.0ms | Allocations: 4608)
+
+
+Started GET "/events" for 172.17.0.1 at 2022-10-05 20:06:24 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:20
+  Rendered events/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 932)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 120.6ms | Allocations: 4793)
+Completed 200 OK in 123ms (Views: 120.9ms | ActiveRecord: 1.0ms | Allocations: 5279)
+
+
+Started GET "/events/new" for 172.17.0.1 at 2022-10-05 20:06:25 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 8.1ms | Allocations: 5682)
+  Rendered events/new.html.erb within layouts/application (Duration: 9.2ms | Allocations: 5813)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 125.4ms | Allocations: 9688)
+Completed 200 OK in 128ms (Views: 127.1ms | ActiveRecord: 0.0ms | Allocations: 10180)
+
+
+Started POST "/events" for 172.17.0.1 at 2022-10-05 20:06:54 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "event"=>{"Title"=>"Party Fall students", "Description"=>"This is organized for the fall students", "Date(1i)"=>"2022", "Date(2i)"=>"11", "Date(3i)"=>"5", "Time(1i)"=>"2022", "Time(2i)"=>"10", "Time(3i)"=>"5", "Time(4i)"=>"20", "Time(5i)"=>"06", "Location"=>"MSC", "Points"=>"2", "type_id"=>"2"}, "commit"=>"Create Event"}
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/events_controller.rb:27:in `block in create'
+  [1m[36mType Load (1.6ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:27:in `block in create'
+  [1m[36mEvent Create (10.6ms)[0m  [1m[32mINSERT INTO "events" ("Title", "Description", "Date", "Time", "Location", "Points", "type_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["Title", "Party Fall students"], ["Description", "This is organized for the fall students"], ["Date", "2022-11-05"], ["Time", "20:06:00"], ["Location", "MSC"], ["Points", 2], ["type_id", 2], ["created_at", "2022-10-05 20:06:54.561296"], ["updated_at", "2022-10-05 20:06:54.561296"]]
+  ↳ app/controllers/events_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/events_controller.rb:27:in `block in create'
+Redirected to http://127.0.0.1:3000/events/1
+Completed 302 Found in 33ms (ActiveRecord: 17.6ms | Allocations: 4450)
+
+
+Started GET "/events/1" for 172.17.0.1 at 2022-10-05 20:06:54 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (3.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 4.5ms | Allocations: 487)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 120.5ms | Allocations: 4380)
+Completed 200 OK in 142ms (Views: 122.2ms | ActiveRecord: 3.1ms | Allocations: 5854)
+
+
+Started GET "/events" for 172.17.0.1 at 2022-10-05 20:07:01 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:20
+  Rendered events/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1131)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 142.3ms | Allocations: 5006)
+Completed 200 OK in 144ms (Views: 142.3ms | ActiveRecord: 1.0ms | Allocations: 5490)
+
+
+Started GET "/events/new" for 172.17.0.1 at 2022-10-05 20:07:07 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 6.9ms | Allocations: 5665)
+  Rendered events/new.html.erb within layouts/application (Duration: 7.9ms | Allocations: 5784)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 130.0ms | Allocations: 9633)
+Completed 200 OK in 132ms (Views: 131.4ms | ActiveRecord: 0.0ms | Allocations: 10124)
+
+
+Started POST "/events" for 172.17.0.1 at 2022-10-05 20:07:39 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "event"=>{"Title"=>"Meetup", "Description"=>"Lets meet all the members", "Date(1i)"=>"2022", "Date(2i)"=>"5", "Date(3i)"=>"5", "Time(1i)"=>"2022", "Time(2i)"=>"10", "Time(3i)"=>"5", "Time(4i)"=>"04", "Time(5i)"=>"20", "Location"=>"Zachry", "Points"=>"1", "type_id"=>"1"}, "commit"=>"Create Event"}
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/events_controller.rb:27:in `block in create'
+  [1m[36mType Load (1.2ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:27:in `block in create'
+  [1m[36mEvent Create (2.0ms)[0m  [1m[32mINSERT INTO "events" ("Title", "Description", "Date", "Time", "Location", "Points", "type_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["Title", "Meetup"], ["Description", "Lets meet all the members"], ["Date", "2022-05-05"], ["Time", "04:20:00"], ["Location", "Zachry"], ["Points", 1], ["type_id", 1], ["created_at", "2022-10-05 20:07:39.145659"], ["updated_at", "2022-10-05 20:07:39.145659"]]
+  ↳ app/controllers/events_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (9.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/events_controller.rb:27:in `block in create'
+Redirected to http://127.0.0.1:3000/events/2
+Completed 302 Found in 33ms (ActiveRecord: 13.9ms | Allocations: 4242)
+
+
+Started GET "/events/2" for 172.17.0.1 at 2022-10-05 20:07:39 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 166)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 119.5ms | Allocations: 4027)
+Completed 200 OK in 126ms (Views: 120.8ms | ActiveRecord: 0.9ms | Allocations: 5230)
+
+
+Started GET "/events" for 172.17.0.1 at 2022-10-05 20:07:40 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:20
+  Rendered events/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 1319)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 133.2ms | Allocations: 5206)
+Completed 200 OK in 136ms (Views: 133.9ms | ActiveRecord: 0.9ms | Allocations: 5691)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:07:47 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 266)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 169.7ms | Allocations: 4159)
+Completed 200 OK in 173ms (Views: 171.8ms | ActiveRecord: 0.0ms | Allocations: 4636)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:10:07 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:27
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 29.8ms | Allocations: 7404)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 163.0ms | Allocations: 11664)
+Completed 200 OK in 202ms (Views: 166.3ms | ActiveRecord: 7.6ms | Allocations: 14006)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:12:25 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 11.0ms | Allocations: 2256)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 144.5ms | Allocations: 6555)
+Completed 200 OK in 164ms (Views: 154.9ms | ActiveRecord: 1.1ms | Allocations: 7982)
+
+
+Started GET "/types" for 172.17.0.1 at 2022-10-05 20:12:27 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TypesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering types/index.html.erb within layouts/application
+  [1m[36mType Load (0.9ms)[0m  [1m[34mSELECT "types".* FROM "types"[0m
+  ↳ app/views/types/index.html.erb:14
+  Rendered types/index.html.erb within layouts/application (Duration: 17.4ms | Allocations: 4005)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 142.2ms | Allocations: 8047)
+Completed 200 OK in 165ms (Views: 141.2ms | ActiveRecord: 5.8ms | Allocations: 9693)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:17:51 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 7.6ms | Allocations: 1557)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 142.6ms | Allocations: 5418)
+Completed 200 OK in 146ms (Views: 143.1ms | ActiveRecord: 1.4ms | Allocations: 5960)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:17:52 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1522)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 127.2ms | Allocations: 5399)
+Completed 200 OK in 137ms (Views: 134.6ms | ActiveRecord: 1.1ms | Allocations: 5887)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:18:51 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 13.6ms | Allocations: 2346)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 154.9ms | Allocations: 6645)
+Completed 200 OK in 174ms (Views: 165.4ms | ActiveRecord: 1.2ms | Allocations: 8038)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:19:10 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1546)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 1621)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.0ms | Allocations: 3029)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <section class="jumbotron  text-center">
+  <h1>Welcome to Dashboard</h1>
+      <%= button_to 'Logout', 'auth/logout', method: :get %>
+</section>
+<div>
+    <%= link_to 'Accounts', accounts_path %>
+    <%= link_to 'Events', events_path %>
+    <%= link_to 'Points', points_path %>
+    <%= link_to 'Sign Ups', signups_path %>
+    <%= link_to 'Statuses', statuses_path %>
+    <%= link_to 'Events Type', types_path %>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Location</th>
+      <th>Points</th>
+      <th>Type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.Title %></td>
+        <td><%= event.Description %></td>
+        <td><%= event.Date %></td>
+        <td><%= event.Time %></td>
+        <td><%= event.Location %></td>
+        <td><%= event.Points %></td>
+        <td><%= event.type_id %></td>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to <%= event.Title %>, event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<section class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">Normalized User Profile</div>
+    <div class="panel-body">
+      <pre><%= JSON.pretty_generate(@user) %></pre>
+    </div>
+  </div>
+</section>
+):
+1:    <section class="jumbotron  text-center">
+2:      <h1>Welcome to Dashboard</h1>
+3:          <%= button_to 'Logout', 'auth/logout', method: :get %>
+4:    </section>
+5:    <div>
+6:        <%= link_to 'Accounts', accounts_path %>
+7:        <%= link_to 'Events', events_path %>
+8:        <%= link_to 'Points', points_path %>
+9:        <%= link_to 'Sign Ups', signups_path %>
+10:        <%= link_to 'Statuses', statuses_path %>
+11:        <%= link_to 'Events Type', types_path %>
+12:    </div>
+13:    <table>
+14:      <thead>
+15:        <tr>
+16:          <th>Title</th>
+17:          <th>Description</th>
+18:          <th>Date</th>
+19:          <th>Time</th>
+20:          <th>Location</th>
+21:          <th>Points</th>
+22:          <th>Type</th>
+23:          <th colspan="3"></th>
+24:        </tr>
+25:      </thead>
+26:    
+27:      <tbody>
+28:        <% @events.each do |event| %>
+29:          <tr>
+30:            <td><%= event.Title %></td>
+31:            <td><%= event.Description %></td>
+32:            <td><%= event.Date %></td>
+33:            <td><%= event.Time %></td>
+34:            <td><%= event.Location %></td>
+35:            <td><%= event.Points %></td>
+36:            <td><%= event.type_id %></td>
+37:            <td><%= link_to 'Show', event %></td>
+38:            <td><%= link_to <%= event.Title %>, event %></td>
+39:            <td><%= link_to 'Edit', edit_event_path(event) %></td>
+40:            <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+41:          </tr>
+42:        <% end %>
+43:      </tbody>
+44:    </table>
+45:    
+46:    <br>
+47:    <section class="container">
+48:      <div class="panel panel-default">
+49:        <div class="panel-heading">Normalized User Profile</div>
+50:        <div class="panel-body">
+51:          <pre><%= JSON.pretty_generate(@user) %></pre>
+52:        </div>
+53:      </div>
+54:    </section>
+  
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:19:18 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1477)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 1546)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 2066)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <section class="jumbotron  text-center">
+  <h1>Welcome to Dashboard</h1>
+      <%= button_to 'Logout', 'auth/logout', method: :get %>
+</section>
+<div>
+    <%= link_to 'Accounts', accounts_path %>
+    <%= link_to 'Events', events_path %>
+    <%= link_to 'Points', points_path %>
+    <%= link_to 'Sign Ups', signups_path %>
+    <%= link_to 'Statuses', statuses_path %>
+    <%= link_to 'Events Type', types_path %>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Location</th>
+      <th>Points</th>
+      <th>Type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.Title %></td>
+        <td><%= event.Description %></td>
+        <td><%= event.Date %></td>
+        <td><%= event.Time %></td>
+        <td><%= event.Location %></td>
+        <td><%= event.Points %></td>
+        <td><%= event.type_id %></td>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to <%= event.Title %>, event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<section class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">Normalized User Profile</div>
+    <div class="panel-body">
+      <pre><%= JSON.pretty_generate(@user) %></pre>
+    </div>
+  </div>
+</section>
+):
+1:    <section class="jumbotron  text-center">
+2:      <h1>Welcome to Dashboard</h1>
+3:          <%= button_to 'Logout', 'auth/logout', method: :get %>
+4:    </section>
+5:    <div>
+6:        <%= link_to 'Accounts', accounts_path %>
+7:        <%= link_to 'Events', events_path %>
+8:        <%= link_to 'Points', points_path %>
+9:        <%= link_to 'Sign Ups', signups_path %>
+10:        <%= link_to 'Statuses', statuses_path %>
+11:        <%= link_to 'Events Type', types_path %>
+12:    </div>
+13:    <table>
+14:      <thead>
+15:        <tr>
+16:          <th>Title</th>
+17:          <th>Description</th>
+18:          <th>Date</th>
+19:          <th>Time</th>
+20:          <th>Location</th>
+21:          <th>Points</th>
+22:          <th>Type</th>
+23:          <th colspan="3"></th>
+24:        </tr>
+25:      </thead>
+26:    
+27:      <tbody>
+28:        <% @events.each do |event| %>
+29:          <tr>
+30:            <td><%= event.Title %></td>
+31:            <td><%= event.Description %></td>
+32:            <td><%= event.Date %></td>
+33:            <td><%= event.Time %></td>
+34:            <td><%= event.Location %></td>
+35:            <td><%= event.Points %></td>
+36:            <td><%= event.type_id %></td>
+37:            <td><%= link_to 'Show', event %></td>
+38:            <td><%= link_to <%= event.Title %>, event %></td>
+39:            <td><%= link_to 'Edit', edit_event_path(event) %></td>
+40:            <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+41:          </tr>
+42:        <% end %>
+43:      </tbody>
+44:    </table>
+45:    
+46:    <br>
+47:    <section class="container">
+48:      <div class="panel panel-default">
+49:        <div class="panel-heading">Normalized User Profile</div>
+50:        <div class="panel-body">
+51:          <pre><%= JSON.pretty_generate(@user) %></pre>
+52:        </div>
+53:      </div>
+54:    </section>
+  
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:19:22 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 6.6ms | Allocations: 1533)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 1608)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.0ms | Allocations: 2943)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <section class="jumbotron  text-center">
+  <h1>Welcome to Dashboard</h1>
+      <%= button_to 'Logout', 'auth/logout', method: :get %>
+</section>
+<div>
+    <%= link_to 'Accounts', accounts_path %>
+    <%= link_to 'Events', events_path %>
+    <%= link_to 'Points', points_path %>
+    <%= link_to 'Sign Ups', signups_path %>
+    <%= link_to 'Statuses', statuses_path %>
+    <%= link_to 'Events Type', types_path %>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Location</th>
+      <th>Points</th>
+      <th>Type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.Title %></td>
+        <td><%= event.Description %></td>
+        <td><%= event.Date %></td>
+        <td><%= event.Time %></td>
+        <td><%= event.Location %></td>
+        <td><%= event.Points %></td>
+        <td><%= event.type_id %></td>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to '<%= event.Title %>', event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<section class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">Normalized User Profile</div>
+    <div class="panel-body">
+      <pre><%= JSON.pretty_generate(@user) %></pre>
+    </div>
+  </div>
+</section>
+):
+1:    <section class="jumbotron  text-center">
+2:      <h1>Welcome to Dashboard</h1>
+3:          <%= button_to 'Logout', 'auth/logout', method: :get %>
+4:    </section>
+5:    <div>
+6:        <%= link_to 'Accounts', accounts_path %>
+7:        <%= link_to 'Events', events_path %>
+8:        <%= link_to 'Points', points_path %>
+9:        <%= link_to 'Sign Ups', signups_path %>
+10:        <%= link_to 'Statuses', statuses_path %>
+11:        <%= link_to 'Events Type', types_path %>
+12:    </div>
+13:    <table>
+14:      <thead>
+15:        <tr>
+16:          <th>Title</th>
+17:          <th>Description</th>
+18:          <th>Date</th>
+19:          <th>Time</th>
+20:          <th>Location</th>
+21:          <th>Points</th>
+22:          <th>Type</th>
+23:          <th colspan="3"></th>
+24:        </tr>
+25:      </thead>
+26:    
+27:      <tbody>
+28:        <% @events.each do |event| %>
+29:          <tr>
+30:            <td><%= event.Title %></td>
+31:            <td><%= event.Description %></td>
+32:            <td><%= event.Date %></td>
+33:            <td><%= event.Time %></td>
+34:            <td><%= event.Location %></td>
+35:            <td><%= event.Points %></td>
+36:            <td><%= event.type_id %></td>
+37:            <td><%= link_to 'Show', event %></td>
+38:            <td><%= link_to '<%= event.Title %>', event %></td>
+39:            <td><%= link_to 'Edit', edit_event_path(event) %></td>
+40:            <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+41:          </tr>
+42:        <% end %>
+43:      </tbody>
+44:    </table>
+45:    
+46:    <br>
+47:    <section class="container">
+48:      <div class="panel panel-default">
+49:        <div class="panel-heading">Normalized User Profile</div>
+50:        <div class="panel-body">
+51:          <pre><%= JSON.pretty_generate(@user) %></pre>
+52:        </div>
+53:      </div>
+54:    </section>
+  
+app/views/dashboard/show.html.erb:38: syntax error, unexpected backslash, expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:38: syntax error, unexpected backslash, expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:38: syntax error, unexpected backslash, expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:38: syntax error, unexpected backslash, expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:38: syntax error, unexpected backslash, expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:38: syntax error, unexpected backslash, expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:19:42 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 15.2ms | Allocations: 3421)
+  Rendered layout layouts/application.html.erb (Duration: 16.5ms | Allocations: 3495)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 1.3ms | Allocations: 4891)
+
+
+  
+ActionView::Template::Error (undefined method `Title' for nil:NilClass):
+    35:         <td><%= event.Points %></td>
+    36:         <td><%= event.type_id %></td>
+    37:         <td><%= link_to 'Show', event %></td>
+    38:         <td><%= link_to @event.Title, event %></td>
+    39:         <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    40:         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    41:       </tr>
+  
+app/views/dashboard/show.html.erb:38
+app/views/dashboard/show.html.erb:28
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:42:15 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 66.7ms | Allocations: 6622)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 190.3ms | Allocations: 10922)
+Completed 200 OK in 221ms (Views: 207.4ms | ActiveRecord: 19.8ms | Allocations: 12353)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:42:33 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 11.6ms | Allocations: 2342)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 145.0ms | Allocations: 6615)
+Completed 200 OK in 166ms (Views: 155.5ms | ActiveRecord: 1.6ms | Allocations: 8039)
+
+
+Started GET "/events/1" for 172.17.0.1 at 2022-10-05 20:42:36 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 5.7ms | Allocations: 582)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 111.2ms | Allocations: 4624)
+Completed 200 OK in 137ms (Views: 116.6ms | ActiveRecord: 2.3ms | Allocations: 7293)
+
+
+Started GET "/events/2" for 172.17.0.1 at 2022-10-05 20:42:39 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 164)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 121.5ms | Allocations: 4025)
+Completed 200 OK in 128ms (Views: 122.6ms | ActiveRecord: 1.1ms | Allocations: 5376)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:43:13 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1535)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 1610)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 0.0ms | Allocations: 2971)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <section class="jumbotron  text-center">
+  <h1>Welcome to Dashboard</h1>
+      <%= button_to 'Logout', 'auth/logout', method: :get %>
+</section>
+<div>
+    <%= link_to 'Accounts', accounts_path %>
+    <%= link_to 'Events', events_path %>
+    <%= link_to 'Points', points_path %>
+    <%= link_to 'Sign Ups', signups_path %>
+    <%= link_to 'Statuses', statuses_path %>
+    <%= link_to 'Events Type', types_path %>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Location</th>
+      <th>Points</th>
+      <th>Type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.Title %></td>
+        <td><%= event.Description %></td>
+        <td><%= event.Date %></td>
+        <td><%= event.Time %></td>
+        <td><%= event.Location %></td>
+        <td><%= event.Points %></td>
+        <td><%= event.type_id %></td>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to <%= event.Title %>, event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<section class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">Normalized User Profile</div>
+    <div class="panel-body">
+      <pre><%= JSON.pretty_generate(@user) %></pre>
+    </div>
+  </div>
+</section>
+):
+1:    <section class="jumbotron  text-center">
+2:      <h1>Welcome to Dashboard</h1>
+3:          <%= button_to 'Logout', 'auth/logout', method: :get %>
+4:    </section>
+5:    <div>
+6:        <%= link_to 'Accounts', accounts_path %>
+7:        <%= link_to 'Events', events_path %>
+8:        <%= link_to 'Points', points_path %>
+9:        <%= link_to 'Sign Ups', signups_path %>
+10:        <%= link_to 'Statuses', statuses_path %>
+11:        <%= link_to 'Events Type', types_path %>
+12:    </div>
+13:    <table>
+14:      <thead>
+15:        <tr>
+16:          <th>Title</th>
+17:          <th>Description</th>
+18:          <th>Date</th>
+19:          <th>Time</th>
+20:          <th>Location</th>
+21:          <th>Points</th>
+22:          <th>Type</th>
+23:          <th colspan="3"></th>
+24:        </tr>
+25:      </thead>
+26:    
+27:      <tbody>
+28:        <% @events.each do |event| %>
+29:          <tr>
+30:            <td><%= event.Title %></td>
+31:            <td><%= event.Description %></td>
+32:            <td><%= event.Date %></td>
+33:            <td><%= event.Time %></td>
+34:            <td><%= event.Location %></td>
+35:            <td><%= event.Points %></td>
+36:            <td><%= event.type_id %></td>
+37:            <td><%= link_to 'Show', event %></td>
+38:            <td><%= link_to <%= event.Title %>, event %></td>
+39:            <td><%= link_to 'Edit', edit_event_path(event) %></td>
+40:            <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+41:          </tr>
+42:        <% end %>
+43:      </tbody>
+44:    </table>
+45:    
+46:    <br>
+47:    <section class="container">
+48:      <div class="panel panel-default">
+49:        <div class="panel-heading">Normalized User Profile</div>
+50:        <div class="panel-body">
+51:          <pre><%= JSON.pretty_generate(@user) %></pre>
+52:        </div>
+53:      </div>
+54:    </section>
+  
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:44:12 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 5.3ms | Allocations: 1530)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 1605)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.0ms | Allocations: 3005)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <section class="jumbotron  text-center">
+  <h1>Welcome to Dashboard</h1>
+      <%= button_to 'Logout', 'auth/logout', method: :get %>
+</section>
+<div>
+    <%= link_to 'Accounts', accounts_path %>
+    <%= link_to 'Events', events_path %>
+    <%= link_to 'Points', points_path %>
+    <%= link_to 'Sign Ups', signups_path %>
+    <%= link_to 'Statuses', statuses_path %>
+    <%= link_to 'Events Type', types_path %>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Location</th>
+      <th>Points</th>
+      <th>Type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.Title %></td>
+        <td><%= event.Description %></td>
+        <td><%= event.Date %></td>
+        <td><%= event.Time %></td>
+        <td><%= event.Location %></td>
+        <td><%= event.Points %></td>
+        <td><%= event.type_id %></td>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to <%= @event.Title %>, event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<section class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">Normalized User Profile</div>
+    <div class="panel-body">
+      <pre><%= JSON.pretty_generate(@user) %></pre>
+    </div>
+  </div>
+</section>
+):
+1:    <section class="jumbotron  text-center">
+2:      <h1>Welcome to Dashboard</h1>
+3:          <%= button_to 'Logout', 'auth/logout', method: :get %>
+4:    </section>
+5:    <div>
+6:        <%= link_to 'Accounts', accounts_path %>
+7:        <%= link_to 'Events', events_path %>
+8:        <%= link_to 'Points', points_path %>
+9:        <%= link_to 'Sign Ups', signups_path %>
+10:        <%= link_to 'Statuses', statuses_path %>
+11:        <%= link_to 'Events Type', types_path %>
+12:    </div>
+13:    <table>
+14:      <thead>
+15:        <tr>
+16:          <th>Title</th>
+17:          <th>Description</th>
+18:          <th>Date</th>
+19:          <th>Time</th>
+20:          <th>Location</th>
+21:          <th>Points</th>
+22:          <th>Type</th>
+23:          <th colspan="3"></th>
+24:        </tr>
+25:      </thead>
+26:    
+27:      <tbody>
+28:        <% @events.each do |event| %>
+29:          <tr>
+30:            <td><%= event.Title %></td>
+31:            <td><%= event.Description %></td>
+32:            <td><%= event.Date %></td>
+33:            <td><%= event.Time %></td>
+34:            <td><%= event.Location %></td>
+35:            <td><%= event.Points %></td>
+36:            <td><%= event.type_id %></td>
+37:            <td><%= link_to 'Show', event %></td>
+38:            <td><%= link_to <%= @event.Title %>, event %></td>
+39:            <td><%= link_to 'Edit', edit_event_path(event) %></td>
+40:            <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+41:          </tr>
+42:        <% end %>
+43:      </tbody>
+44:    </table>
+45:    
+46:    <br>
+47:    <section class="container">
+48:      <div class="panel panel-default">
+49:        <div class="panel-heading">Normalized User Profile</div>
+50:        <div class="panel-body">
+51:          <pre><%= JSON.pretty_generate(@user) %></pre>
+52:        </div>
+53:      </div>
+54:    </section>
+  
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/dashboard/show.html.erb:56: syntax error, unexpected `end', expecting ')'
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:44:43 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 14.7ms | Allocations: 3389)
+  Rendered layout layouts/application.html.erb (Duration: 15.6ms | Allocations: 3463)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 1.5ms | Allocations: 4854)
+
+
+  
+ActionView::Template::Error (undefined method `Title' for nil:NilClass):
+    35:         <td><%= event.Points %></td>
+    36:         <td><%= event.type_id %></td>
+    37:         <td><%= link_to 'Show', event %></td>
+    38:         <td><%= link_to @event.Title, event %></td>
+    39:         <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    40:         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    41:       </tr>
+  
+app/views/dashboard/show.html.erb:38
+app/views/dashboard/show.html.erb:28
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:44:58 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 9.6ms | Allocations: 2341)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 133.2ms | Allocations: 6640)
+Completed 200 OK in 152ms (Views: 142.4ms | ActiveRecord: 1.0ms | Allocations: 8074)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:45:15 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 10.6ms | Allocations: 2325)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 127.1ms | Allocations: 6599)
+Completed 200 OK in 149ms (Views: 138.5ms | ActiveRecord: 1.1ms | Allocations: 8023)
+
+
+Started GET "/events/1" for 172.17.0.1 at 2022-10-05 20:45:19 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 4.5ms | Allocations: 581)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 123.9ms | Allocations: 4664)
+Completed 200 OK in 141ms (Views: 127.9ms | ActiveRecord: 1.1ms | Allocations: 6588)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:45:34 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 10.5ms | Allocations: 1706)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 156.4ms | Allocations: 5571)
+Completed 200 OK in 159ms (Views: 156.4ms | ActiveRecord: 1.7ms | Allocations: 6114)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:45:37 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1590)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 138.7ms | Allocations: 5478)
+Completed 200 OK in 141ms (Views: 139.2ms | ActiveRecord: 1.0ms | Allocations: 5967)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:45:40 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 9.7ms | Allocations: 2332)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 111.1ms | Allocations: 6631)
+Completed 200 OK in 128ms (Views: 120.2ms | ActiveRecord: 1.0ms | Allocations: 8025)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:45:49 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 11.9ms | Allocations: 2326)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 167.8ms | Allocations: 6599)
+Completed 200 OK in 187ms (Views: 178.7ms | ActiveRecord: 1.3ms | Allocations: 8024)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:46:03 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (2.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 14.8ms | Allocations: 2327)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 155.0ms | Allocations: 6600)
+Completed 200 OK in 175ms (Views: 164.9ms | ActiveRecord: 2.3ms | Allocations: 8024)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:48:09 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (2.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 13.1ms | Allocations: 2328)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 147.9ms | Allocations: 6601)
+Completed 200 OK in 170ms (Views: 158.8ms | ActiveRecord: 2.0ms | Allocations: 8025)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:48:32 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 15.5ms | Allocations: 4884)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 4958)
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 0.0ms | Allocations: 6352)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `user' for #<ActionView::Base:0x0000000000f780>
+Did you mean?  @user):
+    1: <section class="jumbotron  text-center">
+    2:   <h1>Welcome to Dashboard <%=user.name%></h1>
+    3:       <%= button_to 'Logout', 'auth/logout', method: :get %>
+    4: </section>
+    5: <div>
+  
+app/views/dashboard/show.html.erb:2
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:48:57 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 34.8ms | Allocations: 4868)
+  Rendered layout layouts/application.html.erb (Duration: 37.2ms | Allocations: 4942)
+Completed 500 Internal Server Error in 69ms (ActiveRecord: 0.0ms | Allocations: 6341)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `userinfo' for #<ActionView::Base:0x0000000000f960>):
+    1: <section class="jumbotron  text-center">
+    2:   <h1>Welcome to Dashboard <%=userinfo.name%></h1>
+    3:       <%= button_to 'Logout', 'auth/logout', method: :get %>
+    4: </section>
+    5: <div>
+  
+app/views/dashboard/show.html.erb:2
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:49:06 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 13.2ms | Allocations: 4863)
+  Rendered layout layouts/application.html.erb (Duration: 15.0ms | Allocations: 4937)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 0.0ms | Allocations: 6335)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `user' for #<ActionView::Base:0x0000000000fb18>
+Did you mean?  @user):
+    1: <section class="jumbotron  text-center">
+    2:   <h1>Welcome to Dashboard <%=user.name%></h1>
+    3:       <%= button_to 'Logout', 'auth/logout', method: :get %>
+    4: </section>
+    5: <div>
+  
+app/views/dashboard/show.html.erb:2
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:49:14 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 6.4ms | Allocations: 2567)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 2641)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.0ms | Allocations: 4039)
+
+
+  
+ActionView::Template::Error (undefined method `name' for {"nickname"=>"rishavkrd11", "name"=>"rishavkrd11@tamu.edu", "picture"=>"https://s.gravatar.com/avatar/033089d26b2c4eef720dbb3cde6af3a1?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fri.png", "updated_at"=>"2022-10-05T17:55:12.434Z", "email"=>"rishavkrd11@tamu.edu", "email_verified"=>true, "iss"=>"https://rotartrack.us.auth0.com/", "sub"=>"auth0|63293688685be7b736e84312", "aud"=>"giksZR9ko8z8SrwI6Y8RolkR0SaySMJO", "iat"=>1665000283, "exp"=>1665036283, "sid"=>"ziy_tEv041KFItGLk_bvwek7DEMxxTca", "nonce"=>"ea1dbc9a5375771e317dd80873e4d312"}:Hash):
+    1: <section class="jumbotron  text-center">
+    2:   <h1>Welcome to Dashboard <%=@user.name%></h1>
+    3:       <%= button_to 'Logout', 'auth/logout', method: :get %>
+    4: </section>
+    5: <div>
+  
+app/views/dashboard/show.html.erb:2
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:49:23 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 7.7ms | Allocations: 2567)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 2641)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.0ms | Allocations: 4039)
+
+
+  
+ActionView::Template::Error (undefined method `nickname' for {"nickname"=>"rishavkrd11", "name"=>"rishavkrd11@tamu.edu", "picture"=>"https://s.gravatar.com/avatar/033089d26b2c4eef720dbb3cde6af3a1?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fri.png", "updated_at"=>"2022-10-05T17:55:12.434Z", "email"=>"rishavkrd11@tamu.edu", "email_verified"=>true, "iss"=>"https://rotartrack.us.auth0.com/", "sub"=>"auth0|63293688685be7b736e84312", "aud"=>"giksZR9ko8z8SrwI6Y8RolkR0SaySMJO", "iat"=>1665000283, "exp"=>1665036283, "sid"=>"ziy_tEv041KFItGLk_bvwek7DEMxxTca", "nonce"=>"ea1dbc9a5375771e317dd80873e4d312"}:Hash):
+    1: <section class="jumbotron  text-center">
+    2:   <h1>Welcome to Dashboard <%=@user.nickname%></h1>
+    3:       <%= button_to 'Logout', 'auth/logout', method: :get %>
+    4: </section>
+    5: <div>
+  
+app/views/dashboard/show.html.erb:2
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:49:42 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 14.5ms | Allocations: 2339)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 143.9ms | Allocations: 6638)
+Completed 200 OK in 166ms (Views: 155.2ms | ActiveRecord: 1.1ms | Allocations: 8072)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:49:54 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 11.2ms | Allocations: 2338)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 161.5ms | Allocations: 6611)
+Completed 200 OK in 193ms (Views: 181.2ms | ActiveRecord: 1.3ms | Allocations: 8035)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:50:15 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 14.9ms | Allocations: 4867)
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | Allocations: 4941)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 0.0ms | Allocations: 6335)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `user' for #<ActionView::Base:0x000000000101f8>
+Did you mean?  @user):
+    1: <section class="jumbotron  text-center">
+    2:   <h1>Welcome to Dashboard <%=user[:name]%></h1>
+    3:       <%= button_to 'Logout', 'auth/logout', method: :get %>
+    4: </section>
+    5: <div>
+  
+app/views/dashboard/show.html.erb:2
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:50:26 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 10.8ms | Allocations: 2339)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 170.6ms | Allocations: 6638)
+Completed 200 OK in 194ms (Views: 182.4ms | ActiveRecord: 1.0ms | Allocations: 8073)
+
+
+Started GET "/accounts" for 172.17.0.1 at 2022-10-05 20:55:44 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/index.html.erb within layouts/application
+  [1m[36mAccount Load (2.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/accounts/index.html.erb:21
+  Rendered accounts/index.html.erb within layouts/application (Duration: 10.2ms | Allocations: 1568)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 134.7ms | Allocations: 5611)
+Completed 200 OK in 174ms (Views: 136.9ms | ActiveRecord: 2.1ms | Allocations: 7572)
+
+
+Started GET "/accounts/new" for 172.17.0.1 at 2022-10-05 20:55:46 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/new.html.erb within layouts/application
+  Rendered accounts/_form.html.erb (Duration: 7.3ms | Allocations: 2625)
+  Rendered accounts/new.html.erb within layouts/application (Duration: 16.2ms | Allocations: 2992)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 130.3ms | Allocations: 6843)
+Completed 200 OK in 160ms (Views: 131.6ms | ActiveRecord: 11.5ms | Allocations: 12290)
+
+
+Started GET "/accounts" for 172.17.0.1 at 2022-10-05 20:55:51 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/index.html.erb within layouts/application
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/accounts/index.html.erb:21
+  Rendered accounts/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 969)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 130.8ms | Allocations: 4854)
+Completed 200 OK in 133ms (Views: 131.1ms | ActiveRecord: 0.9ms | Allocations: 5341)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:55:52 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1641)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 118.0ms | Allocations: 5502)
+Completed 200 OK in 121ms (Views: 118.7ms | ActiveRecord: 0.9ms | Allocations: 5996)
+
+
+Started GET "/statuses" for 172.17.0.1 at 2022-10-05 20:55:54 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StatusesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering statuses/index.html.erb within layouts/application
+  [1m[36mStatus Load (2.0ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses"[0m
+  ↳ app/views/statuses/index.html.erb:16
+  Rendered statuses/index.html.erb within layouts/application (Duration: 12.0ms | Allocations: 1491)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 140.8ms | Allocations: 5588)
+Completed 200 OK in 185ms (Views: 144.1ms | ActiveRecord: 2.0ms | Allocations: 7324)
+
+
+Started GET "/statuses/new" for 172.17.0.1 at 2022-10-05 20:55:55 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StatusesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering statuses/new.html.erb within layouts/application
+  Rendered statuses/_form.html.erb (Duration: 6.7ms | Allocations: 1142)
+  Rendered statuses/new.html.erb within layouts/application (Duration: 20.5ms | Allocations: 1502)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 152.9ms | Allocations: 5363)
+Completed 200 OK in 184ms (Views: 154.2ms | ActiveRecord: 6.4ms | Allocations: 8276)
+
+
+Started POST "/statuses" for 172.17.0.1 at 2022-10-05 20:56:01 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StatusesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "status"=>{"Value"=>"Officer"}, "commit"=>"Create Status"}
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/statuses_controller.rb:27:in `block in create'
+  [1m[36mStatus Create (2.9ms)[0m  [1m[32mINSERT INTO "statuses" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Officer"], ["created_at", "2022-10-05 20:56:01.231824"], ["updated_at", "2022-10-05 20:56:01.231824"]]
+  ↳ app/controllers/statuses_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/statuses_controller.rb:27:in `block in create'
+Redirected to http://127.0.0.1:3000/statuses/1
+Completed 302 Found in 23ms (ActiveRecord: 14.1ms | Allocations: 2957)
+
+
+Started GET "/statuses/1" for 172.17.0.1 at 2022-10-05 20:56:01 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StatusesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStatus Load (0.9ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/statuses_controller.rb:63:in `set_status'
+  Rendering layout layouts/application.html.erb
+  Rendering statuses/show.html.erb within layouts/application
+  Rendered statuses/show.html.erb within layouts/application (Duration: 4.1ms | Allocations: 272)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 124.9ms | Allocations: 4159)
+Completed 200 OK in 149ms (Views: 132.6ms | ActiveRecord: 0.9ms | Allocations: 5664)
+
+
+Started GET "/statuses" for 172.17.0.1 at 2022-10-05 20:56:02 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StatusesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering statuses/index.html.erb within layouts/application
+  [1m[36mStatus Load (1.1ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses"[0m
+  ↳ app/views/statuses/index.html.erb:16
+  Rendered statuses/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1121)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 127.1ms | Allocations: 4994)
+Completed 200 OK in 130ms (Views: 127.6ms | ActiveRecord: 1.1ms | Allocations: 5479)
+
+
+Started GET "/statuses/new" for 172.17.0.1 at 2022-10-05 20:56:04 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StatusesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering statuses/new.html.erb within layouts/application
+  Rendered statuses/_form.html.erb (Duration: 1.5ms | Allocations: 638)
+  Rendered statuses/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 757)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 121.7ms | Allocations: 4618)
+Completed 200 OK in 124ms (Views: 123.5ms | ActiveRecord: 0.0ms | Allocations: 5103)
+
+
+Started POST "/statuses" for 172.17.0.1 at 2022-10-05 20:56:08 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StatusesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "status"=>{"Value"=>"Member"}, "commit"=>"Create Status"}
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/statuses_controller.rb:27:in `block in create'
+  [1m[36mStatus Create (2.1ms)[0m  [1m[32mINSERT INTO "statuses" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Member"], ["created_at", "2022-10-05 20:56:08.161933"], ["updated_at", "2022-10-05 20:56:08.161933"]]
+  ↳ app/controllers/statuses_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (10.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/statuses_controller.rb:27:in `block in create'
+Redirected to http://127.0.0.1:3000/statuses/2
+Completed 302 Found in 29ms (ActiveRecord: 14.3ms | Allocations: 2690)
+
+
+Started GET "/statuses/2" for 172.17.0.1 at 2022-10-05 20:56:08 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StatusesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStatus Load (0.8ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/statuses_controller.rb:63:in `set_status'
+  Rendering layout layouts/application.html.erb
+  Rendering statuses/show.html.erb within layouts/application
+  Rendered statuses/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 124)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 126.0ms | Allocations: 4011)
+Completed 200 OK in 132ms (Views: 127.1ms | ActiveRecord: 0.8ms | Allocations: 5198)
+
+
+Started GET "/statuses" for 172.17.0.1 at 2022-10-05 20:56:09 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StatusesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering statuses/index.html.erb within layouts/application
+  [1m[36mStatus Load (0.9ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses"[0m
+  ↳ app/views/statuses/index.html.erb:16
+  Rendered statuses/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1263)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 101.9ms | Allocations: 5124)
+Completed 200 OK in 104ms (Views: 102.4ms | ActiveRecord: 0.9ms | Allocations: 5608)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:56:11 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 7.3ms | Allocations: 1608)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 121.4ms | Allocations: 5495)
+Completed 200 OK in 124ms (Views: 121.9ms | ActiveRecord: 1.0ms | Allocations: 5988)
+
+
+Started GET "/accounts" for 172.17.0.1 at 2022-10-05 20:56:12 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/index.html.erb within layouts/application
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/accounts/index.html.erb:21
+  Rendered accounts/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 968)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 111.5ms | Allocations: 4841)
+Completed 200 OK in 114ms (Views: 112.1ms | ActiveRecord: 1.0ms | Allocations: 5329)
+
+
+Started GET "/accounts/new" for 172.17.0.1 at 2022-10-05 20:56:13 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/new.html.erb within layouts/application
+  Rendered accounts/_form.html.erb (Duration: 3.1ms | Allocations: 1740)
+  Rendered accounts/new.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1859)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 122.5ms | Allocations: 5709)
+Completed 200 OK in 125ms (Views: 123.9ms | ActiveRecord: 0.0ms | Allocations: 6200)
+
+
+Started POST "/accounts" for 172.17.0.1 at 2022-10-05 20:56:38 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "account"=>{"UIN"=>"19287391", "FirstName"=>"Rishav", "LastName"=>"Dokania", "PhoneNumber"=>"923456789", "Email"=>"rishav@xyz.com", "status_id"=>"1"}, "commit"=>"Create Account"}
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:27:in `block in create'
+  [1m[36mStatus Load (1.5ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:27:in `block in create'
+  [1m[36mAccount Create (2.7ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["UIN", 19287391], ["FirstName", "Rishav"], ["LastName", "Dokania"], ["PhoneNumber", 923456789], ["Email", "rishav@xyz.com"], ["status_id", 1], ["created_at", "2022-10-05 20:56:38.753772"], ["updated_at", "2022-10-05 20:56:38.753772"]]
+  ↳ app/controllers/accounts_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (7.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:27:in `block in create'
+Redirected to http://127.0.0.1:3000/accounts/1
+Completed 302 Found in 29ms (ActiveRecord: 12.7ms | Allocations: 4945)
+
+
+Started GET "/accounts/1" for 172.17.0.1 at 2022-10-05 20:56:38 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:63:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 3.9ms | Allocations: 411)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 126.6ms | Allocations: 4298)
+Completed 200 OK in 144ms (Views: 127.9ms | ActiveRecord: 1.0ms | Allocations: 5765)
+
+
+Started GET "/accounts" for 172.17.0.1 at 2022-10-05 20:56:40 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/index.html.erb within layouts/application
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/accounts/index.html.erb:21
+  Rendered accounts/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1133)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 116.5ms | Allocations: 4994)
+Completed 200 OK in 118ms (Views: 116.8ms | ActiveRecord: 0.9ms | Allocations: 5478)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:56:41 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 6.5ms | Allocations: 1602)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 135.1ms | Allocations: 5490)
+Completed 200 OK in 137ms (Views: 135.6ms | ActiveRecord: 1.1ms | Allocations: 5981)
+
+
+Started GET "/accounts" for 172.17.0.1 at 2022-10-05 20:56:43 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/index.html.erb within layouts/application
+  [1m[36mAccount Load (1.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/accounts/index.html.erb:21
+  Rendered accounts/index.html.erb within layouts/application (Duration: 7.2ms | Allocations: 1126)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 154.0ms | Allocations: 5011)
+Completed 200 OK in 157ms (Views: 154.2ms | ActiveRecord: 1.6ms | Allocations: 5496)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 20:56:50 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (2.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 10.3ms | Allocations: 1588)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 161.9ms | Allocations: 5461)
+Completed 200 OK in 165ms (Views: 161.2ms | ActiveRecord: 2.2ms | Allocations: 5951)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:28:49 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (2.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:28
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 72.3ms | Allocations: 10918)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 211.4ms | Allocations: 15182)
+Completed 200 OK in 253ms (Views: 223.1ms | ActiveRecord: 21.2ms | Allocations: 17518)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:29:44 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 19.4ms | Allocations: 5169)
+  Rendered layout layouts/application.html.erb (Duration: 20.7ms | Allocations: 5243)
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 0.0ms | Allocations: 7553)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `help_path' for #<ActionView::Base:0x00000000016648>):
+     9:     <%= link_to 'Sign Ups', signups_path %>
+    10:     <%= link_to 'Statuses', statuses_path %>
+    11:     <%= link_to 'Events Type', types_path %>
+    12:     <%= link_to 'Help', help_path %>
+    13: </div>
+    14: <table>
+    15:   <thead>
+  
+app/views/dashboard/show.html.erb:12
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:29:58 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 17.9ms | Allocations: 4684)
+  Rendered layout layouts/application.html.erb (Duration: 18.7ms | Allocations: 4758)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 0.0ms | Allocations: 6377)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `help_path' for #<ActionView::Base:0x000000000195a0>):
+     9:     <%= link_to 'Sign Ups', signups_path %>
+    10:     <%= link_to 'Statuses', statuses_path %>
+    11:     <%= link_to 'Events Type', types_path %>
+    12:     <%= link_to 'Help', help_path %>
+    13: </div>
+    14: <table>
+    15:   <thead>
+  
+app/views/dashboard/show.html.erb:12
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:30:03 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 19.1ms | Allocations: 4684)
+  Rendered layout layouts/application.html.erb (Duration: 20.4ms | Allocations: 4758)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 0.0ms | Allocations: 6377)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `help_path' for #<ActionView::Base:0x0000000001c390>):
+     9:     <%= link_to 'Sign Ups', signups_path %>
+    10:     <%= link_to 'Statuses', statuses_path %>
+    11:     <%= link_to 'Events Type', types_path %>
+    12:     <%= link_to 'Help', help_path %>
+    13: </div>
+    14: <table>
+    15:   <thead>
+  
+app/views/dashboard/show.html.erb:12
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:30:06 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 18.2ms | Allocations: 4576)
+  Rendered layout layouts/application.html.erb (Duration: 19.5ms | Allocations: 4644)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.0ms | Allocations: 5161)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `help_path' for #<ActionView::Base:0x0000000001c4d0>):
+     9:     <%= link_to 'Sign Ups', signups_path %>
+    10:     <%= link_to 'Statuses', statuses_path %>
+    11:     <%= link_to 'Events Type', types_path %>
+    12:     <%= link_to 'Help', help_path %>
+    13: </div>
+    14: <table>
+    15:   <thead>
+  
+app/views/dashboard/show.html.erb:12
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:30:50 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:29
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 49.9ms | Allocations: 7766)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 203.0ms | Allocations: 12024)
+Completed 200 OK in 244ms (Views: 189.7ms | ActiveRecord: 24.0ms | Allocations: 14366)
+
+
+Started GET "/dashboard/help" for 172.17.0.1 at 2022-10-05 21:30:52 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#help as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/help.html.erb within layouts/application
+  Rendered dashboard/help.html.erb within layouts/application (Duration: 3.0ms | Allocations: 107)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 116.5ms | Allocations: 3996)
+Completed 200 OK in 125ms (Views: 117.9ms | ActiveRecord: 0.0ms | Allocations: 4645)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:31:04 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (2.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:29
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 16.8ms | Allocations: 2382)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 153.8ms | Allocations: 6655)
+Completed 200 OK in 181ms (Views: 167.4ms | ActiveRecord: 2.7ms | Allocations: 8035)
+
+
+Started GET "/dashboard/help" for 172.17.0.1 at 2022-10-05 21:31:05 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#help as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/help.html.erb within layouts/application
+  Rendered dashboard/help.html.erb within layouts/application (Duration: 4.0ms | Allocations: 103)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 157.1ms | Allocations: 3970)
+Completed 200 OK in 169ms (Views: 158.4ms | ActiveRecord: 0.0ms | Allocations: 4631)
+
+
+Started GET "/points" for 172.17.0.1 at 2022-10-05 21:31:17 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PointsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering points/index.html.erb within layouts/application
+  [1m[36mPoint Load (2.0ms)[0m  [1m[34mSELECT "points".* FROM "points"[0m
+  ↳ app/views/points/index.html.erb:17
+  Rendered points/index.html.erb within layouts/application (Duration: 9.4ms | Allocations: 1502)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 112.2ms | Allocations: 5585)
+Completed 200 OK in 159ms (Views: 115.8ms | ActiveRecord: 2.0ms | Allocations: 7709)
+
+
+Started GET "/signups" for 172.17.0.1 at 2022-10-05 21:31:18 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering signups/index.html.erb within layouts/application
+  [1m[36mSignup Load (2.6ms)[0m  [1m[34mSELECT "signups".* FROM "signups"[0m
+  ↳ app/views/signups/index.html.erb:18
+  Rendered signups/index.html.erb within layouts/application (Duration: 11.5ms | Allocations: 1542)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 142.7ms | Allocations: 5626)
+Completed 200 OK in 182ms (Views: 144.2ms | ActiveRecord: 2.6ms | Allocations: 7722)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:32:10 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:29
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 12.9ms | Allocations: 2382)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 173.2ms | Allocations: 6655)
+Completed 200 OK in 201ms (Views: 186.4ms | ActiveRecord: 1.4ms | Allocations: 8097)
+
+
+Started GET "/accounts" for 172.17.0.1 at 2022-10-05 21:32:11 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/index.html.erb within layouts/application
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/accounts/index.html.erb:21
+  Rendered accounts/index.html.erb within layouts/application (Duration: 22.3ms | Allocations: 6176)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 141.7ms | Allocations: 10218)
+Completed 200 OK in 169ms (Views: 139.0ms | ActiveRecord: 7.3ms | Allocations: 12147)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:34:10 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:30
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 12.7ms | Allocations: 2434)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 156.0ms | Allocations: 6707)
+Completed 200 OK in 177ms (Views: 166.5ms | ActiveRecord: 1.3ms | Allocations: 8149)
+
+
+Started GET "/events/new" for 172.17.0.1 at 2022-10-05 21:34:12 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 10.2ms | Allocations: 6431)
+  Rendered events/new.html.erb within layouts/application (Duration: 22.8ms | Allocations: 6846)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 159.3ms | Allocations: 10862)
+Completed 200 OK in 171ms (Views: 163.9ms | ActiveRecord: 0.0ms | Allocations: 12210)
+
+
+Started GET "/events" for 172.17.0.1 at 2022-10-05 21:34:15 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:20
+  Rendered events/index.html.erb within layouts/application (Duration: 18.4ms | Allocations: 1775)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 193.8ms | Allocations: 5662)
+Completed 200 OK in 209ms (Views: 193.9ms | ActiveRecord: 1.3ms | Allocations: 6327)
+
+
+Started GET "/events/new" for 172.17.0.1 at 2022-10-05 21:34:32 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 6.8ms | Allocations: 5665)
+  Rendered events/new.html.erb within layouts/application (Duration: 7.6ms | Allocations: 5784)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 140.6ms | Allocations: 9659)
+Completed 200 OK in 143ms (Views: 142.4ms | ActiveRecord: 0.0ms | Allocations: 10157)
+
+
+Started GET "/events/new" for 172.17.0.1 at 2022-10-05 21:35:13 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 9.8ms | Allocations: 6406)
+  Rendered events/new.html.erb within layouts/application (Duration: 22.7ms | Allocations: 6812)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 148.9ms | Allocations: 11060)
+Completed 200 OK in 173ms (Views: 162.9ms | ActiveRecord: 0.0ms | Allocations: 12445)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:35:14 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:30
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 11.4ms | Allocations: 2429)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 153.4ms | Allocations: 6511)
+Completed 200 OK in 167ms (Views: 157.6ms | ActiveRecord: 1.1ms | Allocations: 7689)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:38:22 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:34
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 10.8ms | Allocations: 2436)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 145.5ms | Allocations: 6709)
+Completed 200 OK in 168ms (Views: 155.4ms | ActiveRecord: 1.3ms | Allocations: 8151)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:39:40 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (2.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:35
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 16.1ms | Allocations: 2437)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 144.6ms | Allocations: 6710)
+Completed 200 OK in 173ms (Views: 158.6ms | ActiveRecord: 2.1ms | Allocations: 8134)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:40:20 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:36
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 12.9ms | Allocations: 2439)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 162.2ms | Allocations: 6712)
+Completed 200 OK in 185ms (Views: 174.2ms | ActiveRecord: 1.2ms | Allocations: 8136)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:40:30 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:36
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 14.4ms | Allocations: 2440)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 139.4ms | Allocations: 6713)
+Completed 200 OK in 159ms (Views: 148.7ms | ActiveRecord: 1.8ms | Allocations: 8137)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:40:36 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:36
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 13.2ms | Allocations: 2440)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 186.9ms | Allocations: 6713)
+Completed 200 OK in 207ms (Views: 196.8ms | ActiveRecord: 1.5ms | Allocations: 8137)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:40:58 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:37
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 9.5ms | Allocations: 2440)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 133.1ms | Allocations: 6718)
+Completed 200 OK in 150ms (Views: 142.6ms | ActiveRecord: 0.9ms | Allocations: 8142)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:41:20 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:37
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 11.7ms | Allocations: 2446)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 139.3ms | Allocations: 6745)
+Completed 200 OK in 167ms (Views: 150.2ms | ActiveRecord: 1.2ms | Allocations: 8175)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:42:32 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 38.3ms | Allocations: 5189)
+  Rendered layout layouts/application.html.erb (Duration: 39.4ms | Allocations: 5263)
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 0.0ms | Allocations: 6657)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `show_accounts_path' for #<ActionView::Base:0x000000000202d8>
+Did you mean?  new_account_path):
+     7:     <%= link_to 'User Dashboard', accounts_path %>
+     8:     <%= link_to 'Create New Event', new_event_path %>
+     9:     <%= link_to 'Help', '/dashboard/help' %>
+    10:     <%= link_to 'View My Profile', show_accounts_path %>
+    11:     <%= link_to 'User Dashboard', accounts_path %>
+    12: </div>
+    13: <div>
+  
+app/views/dashboard/show.html.erb:10
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:45:05 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (2.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:38
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 13.6ms | Allocations: 2537)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 147.4ms | Allocations: 6837)
+Completed 200 OK in 175ms (Views: 160.6ms | ActiveRecord: 2.0ms | Allocations: 8272)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:45:30 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:43
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 11.5ms | Allocations: 2635)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 150.5ms | Allocations: 6908)
+Completed 200 OK in 169ms (Views: 159.3ms | ActiveRecord: 1.9ms | Allocations: 8332)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:45:55 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:43
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 12.9ms | Allocations: 2636)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 157.3ms | Allocations: 6909)
+Completed 200 OK in 177ms (Views: 167.7ms | ActiveRecord: 1.5ms | Allocations: 8333)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:46:12 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:43
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 15.6ms | Allocations: 2635)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 152.0ms | Allocations: 6908)
+Completed 200 OK in 176ms (Views: 163.8ms | ActiveRecord: 1.6ms | Allocations: 8332)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:47:28 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:44
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 12.6ms | Allocations: 2636)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 163.7ms | Allocations: 6915)
+Completed 200 OK in 185ms (Views: 175.1ms | ActiveRecord: 1.3ms | Allocations: 8339)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:47:46 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:44
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1742)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 152.7ms | Allocations: 5603)
+Completed 200 OK in 156ms (Views: 153.5ms | ActiveRecord: 1.1ms | Allocations: 6145)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:48:05 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:44
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 12.1ms | Allocations: 2636)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 136.8ms | Allocations: 6915)
+Completed 200 OK in 159ms (Views: 147.5ms | ActiveRecord: 1.1ms | Allocations: 8286)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:48:11 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:44
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 9.9ms | Allocations: 2636)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 138.3ms | Allocations: 6909)
+Completed 200 OK in 160ms (Views: 149.5ms | ActiveRecord: 1.0ms | Allocations: 8333)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:48:24 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:43
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 15.0ms | Allocations: 2640)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 139.3ms | Allocations: 6940)
+Completed 200 OK in 164ms (Views: 152.3ms | ActiveRecord: 1.1ms | Allocations: 8370)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:48:48 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:43
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 11.0ms | Allocations: 2636)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 143.7ms | Allocations: 6910)
+Completed 200 OK in 163ms (Views: 153.5ms | ActiveRecord: 1.1ms | Allocations: 8335)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:49:32 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:43
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 11.0ms | Allocations: 2649)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 158.8ms | Allocations: 6948)
+Completed 200 OK in 178ms (Views: 167.6ms | ActiveRecord: 1.0ms | Allocations: 8378)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:49:50 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:43
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 11.5ms | Allocations: 2649)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 159.6ms | Allocations: 6922)
+Completed 200 OK in 177ms (Views: 168.4ms | ActiveRecord: 1.2ms | Allocations: 8346)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:50:06 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:43
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 12.3ms | Allocations: 2650)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 153.0ms | Allocations: 6923)
+Completed 200 OK in 173ms (Views: 164.1ms | ActiveRecord: 1.8ms | Allocations: 8347)
+
+
+Started GET "/events/1" for 172.17.0.1 at 2022-10-05 21:50:30 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (1.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:63:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 4.7ms | Allocations: 581)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 307.2ms | Allocations: 4665)
+Completed 200 OK in 335ms (Views: 313.2ms | ActiveRecord: 2.8ms | Allocations: 6938)
+
+
+Started GET "/accounts" for 172.17.0.1 at 2022-10-05 21:52:18 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/index.html.erb within layouts/application
+  [1m[36mAccount Load (1.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/accounts/index.html.erb:21
+  Rendered accounts/index.html.erb within layouts/application (Duration: 8.8ms | Allocations: 1686)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 145.7ms | Allocations: 5769)
+Completed 200 OK in 159ms (Views: 149.3ms | ActiveRecord: 1.1ms | Allocations: 6961)
+
+
+Started GET "/accounts" for 172.17.0.1 at 2022-10-05 21:52:24 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/index.html.erb within layouts/application
+  [1m[36mAccount Load (1.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/accounts/index.html.erb:21
+  Rendered accounts/index.html.erb within layouts/application (Duration: 6.5ms | Allocations: 1126)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 145.6ms | Allocations: 4988)
+Completed 200 OK in 148ms (Views: 145.4ms | ActiveRecord: 1.7ms | Allocations: 5526)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-05 21:52:28 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (2.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:43
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 10.1ms | Allocations: 1778)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 147.7ms | Allocations: 5639)
+Completed 200 OK in 151ms (Views: 146.6ms | ActiveRecord: 2.8ms | Allocations: 6132)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 172.17.0.1 at 2022-10-07 18:58:13 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActiveRecord::NoDatabaseError (FATAL:  database "test_app_development" does not exist
+):
+  
+activerecord (6.1.7) lib/active_record/connection_adapters/postgresql_adapter.rb:81:in `rescue in new_client'
+activerecord (6.1.7) lib/active_record/connection_adapters/postgresql_adapter.rb:77:in `new_client'
+activerecord (6.1.7) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `public_send'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `new_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:926:in `checkout_new_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:905:in `try_to_checkout_new_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:866:in `acquire_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:588:in `checkout'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:428:in `connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:1128:in `retrieve_connection'
+activerecord (6.1.7) lib/active_record/connection_handling.rb:327:in `retrieve_connection'
+activerecord (6.1.7) lib/active_record/connection_handling.rb:283:in `connection'
+activerecord (6.1.7) lib/active_record/migration.rb:611:in `connection'
+activerecord (6.1.7) lib/active_record/migration.rb:606:in `build_watcher'
+activerecord (6.1.7) lib/active_record/migration.rb:588:in `block in call'
+activerecord (6.1.7) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.7) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:19:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.3) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.4) lib/rack/proxy.rb:78:in `call'
+railties (6.1.7) lib/rails/engine.rb:539:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (2252.3ms)[0m  [1m[35mCREATE DATABASE "test_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (2131.3ms)[0m  [1m[35mCREATE DATABASE "test_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (37.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (27.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTypes (20220917061107)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (31.7ms)[0m  [1m[35mCREATE TABLE "types" ("id" bigserial primary key, "Value" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220917061107"]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEvents (20220918061309)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (25.5ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "Title" text, "Description" text, "Date" date, "Time" time, "Location" text, "Points" integer, "type_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c6c031df6e"
+FOREIGN KEY ("type_id")
+  REFERENCES "types" ("id")
+)[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE INDEX "index_events_on_type_id" ON "events" ("type_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220918061309"]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateStatuses (20220919033633)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (26.7ms)[0m  [1m[35mCREATE TABLE "statuses" ("id" bigserial primary key, "Value" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220919033633"]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAccounts (20220920034149)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (28.7ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "UIN" integer, "FirstName" text, "LastName" text, "PhoneNumber" integer, "Email" text, "status_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_77d18abef7"
+FOREIGN KEY ("status_id")
+  REFERENCES "statuses" ("id")
+)[0m
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_status_id" ON "accounts" ("status_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220920034149"]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSignups (20220921034439)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (16.8ms)[0m  [1m[35mCREATE TABLE "signups" ("id" bigserial primary key, "event_id" bigint NOT NULL, "account_id" bigint NOT NULL, "Pickup" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_872531dfe1"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+, CONSTRAINT "fk_rails_3ec5de34fa"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+)[0m
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE INDEX "index_signups_on_event_id" ON "signups" ("event_id")[0m
+  [1m[35m (10.2ms)[0m  [1m[35mCREATE INDEX "index_signups_on_account_id" ON "signups" ("account_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220921034439"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePoints (20220922034647)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (16.0ms)[0m  [1m[35mCREATE TABLE "points" ("id" bigserial primary key, "account_id" bigint NOT NULL, "event_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e7c3d0176a"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+, CONSTRAINT "fk_rails_97f9f862c2"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+)[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE INDEX "index_points_on_account_id" ON "points" ("account_id")[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE INDEX "index_points_on_event_id" ON "points" ("event_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220922034647"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-07 18:58:56.553869"], ["updated_at", "2022-10-07 18:58:56.553869"]]
+  [1m[36mTRANSACTION (9.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 172.17.0.1 at 2022-10-07 18:59:24 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 22.5ms | Allocations: 869)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 976.5ms | Allocations: 9904)
+Completed 200 OK in 1102ms (Views: 1001.8ms | ActiveRecord: 0.0ms | Allocations: 14031)
+
+
+Started POST "/auth/auth0" for 172.17.0.1 at 2022-10-07 18:59:28 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/auth/auth0/callback?code=TEki8GuFO7tvauhy5BjTyJxPYQlTo189QQGR4zRsT3pZQ&state=1addfc03d6c3358aab71a4f6641f13920d8168516dd04df6" for 172.17.0.1 at 2022-10-07 18:59:28 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Auth0Controller#callback as HTML
+  Parameters: {"code"=>"TEki8GuFO7tvauhy5BjTyJxPYQlTo189QQGR4zRsT3pZQ", "state"=>"1addfc03d6c3358aab71a4f6641f13920d8168516dd04df6"}
+Redirected to http://127.0.0.1:3000/dashboard
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 239)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-07 18:59:30 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:43
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 65.8ms | Allocations: 3603)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 209.7ms | Allocations: 7696)
+Completed 200 OK in 361ms (Views: 209.1ms | ActiveRecord: 4.6ms | Allocations: 10921)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2381.6ms)[0m  [1m[35mCREATE DATABASE "test_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (2183.4ms)[0m  [1m[35mCREATE DATABASE "test_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (29.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (19.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTypes (20220917061107)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (24.7ms)[0m  [1m[35mCREATE TABLE "types" ("id" bigserial primary key, "Value" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220917061107"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEvents (20220918061309)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (25.4ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "Title" text, "Description" text, "Date" date, "Time" time, "Location" text, "Points" integer, "type_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c6c031df6e"
+FOREIGN KEY ("type_id")
+  REFERENCES "types" ("id")
+)[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_type_id" ON "events" ("type_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220918061309"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateStatuses (20220919033633)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (23.7ms)[0m  [1m[35mCREATE TABLE "statuses" ("id" bigserial primary key, "Value" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220919033633"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAccounts (20220920034149)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (21.4ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "UIN" integer, "FirstName" text, "LastName" text, "PhoneNumber" integer, "Email" text, "status_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_77d18abef7"
+FOREIGN KEY ("status_id")
+  REFERENCES "statuses" ("id")
+)[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_status_id" ON "accounts" ("status_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220920034149"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSignups (20220921034439)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE TABLE "signups" ("id" bigserial primary key, "event_id" bigint NOT NULL, "account_id" bigint NOT NULL, "Pickup" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_872531dfe1"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+, CONSTRAINT "fk_rails_3ec5de34fa"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+)[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE INDEX "index_signups_on_event_id" ON "signups" ("event_id")[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE INDEX "index_signups_on_account_id" ON "signups" ("account_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220921034439"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePoints (20220922034647)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.7ms)[0m  [1m[35mCREATE TABLE "points" ("id" bigserial primary key, "account_id" bigint NOT NULL, "event_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e7c3d0176a"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+, CONSTRAINT "fk_rails_97f9f862c2"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+)[0m
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE INDEX "index_points_on_account_id" ON "points" ("account_id")[0m
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE INDEX "index_points_on_event_id" ON "points" ("event_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220922034647"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-12 02:42:08.532422"], ["updated_at", "2022-10-12 02:42:08.532422"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (90.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_app_development"[0m
+  [1m[35m (79.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_app_test"[0m
+  [1m[35m (2171.0ms)[0m  [1m[35mCREATE DATABASE "test_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (2210.8ms)[0m  [1m[35mCREATE DATABASE "test_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (34.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (21.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTypes (20220917061107)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (20.0ms)[0m  [1m[35mCREATE TABLE "types" ("id" bigserial primary key, "Value" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220917061107"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEvents (20220918061309)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (23.3ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "Title" text, "Description" text, "Date" date, "Time" time, "Location" text, "Points" integer, "type_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c6c031df6e"
+FOREIGN KEY ("type_id")
+  REFERENCES "types" ("id")
+)[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE INDEX "index_events_on_type_id" ON "events" ("type_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220918061309"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateStatuses (20220919033633)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.9ms)[0m  [1m[35mCREATE TABLE "statuses" ("id" bigserial primary key, "Value" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220919033633"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAccounts (20220920034149)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (22.1ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "UIN" integer, "FirstName" text, "LastName" text, "PhoneNumber" integer, "Email" text, "status_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_77d18abef7"
+FOREIGN KEY ("status_id")
+  REFERENCES "statuses" ("id")
+)[0m
+  [1m[35m (10.2ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_status_id" ON "accounts" ("status_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220920034149"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSignups (20220921034439)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.0ms)[0m  [1m[35mCREATE TABLE "signups" ("id" bigserial primary key, "event_id" bigint NOT NULL, "account_id" bigint NOT NULL, "Pickup" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_872531dfe1"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+, CONSTRAINT "fk_rails_3ec5de34fa"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+)[0m
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE INDEX "index_signups_on_event_id" ON "signups" ("event_id")[0m
+  [1m[35m (10.5ms)[0m  [1m[35mCREATE INDEX "index_signups_on_account_id" ON "signups" ("account_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220921034439"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePoints (20220922034647)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.3ms)[0m  [1m[35mCREATE TABLE "points" ("id" bigserial primary key, "account_id" bigint NOT NULL, "event_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e7c3d0176a"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+, CONSTRAINT "fk_rails_97f9f862c2"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+)[0m
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE INDEX "index_points_on_account_id" ON "points" ("account_id")[0m
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE INDEX "index_points_on_event_id" ON "points" ("event_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220922034647"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-12 03:08:45.816517"], ["updated_at", "2022-10-12 03:08:45.816517"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (70.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_app_development"[0m
+  [1m[35m (78.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_app_test"[0m
+  [1m[35m (2135.8ms)[0m  [1m[35mCREATE DATABASE "test_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (2178.9ms)[0m  [1m[35mCREATE DATABASE "test_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (33.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (21.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTypes (20220917061107)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (25.5ms)[0m  [1m[35mCREATE TABLE "types" ("id" bigserial primary key, "Value" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220917061107"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEvents (20220918061309)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (21.4ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "Title" text, "Description" text, "Date" date, "Time" time, "Location" text, "Points" integer, "type_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c6c031df6e"
+FOREIGN KEY ("type_id")
+  REFERENCES "types" ("id")
+)[0m
+  [1m[35m (12.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_type_id" ON "events" ("type_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220918061309"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateStatuses (20220919033633)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (20.1ms)[0m  [1m[35mCREATE TABLE "statuses" ("id" bigserial primary key, "Value" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220919033633"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAccounts (20220920034149)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (20.6ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "UIN" integer, "FirstName" text, "LastName" text, "PhoneNumber" integer, "Email" text, "status_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_77d18abef7"
+FOREIGN KEY ("status_id")
+  REFERENCES "statuses" ("id")
+)[0m
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_status_id" ON "accounts" ("status_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220920034149"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSignups (20220921034439)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (12.6ms)[0m  [1m[35mCREATE TABLE "signups" ("id" bigserial primary key, "event_id" bigint NOT NULL, "account_id" bigint NOT NULL, "Pickup" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_872531dfe1"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+, CONSTRAINT "fk_rails_3ec5de34fa"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+)[0m
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE INDEX "index_signups_on_event_id" ON "signups" ("event_id")[0m
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE INDEX "index_signups_on_account_id" ON "signups" ("account_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220921034439"]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePoints (20220922034647)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.5ms)[0m  [1m[35mCREATE TABLE "points" ("id" bigserial primary key, "account_id" bigint NOT NULL, "event_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e7c3d0176a"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+, CONSTRAINT "fk_rails_97f9f862c2"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+)[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE INDEX "index_points_on_account_id" ON "points" ("account_id")[0m
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE INDEX "index_points_on_event_id" ON "points" ("event_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220922034647"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-12 03:21:30.059423"], ["updated_at", "2022-10-12 03:21:30.059423"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (88.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_app_development"[0m
+  [1m[35m (105.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_app_test"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_app_development"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_app_test"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_app_development"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_app_test"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_app_development"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_app_test"[0m
