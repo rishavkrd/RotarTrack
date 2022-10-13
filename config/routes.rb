@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   get '/auth/failure' => 'auth0#failure'
   get '/auth/logout' => 'auth0#logout'
   get '/auth/redirect' => 'auth0#redirect'
+  get '/profile/create' => 'profile#create'
+  post '/profile/create' => 'profile#new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

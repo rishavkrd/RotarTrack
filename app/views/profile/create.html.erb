@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+<p> Let's put the finishing touches on your account </p>
+
+<%= form_for :account do |form| %>
+  <% if @account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+
+      <ul>
+        <% @account.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "First Name" %>
+    <%= form.text_field :FirstName %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Last Name" %>
+    <%= form.text_field :LastName %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Phone Number" %>
+    <%= form.number_field :PhoneNumber %>
+  </div>
+
+  <div class="field">
+    <%= form.label "UIN" %>
+    <%= form.number_field :UIN %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create your Account" %>
+  </div>
+<% end %>
