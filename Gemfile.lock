@@ -137,12 +137,9 @@ GEM
     omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
-<<<<<<< HEAD
-=======
     parallel (1.21.0)
     parser (3.0.2.0)
       ast (~> 2.4.1)
->>>>>>> main
     pg (1.4.3)
     public_suffix (5.0.0)
     puma (5.6.5)
@@ -183,10 +180,7 @@ GEM
       method_source
       rake (>= 12.2)
       thor (~> 1.0)
-<<<<<<< HEAD
-=======
     rainbow (3.0.0)
->>>>>>> main
     rake (13.0.6)
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
@@ -210,8 +204,6 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.11.1)
-<<<<<<< HEAD
-=======
     rubocop (1.21.0)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
@@ -224,7 +216,6 @@ GEM
     rubocop-ast (1.11.0)
       parser (>= 3.0.1.1)
     ruby-progressbar (1.11.0)
->>>>>>> main
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
@@ -237,6 +228,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    seed_dump (3.3.1)
+      activerecord (>= 4)
+      activesupport (>= 4)
     selenium-webdriver (4.4.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -261,10 +255,7 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
-<<<<<<< HEAD
-=======
     unicode-display_width (2.1.0)
->>>>>>> main
     version_gem (1.1.1)
     web-console (4.2.0)
       actionview (>= 6.0.0)
@@ -294,10 +285,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
-<<<<<<< HEAD
-=======
   brakeman
->>>>>>> main
   byebug
   capybara (>= 3.26)
   jbuilder (~> 2.7)
@@ -310,11 +298,9 @@ DEPENDENCIES
   rails (~> 6.1.4, >= 6.1.4.1)
   rexml
   rspec-rails
-<<<<<<< HEAD
-=======
   rubocop
->>>>>>> main
   sass-rails (>= 6)
+  seed_dump
   selenium-webdriver
   spring
   turbolinks (~> 5)

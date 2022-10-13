@@ -46,6 +46,7 @@ group :development do
   gem 'spring'
   gem 'brakeman'
   gem 'rubocop', require: false
+  gem 'seed_dump'
   
 end
 
