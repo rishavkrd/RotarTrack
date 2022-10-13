@@ -7581,3 +7581,296 @@ Completed 200 OK in 167ms (Views: 150.3ms | ActiveRecord: 1.2ms | Allocations: 5
   [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "types"[0m
   [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "types"[0m
   [1m[36mType Load (0.3ms)[0m  [1m[34mSELECT "types".* FROM "types" LIMIT $1 OFFSET $2[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-13 02:36:34 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-13 02:36:35 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (3.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rishavkrd11@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:13:in `logged_in_using_omniauth?'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rishavkrd11@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (2.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:42
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 32.9ms | Allocations: 7850)
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rishavkrd11@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:13:in `logged_in_using_omniauth?'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rishavkrd11@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:42
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 6.2ms | Allocations: 1347)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 280.9ms | Allocations: 16558)
+  Rendered layout layouts/application.html.erb (Duration: 415.5ms | Allocations: 32594)
+Completed 200 OK in 331ms (Views: 282.8ms | ActiveRecord: 21.5ms | Allocations: 22971)
+
+
+Completed 200 OK in 553ms (Views: 427.9ms | ActiveRecord: 27.6ms | Allocations: 46180)
+
+
+Started GET "/accounts/6/edit" for 172.17.0.1 at 2022-10-13 02:36:38 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mAccount Load (1.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rishavkrd11@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:13:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:64:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/edit.html.erb within layouts/application
+  Rendered accounts/_form.html.erb (Duration: 51.8ms | Allocations: 4908)
+  Rendered accounts/edit.html.erb within layouts/application (Duration: 63.2ms | Allocations: 5419)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 211.3ms | Allocations: 9470)
+Completed 200 OK in 239ms (Views: 216.6ms | ActiveRecord: 3.4ms | Allocations: 12465)
+
+
+Started PATCH "/accounts/6" for 172.17.0.1 at 2022-10-13 02:36:44 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "account"=>{"UIN"=>"431414124", "FirstName"=>"asdf", "LastName"=>"asdgg", "PhoneNumber"=>"121421124", "Email"=>"rishav@tamu.edu", "status_id"=>"1"}, "commit"=>"Update Account", "id"=>"6"}
+  [1m[36mAccount Load (1.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rishavkrd11@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:13:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (2.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:64:in `set_account'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:41:in `block in update'
+  [1m[36mStatus Load (1.9ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:41:in `block in update'
+  [1m[36mAccount Update (2.2ms)[0m  [1m[33mUPDATE "accounts" SET "Email" = $1, "updated_at" = $2 WHERE "accounts"."id" = $3[0m  [["Email", "rishav@tamu.edu"], ["updated_at", "2022-10-13 02:36:44.889997"], ["id", 6]]
+  ↳ app/controllers/accounts_controller.rb:41:in `block in update'
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:41:in `block in update'
+Redirected to http://localhost:3000/accounts/6
+Completed 302 Found in 85ms (ActiveRecord: 24.8ms | Allocations: 11435)
+
+
+Started GET "/accounts/6" for 172.17.0.1 at 2022-10-13 02:36:45 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mAccount Load (1.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rishavkrd11@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:13:in `logged_in_using_omniauth?'
+Redirected to http://localhost:3000/profile/create
+Filter chain halted as :logged_in_using_omniauth? rendered or redirected
+Completed 302 Found in 7ms (ActiveRecord: 1.5ms | Allocations: 1055)
+
+
+Started GET "/profile/create" for 172.17.0.1 at 2022-10-13 02:36:45 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProfileController#create as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profile/create.html.erb within layouts/application
+  Rendered profile/create.html.erb within layouts/application (Duration: 7.4ms | Allocations: 2979)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 161.1ms | Allocations: 6981)
+Completed 200 OK in 174ms (Views: 165.8ms | ActiveRecord: 0.0ms | Allocations: 8341)
+
+
+Started GET "/profile/create" for 172.17.0.1 at 2022-10-13 02:37:54 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProfileController#create as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profile/create.html.erb within layouts/application
+  Rendered profile/create.html.erb within layouts/application (Duration: 7.3ms | Allocations: 1938)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 161.3ms | Allocations: 6182)
+Completed 200 OK in 183ms (Views: 174.2ms | ActiveRecord: 0.0ms | Allocations: 7634)
+
+
+Started GET "/profile/create" for 172.17.0.1 at 2022-10-13 02:38:01 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProfileController#create as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profile/create.html.erb within layouts/application
+  Rendered profile/create.html.erb within layouts/application (Duration: 85.5ms | Allocations: 8417)
+  Rendered layout layouts/application.html.erb (Duration: 86.7ms | Allocations: 8500)
+Completed 500 Internal Server Error in 108ms (ActiveRecord: 0.0ms | Allocations: 9912)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `email' for #<ActionView::Base:0x0000000000aa78>):
+    37:   <div>
+    38:   <p>
+    39:   <strong>Email:</strong>
+    40:   <%= email %>
+    41:   </p>
+    42: 
+    43:   <p>
+  
+app/views/profile/create.html.erb:40
+app/views/profile/create.html.erb:4
+Started GET "/profile/create" for 172.17.0.1 at 2022-10-13 02:38:08 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProfileController#create as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profile/create.html.erb within layouts/application
+  Rendered profile/create.html.erb within layouts/application (Duration: 7.9ms | Allocations: 1936)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 144.4ms | Allocations: 6183)
+Completed 200 OK in 163ms (Views: 155.1ms | ActiveRecord: 0.0ms | Allocations: 7632)
+
+
+Started GET "/profile/create" for 172.17.0.1 at 2022-10-13 02:38:23 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProfileController#create as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profile/create.html.erb within layouts/application
+  Rendered profile/create.html.erb within layouts/application (Duration: 9.3ms | Allocations: 1940)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 184.3ms | Allocations: 6171)
+Completed 200 OK in 211ms (Views: 201.8ms | ActiveRecord: 0.0ms | Allocations: 7605)
+
+
+Started GET "/profile/create" for 172.17.0.1 at 2022-10-13 02:38:32 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProfileController#create as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profile/create.html.erb within layouts/application
+  Rendered profile/create.html.erb within layouts/application (Duration: 6.8ms | Allocations: 1941)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 155.6ms | Allocations: 6174)
+Completed 200 OK in 184ms (Views: 170.6ms | ActiveRecord: 0.0ms | Allocations: 7624)
+
+
+Started POST "/profile/create" for 172.17.0.1 at 2022-10-13 02:38:58 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProfileController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "account"=>{"FirstName"=>"", "LastName"=>"asdf", "PhoneNumber"=>"", "UIN"=>""}, "commit"=>"Create your Account"}
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/profile_controller.rb:13:in `new'
+  [1m[36mStatus Load (6.5ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/profile_controller.rb:13:in `new'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/profile_controller.rb:13:in `new'
+Completed 422 Unprocessable Entity in 72ms (ActiveRecord: 9.5ms | Allocations: 4934)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Uin can't be blank, Firstname can't be blank, Phonenumber can't be blank):
+  
+app/controllers/profile_controller.rb:13:in `new'
+Started GET "/profile/create" for 172.17.0.1 at 2022-10-13 02:39:07 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProfileController#create as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profile/create.html.erb within layouts/application
+  Rendered profile/create.html.erb within layouts/application (Duration: 10.2ms | Allocations: 1938)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 154.1ms | Allocations: 6192)
+Completed 200 OK in 185ms (Views: 172.2ms | ActiveRecord: 0.0ms | Allocations: 7586)
+
+
+Started POST "/profile/create" for 172.17.0.1 at 2022-10-13 02:39:31 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProfileController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "account"=>{"FirstName"=>"", "LastName"=>"asdf", "PhoneNumber"=>"", "UIN"=>""}, "commit"=>"Create your Account"}
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/profile_controller.rb:13:in `new'
+  [1m[36mStatus Load (2.2ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/profile_controller.rb:13:in `new'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/profile_controller.rb:13:in `new'
+Completed 422 Unprocessable Entity in 32ms (ActiveRecord: 5.9ms | Allocations: 4721)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Uin can't be blank, Firstname can't be blank, Phonenumber can't be blank):
+  
+app/controllers/profile_controller.rb:13:in `new'
+Started GET "/profile/create" for 172.17.0.1 at 2022-10-13 02:45:28 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProfileController#create as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profile/create.html.erb within layouts/application
+  Rendered profile/create.html.erb within layouts/application (Duration: 6.8ms | Allocations: 1938)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 161.6ms | Allocations: 6185)
+Completed 200 OK in 184ms (Views: 172.8ms | Allocations: 7573)
+
+
+Started POST "/profile/create" for 172.17.0.1 at 2022-10-13 02:45:41 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProfileController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "account"=>{"FirstName"=>"Rishav", "LastName"=>"Dokania", "PhoneNumber"=>"12124412", "UIN"=>"3531451345"}, "commit"=>"Create your Account"}
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/profile_controller.rb:13:in `new'
+  [1m[36mStatus Load (1.7ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/profile_controller.rb:13:in `new'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/profile_controller.rb:13:in `new'
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 18.5ms | Allocations: 8153)
+
+
+  
+ActiveModel::RangeError (3531451345 is out of range for ActiveModel::Type::Integer with limit 4 bytes):
+  
+app/controllers/profile_controller.rb:13:in `new'
+Started GET "/profile/create" for 172.17.0.1 at 2022-10-13 02:45:47 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProfileController#create as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profile/create.html.erb within layouts/application
+  Rendered profile/create.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1268)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 128.7ms | Allocations: 5117)
+Completed 200 OK in 132ms (Views: 130.3ms | ActiveRecord: 0.0ms | Allocations: 5624)
+
+
+Started POST "/profile/create" for 172.17.0.1 at 2022-10-13 02:45:50 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProfileController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "account"=>{"FirstName"=>"Rishav", "LastName"=>"Dokania", "PhoneNumber"=>"12124412", "UIN"=>"35314513"}, "commit"=>"Create your Account"}
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/profile_controller.rb:13:in `new'
+  [1m[36mStatus Load (1.2ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/profile_controller.rb:13:in `new'
+  [1m[36mAccount Create (3.2ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["UIN", 35314513], ["FirstName", "Rishav"], ["LastName", "Dokania"], ["PhoneNumber", 12124412], ["Email", "rishavkrd11@tamu.edu"], ["status_id", 2], ["created_at", "2022-10-13 02:45:50.618841"], ["updated_at", "2022-10-13 02:45:50.618841"]]
+  ↳ app/controllers/profile_controller.rb:13:in `new'
+  [1m[36mTRANSACTION (10.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/profile_controller.rb:13:in `new'
+Redirected to http://localhost:3000/dashboard
+Completed 302 Found in 33ms (ActiveRecord: 16.3ms | Allocations: 3764)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-13 02:45:50 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rishavkrd11@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:13:in `logged_in_using_omniauth?'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rishavkrd11@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (2.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:42
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 11.9ms | Allocations: 2219)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 137.4ms | Allocations: 6301)
+Completed 200 OK in 157ms (Views: 140.8ms | ActiveRecord: 3.1ms | Allocations: 8573)
+
+
+Started GET "/" for 172.17.0.1 at 2022-10-13 02:53:43 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 4.6ms | Allocations: 315)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 143.6ms | Allocations: 4537)
+Completed 200 OK in 167ms (Views: 157.7ms | Allocations: 6037)
+
+
