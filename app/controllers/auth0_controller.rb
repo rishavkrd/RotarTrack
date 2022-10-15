@@ -35,7 +35,7 @@ class Auth0Controller < ApplicationController
       info = request.env.fetch('omniauth.auth').fetch('info')
       user_email = info.fetch('email')
       user = Account.find_by(Email: user_email)
-  
+
       unless user
         redirect_to '/profile/create'
         else
