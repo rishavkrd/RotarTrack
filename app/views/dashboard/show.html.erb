@@ -1,11 +1,12 @@
 <section class="jumbotron  text-center">
-  <h1>Howdy <%= @account["FirstName"]%>! You are logged in with <%=@user["name"]%>. </h1>
+  <h1>Howdy KC1 <%= @account["FirstName"]%>! You are logged in with <%=@user["name"]%>. </h1>
       
 </section>
 <div>
     <%= link_to 'User Dashboard', accounts_path %>
     <%= link_to 'Create New Event', new_event_path %>
     <%= link_to 'Help', '/dashboard/help' %>
+    <%= link_to 'View All Accounts (Only for officers)', '/accounts' %>
 
 </div>
 <div>

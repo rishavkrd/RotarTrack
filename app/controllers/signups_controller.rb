@@ -26,7 +26,7 @@ class SignupsController < ApplicationController
     @eventTime = signup_params[:Time]
     @cutoffTime = Time.now + 43200
     respond_to do |format|
-      if (@signup.save && (@cutoffTime && @cutoffTime > @eventTime))
+      if (@signup.save)
         format.html { redirect_to signup_url(@signup), notice: "Signup was successfully created." }
         format.json { render :show, status: :created, location: @signup }
       else

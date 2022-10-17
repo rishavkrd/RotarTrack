@@ -27,7 +27,7 @@
 
 <p>
   <strong>Status:</strong>
-  <%= @account.status_id %>
+  <%= @account.status.Value.capitalize() %>
 </p>
 
 <%= link_to 'Edit', edit_account_path(@account) %> |

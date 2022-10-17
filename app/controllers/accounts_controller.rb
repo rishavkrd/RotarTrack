@@ -5,6 +5,11 @@ class AccountsController < ApplicationController
   # GET /accounts or /accounts.json
   def index
     @accounts = Account.all
+    @current_user = @accounts.find_by Email: get_user_email 
+
+    unless @current_user.status_id == 1
+      render 'invalid'
+    end
   end
 
   # GET /accounts/1 or /accounts/1.json
