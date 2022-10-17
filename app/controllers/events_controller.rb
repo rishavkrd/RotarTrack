@@ -54,7 +54,7 @@ class EventsController < ApplicationController
     @event.update(:type_id => 5)
 
     respond_to do |format|
-      format.html { redirect_to(events_url, notice: 'Event was successfully made inactive.') }
+      format.html { redirect_to(dashboard_path, notice: 'Event was successfully made archived.') }
       format.json { head(:no_content) }
     end
   end

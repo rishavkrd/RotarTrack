@@ -17,7 +17,7 @@
 </div>
 <div>
   <h3> For Development (to be removed in production) </h3>
-    <%= link_to 'Events', events_path %>
+    <%= link_to 'Inactive Events', events_path %>
     <%= link_to 'Points', points_path %>
     <%= link_to 'Sign Ups', signups_path %>
     <%= link_to 'Statuses', statuses_path %>
@@ -54,7 +54,7 @@
         <!-- <td><%= link_to 'Show', event %></td> -->
 
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Inactive', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
