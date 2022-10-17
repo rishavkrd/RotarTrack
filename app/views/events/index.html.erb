@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
+<h1>Inactive Events</h1>
 
 <table>
   <thead>
@@ -19,7 +19,7 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <% next if event.type_id == 5 %>
+        <% next if event.type_id != 5 %>
         <td><%= event.Title %></td>
         <td><%= event.Description %></td>
         <td><%= event.Date %></td>
@@ -29,7 +29,7 @@
         <td><%= event.type_id %></td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Inactive', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Archive', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
