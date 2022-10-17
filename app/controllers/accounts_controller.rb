@@ -7,15 +7,22 @@ class AccountsController < ApplicationController
   # GET /accounts or /accounts.json
   def index
     @accounts = Account.all
+<<<<<<< HEAD
+
+=======
     @current_user = @accounts.find_by Email: get_user_email 
 
     unless @current_user.status_id == 1
       render 'invalid'
     end
+>>>>>>> main
   end
 
   # GET /accounts/1 or /accounts/1.json
-  def show; end
+  def show
+    @account = Account.find(params[:id])
+    @events =  @account.events
+  end
 
   # GET /accounts/new
   def new
@@ -75,3 +82,4 @@ class AccountsController < ApplicationController
     params.require(:account).permit(:UIN, :FirstName, :LastName, :PhoneNumber, :Email, :status_id)
   end
 end
+
