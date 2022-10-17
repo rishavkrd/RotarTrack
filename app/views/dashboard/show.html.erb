@@ -39,8 +39,10 @@
   </thead>
 
   <tbody>
+    <!-- an if statement has been added below. Its functions is to make skip 'deleted events' from showing -->
     <% @events.each do |event| %>
       <tr>
+        <% next if event.type_id == 5 %>
         <td><%= link_to event.Title, event %></td>
         <!-- <td><%= event.Description %></td> -->
         <td><%= event.Date %></td>
@@ -51,7 +53,7 @@
         <!-- <td><%= link_to 'Show', event %></td> -->
 
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Inactive', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
