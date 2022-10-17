@@ -7,7 +7,7 @@ class ProfileController < ApplicationController
     end
 
     def new
-        @account = Account.new(:UIN => params[:account][:UIN], :FirstName => params[:account][:FirstName], :LastName => params[:account][:LastName], :PhoneNumber => params[:account][:PhoneNumber], :Email => get_user_email, :status_id => 1)
+        @account = Account.new(:UIN => params[:account][:UIN], :FirstName => params[:account][:FirstName], :LastName => params[:account][:LastName], :PhoneNumber => params[:account][:PhoneNumber], :Email => get_user_email, :status_id => 2)
         if @account.save!
             flash[:notice] = "You've completed your account."
             redirect_to "/dashboard"
