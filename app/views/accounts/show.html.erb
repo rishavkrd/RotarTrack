@@ -30,5 +30,12 @@
   <%= @account.status_id %>
 </p>
 
+<p>
+  <strong>Signed Up Events:</strong>
+  <%= @events.each do |event| %>
+    <%= event.Title %>
+  <% end %> 
+</p>
+
 <%= link_to 'Edit', edit_account_path(@account) %> |
 <%= link_to 'Back', '/dashboard' %>

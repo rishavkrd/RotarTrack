@@ -11753,3 +11753,2804 @@ Processing by SignupsController#new as HTML
 Completed 200 OK in 126ms (Views: 92.4ms | ActiveRecord: 5.9ms | Allocations: 14838)
 
 
+Started GET "/signups" for 172.17.0.1 at 2022-10-17 18:00:21 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#index as HTML
+  [1m[36mAccount Load (2.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/index.html.erb within layouts/application
+  [1m[36mSignup Load (1.3ms)[0m  [1m[34mSELECT "signups".* FROM "signups"[0m
+  ↳ app/views/signups/index.html.erb:18
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mAccount Load (1.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  Rendered signups/index.html.erb within layouts/application (Duration: 29.4ms | Allocations: 4272)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 57.7ms | Allocations: 8134)
+Completed 200 OK in 78ms (Views: 57.8ms | ActiveRecord: 6.5ms | Allocations: 9680)
+
+
+Started GET "/events" for 172.17.0.1 at 2022-10-17 18:00:31 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (2.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:20
+  Rendered events/index.html.erb within layouts/application (Duration: 12.5ms | Allocations: 1387)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.5ms | Allocations: 5248)
+Completed 200 OK in 57ms (Views: 42.0ms | ActiveRecord: 3.9ms | Allocations: 6590)
+
+
+Started GET "/events/1" for 172.17.0.1 at 2022-10-17 18:00:33 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAccount Load (4.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mEvent Load (2.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:66:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 2.9ms | Allocations: 215)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 50.5ms | Allocations: 4079)
+Completed 200 OK in 85ms (Views: 56.0ms | ActiveRecord: 6.5ms | Allocations: 5983)
+
+
+Started GET "/signups/new" for 172.17.0.1 at 2022-10-17 18:00:35 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#new as HTML
+  [1m[36mAccount Load (2.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/new.html.erb within layouts/application
+  [1m[36mEvent Load (2.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/signups/_form.html.erb:16
+  [1m[36mAccount Load (2.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/signups/_form.html.erb:21
+  Rendered signups/_form.html.erb (Duration: 21.5ms | Allocations: 3050)
+  Rendered signups/new.html.erb within layouts/application (Duration: 24.5ms | Allocations: 3173)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 51.4ms | Allocations: 7024)
+Completed 200 OK in 67ms (Views: 50.6ms | ActiveRecord: 6.4ms | Allocations: 8268)
+
+
+Started POST "/signups" for 172.17.0.1 at 2022-10-17 18:00:39 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "signup"=>{"event_id"=>"1", "account_id"=>"7", "Pickup"=>"0"}, "commit"=>"Create Signup"}
+  [1m[36mAccount Load (2.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/signups_controller.rb:29:in `block in create'
+  [1m[36mEvent Load (1.8ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/signups_controller.rb:29:in `block in create'
+  [1m[36mAccount Load (2.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/signups_controller.rb:29:in `block in create'
+  [1m[36mSignup Create (2.0ms)[0m  [1m[32mINSERT INTO "signups" ("event_id", "account_id", "Pickup", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["event_id", 1], ["account_id", 7], ["Pickup", false], ["created_at", "2022-10-17 18:00:39.966879"], ["updated_at", "2022-10-17 18:00:39.966879"]]
+  ↳ app/controllers/signups_controller.rb:29:in `block in create'
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/signups_controller.rb:29:in `block in create'
+Completed 500 Internal Server Error in 55ms (ActiveRecord: 17.9ms | Allocations: 6533)
+
+
+  
+ArgumentError (comparison of ActiveSupport::TimeWithZone with nil failed):
+  
+app/controllers/signups_controller.rb:29:in `>'
+app/controllers/signups_controller.rb:29:in `block in create'
+app/controllers/signups_controller.rb:28:in `create'
+Started GET "/signups/new" for 172.17.0.1 at 2022-10-17 18:00:41 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#new as HTML
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/new.html.erb within layouts/application
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/signups/_form.html.erb:16
+  [1m[36mAccount Load (2.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/signups/_form.html.erb:21
+  Rendered signups/_form.html.erb (Duration: 17.1ms | Allocations: 3017)
+  Rendered signups/new.html.erb within layouts/application (Duration: 19.0ms | Allocations: 3136)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 55.6ms | Allocations: 7011)
+Completed 200 OK in 67ms (Views: 55.1ms | ActiveRecord: 4.8ms | Allocations: 8227)
+
+
+Started GET "/signups" for 172.17.0.1 at 2022-10-17 18:00:43 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#index as HTML
+  [1m[36mAccount Load (4.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/index.html.erb within layouts/application
+  [1m[36mSignup Load (3.0ms)[0m  [1m[34mSELECT "signups".* FROM "signups"[0m
+  ↳ app/views/signups/index.html.erb:18
+  [1m[36mEvent Load (3.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mAccount Load (4.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mCACHE Account Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  Rendered signups/index.html.erb within layouts/application (Duration: 80.1ms | Allocations: 5153)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 119.1ms | Allocations: 9042)
+Completed 200 OK in 155ms (Views: 120.8ms | ActiveRecord: 15.0ms | Allocations: 10358)
+
+
+Started DELETE "/signups/4" for 172.17.0.1 at 2022-10-17 18:00:47 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"4"}
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mSignup Load (1.2ms)[0m  [1m[34mSELECT "signups".* FROM "signups" WHERE "signups"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/signups_controller.rb:66:in `set_signup'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/signups_controller.rb:54:in `destroy'
+  [1m[36mSignup Destroy (1.8ms)[0m  [1m[31mDELETE FROM "signups" WHERE "signups"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/signups_controller.rb:54:in `destroy'
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/signups_controller.rb:54:in `destroy'
+Redirected to http://localhost:3000/signups
+Completed 302 Found in 39ms (ActiveRecord: 9.3ms | Allocations: 3801)
+
+
+Started GET "/signups" for 172.17.0.1 at 2022-10-17 18:00:47 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#index as HTML
+  [1m[36mAccount Load (1.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/index.html.erb within layouts/application
+  [1m[36mSignup Load (1.6ms)[0m  [1m[34mSELECT "signups".* FROM "signups"[0m
+  ↳ app/views/signups/index.html.erb:18
+  [1m[36mEvent Load (1.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mCACHE Account Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  Rendered signups/index.html.erb within layouts/application (Duration: 31.6ms | Allocations: 3875)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 62.0ms | Allocations: 7736)
+Completed 200 OK in 76ms (Views: 61.1ms | ActiveRecord: 5.8ms | Allocations: 8956)
+
+
+Started GET "/signups/3/edit" for 172.17.0.1 at 2022-10-17 18:00:49 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mSignup Load (0.9ms)[0m  [1m[34mSELECT "signups".* FROM "signups" WHERE "signups"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/signups_controller.rb:66:in `set_signup'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/edit.html.erb within layouts/application
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/signups/_form.html.erb:16
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/signups/_form.html.erb:21
+  Rendered signups/_form.html.erb (Duration: 11.8ms | Allocations: 3112)
+  Rendered signups/edit.html.erb within layouts/application (Duration: 18.4ms | Allocations: 3391)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.0ms | Allocations: 7240)
+Completed 200 OK in 55ms (Views: 41.1ms | ActiveRecord: 4.0ms | Allocations: 9153)
+
+
+Started GET "/signups" for 172.17.0.1 at 2022-10-17 18:00:50 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#index as HTML
+  [1m[36mAccount Load (2.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/index.html.erb within layouts/application
+  [1m[36mSignup Load (1.9ms)[0m  [1m[34mSELECT "signups".* FROM "signups"[0m
+  ↳ app/views/signups/index.html.erb:18
+  [1m[36mEvent Load (3.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mAccount Load (1.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  Rendered signups/index.html.erb within layouts/application (Duration: 37.8ms | Allocations: 3868)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 65.5ms | Allocations: 7729)
+Completed 200 OK in 89ms (Views: 63.6ms | ActiveRecord: 9.5ms | Allocations: 9035)
+
+
+Started GET "/signups" for 172.17.0.1 at 2022-10-17 18:08:21 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SignupsController#index as HTML
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/index.html.erb within layouts/application
+  [1m[36mSignup Load (2.9ms)[0m  [1m[34mSELECT "signups".* FROM "signups"[0m
+  ↳ app/views/signups/index.html.erb:18
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mAccount Load (2.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  Rendered signups/index.html.erb within layouts/application (Duration: 82.5ms | Allocations: 17118)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 206.2ms | Allocations: 26143)
+Completed 200 OK in 277ms (Views: 197.6ms | ActiveRecord: 27.3ms | Allocations: 39189)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-17 18:08:23 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (2.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:43
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 10.9ms | Allocations: 2391)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.7ms | Allocations: 6475)
+Completed 200 OK in 75ms (Views: 43.8ms | ActiveRecord: 4.5ms | Allocations: 9198)
+
+
+Started GET "/accounts" for 172.17.0.1 at 2022-10-17 18:08:38 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/index.html.erb within layouts/application
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/accounts/index.html.erb:21
+  Rendered accounts/index.html.erb within layouts/application (Duration: 9.2ms | Allocations: 2558)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 35.1ms | Allocations: 6643)
+Completed 200 OK in 49ms (Views: 38.6ms | ActiveRecord: 2.4ms | Allocations: 8837)
+
+
+Started DELETE "/accounts/7" for 172.17.0.1 at 2022-10-17 18:08:41 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"7"}
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:53:in `destroy'
+  [1m[36mAccount Destroy (2.0ms)[0m  [1m[31mDELETE FROM "accounts" WHERE "accounts"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/accounts_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/accounts_controller.rb:53:in `destroy'
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 8.4ms | Allocations: 4813)
+
+
+  
+ActiveRecord::InvalidForeignKey (PG::ForeignKeyViolation: ERROR:  update or delete on table "accounts" violates foreign key constraint "fk_rails_3ec5de34fa" on table "signups"
+DETAIL:  Key (id)=(7) is still referenced from table "signups".
+):
+  
+app/controllers/accounts_controller.rb:53:in `destroy'
+Started GET "/accounts" for 172.17.0.1 at 2022-10-17 18:08:53 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (1.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/index.html.erb within layouts/application
+  [1m[36mAccount Load (2.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/accounts/index.html.erb:21
+  Rendered accounts/index.html.erb within layouts/application (Duration: 10.5ms | Allocations: 1982)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 43.4ms | Allocations: 5997)
+Completed 200 OK in 58ms (Views: 45.8ms | ActiveRecord: 4.0ms | Allocations: 7420)
+
+
+Started DELETE "/accounts/7" for 172.17.0.1 at 2022-10-17 18:08:56 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"7"}
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:53:in `destroy'
+  [1m[36mAccount Destroy (2.4ms)[0m  [1m[31mDELETE FROM "accounts" WHERE "accounts"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/accounts_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/accounts_controller.rb:53:in `destroy'
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 8.6ms | Allocations: 4314)
+
+
+  
+ActiveRecord::InvalidForeignKey (PG::ForeignKeyViolation: ERROR:  update or delete on table "accounts" violates foreign key constraint "fk_rails_3ec5de34fa" on table "signups"
+DETAIL:  Key (id)=(7) is still referenced from table "signups".
+):
+  
+app/controllers/accounts_controller.rb:53:in `destroy'
+Started GET "/accounts" for 172.17.0.1 at 2022-10-17 18:10:31 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/index.html.erb within layouts/application
+  [1m[36mAccount Load (1.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/accounts/index.html.erb:21
+  Rendered accounts/index.html.erb within layouts/application (Duration: 9.1ms | Allocations: 1914)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 46.7ms | Allocations: 5801)
+Completed 200 OK in 61ms (Views: 49.8ms | ActiveRecord: 2.8ms | Allocations: 7015)
+
+
+Started DELETE "/accounts/7" for 172.17.0.1 at 2022-10-17 18:10:34 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"7"}
+  [1m[36mAccount Load (1.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (2.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:53:in `destroy'
+  [1m[36mAccount Destroy (1.8ms)[0m  [1m[31mDELETE FROM "accounts" WHERE "accounts"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/accounts_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/accounts_controller.rb:53:in `destroy'
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 8.2ms | Allocations: 4243)
+
+
+  
+ActiveRecord::InvalidForeignKey (PG::ForeignKeyViolation: ERROR:  update or delete on table "accounts" violates foreign key constraint "fk_rails_3ec5de34fa" on table "signups"
+DETAIL:  Key (id)=(7) is still referenced from table "signups".
+):
+  
+app/controllers/accounts_controller.rb:53:in `destroy'
+Started GET "/accounts" for 172.17.0.1 at 2022-10-17 18:13:10 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/index.html.erb within layouts/application
+  [1m[36mAccount Load (2.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/accounts/index.html.erb:21
+  Rendered accounts/index.html.erb within layouts/application (Duration: 12.8ms | Allocations: 2238)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 63.0ms | Allocations: 6306)
+Completed 200 OK in 97ms (Views: 64.8ms | ActiveRecord: 10.3ms | Allocations: 13620)
+
+
+Started DELETE "/accounts/7" for 172.17.0.1 at 2022-10-17 18:13:14 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"7"}
+  [1m[36mAccount Load (1.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:68:in `set_account'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:53:in `destroy'
+  [1m[36mAccount Destroy (1.6ms)[0m  [1m[31mDELETE FROM "accounts" WHERE "accounts"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/accounts_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/accounts_controller.rb:53:in `destroy'
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 7.3ms | Allocations: 4928)
+
+
+  
+ActiveRecord::InvalidForeignKey (PG::ForeignKeyViolation: ERROR:  update or delete on table "accounts" violates foreign key constraint "fk_rails_3ec5de34fa" on table "signups"
+DETAIL:  Key (id)=(7) is still referenced from table "signups".
+):
+  
+app/controllers/accounts_controller.rb:53:in `destroy'
+Started GET "/accounts" for 172.17.0.1 at 2022-10-17 18:14:04 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/index.html.erb within layouts/application
+  [1m[36mAccount Load (2.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/accounts/index.html.erb:21
+  Rendered accounts/index.html.erb within layouts/application (Duration: 8.8ms | Allocations: 2238)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.8ms | Allocations: 6306)
+Completed 200 OK in 72ms (Views: 40.1ms | ActiveRecord: 10.1ms | Allocations: 13627)
+
+
+Started DELETE "/accounts/7" for 172.17.0.1 at 2022-10-17 18:14:07 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"7"}
+  [1m[36mAccount Load (1.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:70:in `set_account'
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 3.6ms | Allocations: 4372)
+
+
+  
+NameError (uninitialized constant AccountsController::Signups):
+  
+app/controllers/accounts_controller.rb:53:in `destroy'
+Started GET "/accounts" for 172.17.0.1 at 2022-10-17 18:14:51 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/index.html.erb within layouts/application
+  [1m[36mAccount Load (1.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/accounts/index.html.erb:21
+  Rendered accounts/index.html.erb within layouts/application (Duration: 11.7ms | Allocations: 2239)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 57.2ms | Allocations: 6309)
+Completed 200 OK in 100ms (Views: 59.7ms | ActiveRecord: 9.0ms | Allocations: 14426)
+
+
+Started DELETE "/accounts/7" for 172.17.0.1 at 2022-10-17 18:14:54 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"7"}
+  [1m[36mAccount Load (1.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:71:in `set_account'
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 2.9ms | Allocations: 4318)
+
+
+  
+NameError (uninitialized constant AccountsController::Signups):
+  
+app/controllers/accounts_controller.rb:54:in `destroy'
+Started GET "/accounts" for 172.17.0.1 at 2022-10-17 18:15:06 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (0.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/index.html.erb within layouts/application
+  [1m[36mAccount Load (1.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/accounts/index.html.erb:21
+  Rendered accounts/index.html.erb within layouts/application (Duration: 9.4ms | Allocations: 2239)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.4ms | Allocations: 6348)
+Completed 200 OK in 78ms (Views: 43.4ms | ActiveRecord: 8.4ms | Allocations: 14446)
+
+
+Started DELETE "/accounts/7" for 172.17.0.1 at 2022-10-17 18:15:09 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"7"}
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:71:in `set_account'
+  [1m[36mSignup Load (1.6ms)[0m  [1m[34mSELECT "signups".* FROM "signups" WHERE "signups"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:54:in `destroy'
+Completed 404 Not Found in 32ms (ActiveRecord: 10.1ms | Allocations: 3699)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Signup with 'id'=7):
+  
+app/controllers/accounts_controller.rb:54:in `destroy'
+Started GET "/accounts" for 172.17.0.1 at 2022-10-17 18:15:33 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/index.html.erb within layouts/application
+  [1m[36mAccount Load (2.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/accounts/index.html.erb:21
+  Rendered accounts/index.html.erb within layouts/application (Duration: 16.6ms | Allocations: 2238)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 48.2ms | Allocations: 6306)
+Completed 200 OK in 85ms (Views: 51.7ms | ActiveRecord: 10.2ms | Allocations: 13622)
+
+
+Started DELETE "/accounts/6" for 172.17.0.1 at 2022-10-17 20:07:52 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"6"}
+  [1m[36mAccount Load (2.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (5.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:53:in `destroy'
+  [1m[36mAccount Destroy (3.4ms)[0m  [1m[31mDELETE FROM "accounts" WHERE "accounts"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/accounts_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:53:in `destroy'
+Redirected to http://localhost:3000/accounts
+Completed 302 Found in 106ms (ActiveRecord: 39.3ms | Allocations: 8014)
+
+
+Started GET "/accounts" for 172.17.0.1 at 2022-10-17 20:07:52 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/index.html.erb within layouts/application
+  [1m[36mAccount Load (1.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/accounts/index.html.erb:21
+  Rendered accounts/index.html.erb within layouts/application (Duration: 7.9ms | Allocations: 1760)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 64.2ms | Allocations: 5621)
+Completed 200 OK in 76ms (Views: 65.4ms | ActiveRecord: 2.9ms | Allocations: 6855)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-17 20:09:12 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (1.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:43
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 22.9ms | Allocations: 6834)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 48.9ms | Allocations: 10901)
+Completed 200 OK in 71ms (Views: 43.4ms | ActiveRecord: 10.8ms | Allocations: 13640)
+
+
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:09:26 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (2.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (2.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 5.6ms | Allocations: 400)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 35.4ms | Allocations: 4287)
+Completed 200 OK in 68ms (Views: 39.6ms | ActiveRecord: 4.6ms | Allocations: 6425)
+
+
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:16:08 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (8.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 124)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.0ms | Allocations: 3985)
+Completed 200 OK in 117ms (Views: 42.7ms | ActiveRecord: 35.4ms | Allocations: 9993)
+
+
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:19:35 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (4.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (2.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 6.8ms | Allocations: 470)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 158.5ms | Allocations: 4724)
+Completed 200 OK in 198ms (Views: 168.5ms | ActiveRecord: 6.2ms | Allocations: 7417)
+
+
+Started GET "/" for 172.17.0.1 at 2022-10-17 20:32:50 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActiveRecord::NoDatabaseError (FATAL:  database "test_app_development" does not exist
+):
+  
+activerecord (6.1.7) lib/active_record/connection_adapters/postgresql_adapter.rb:81:in `rescue in new_client'
+activerecord (6.1.7) lib/active_record/connection_adapters/postgresql_adapter.rb:77:in `new_client'
+activerecord (6.1.7) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `public_send'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `new_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:926:in `checkout_new_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:905:in `try_to_checkout_new_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:866:in `acquire_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:588:in `checkout'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:428:in `connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:1128:in `retrieve_connection'
+activerecord (6.1.7) lib/active_record/connection_handling.rb:327:in `retrieve_connection'
+activerecord (6.1.7) lib/active_record/connection_handling.rb:283:in `connection'
+activerecord (6.1.7) lib/active_record/migration.rb:611:in `connection'
+activerecord (6.1.7) lib/active_record/migration.rb:606:in `build_watcher'
+activerecord (6.1.7) lib/active_record/migration.rb:588:in `block in call'
+activerecord (6.1.7) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.7) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:19:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.3) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.4) lib/rack/proxy.rb:78:in `call'
+railties (6.1.7) lib/rails/engine.rb:539:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_app_development"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_app_test"[0m
+  [1m[35m (391.4ms)[0m  [1m[35mCREATE DATABASE "test_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (237.5ms)[0m  [1m[35mCREATE DATABASE "test_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTypes (20220917061107)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "types" ("id" bigserial primary key, "Value" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220917061107"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEvents (20220918061309)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "Title" text, "Description" text, "Date" date, "Time" time, "Location" text, "Points" integer, "type_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c6c031df6e"
+FOREIGN KEY ("type_id")
+  REFERENCES "types" ("id")
+)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE INDEX "index_events_on_type_id" ON "events" ("type_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220918061309"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateStatuses (20220919033633)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE "statuses" ("id" bigserial primary key, "Value" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220919033633"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAccounts (20220920034149)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "UIN" integer, "FirstName" text, "LastName" text, "PhoneNumber" integer, "Email" text, "status_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_77d18abef7"
+FOREIGN KEY ("status_id")
+  REFERENCES "statuses" ("id")
+)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_status_id" ON "accounts" ("status_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220920034149"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSignups (20220921034439)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "signups" ("id" bigserial primary key, "event_id" bigint NOT NULL, "account_id" bigint NOT NULL, "Pickup" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_872531dfe1"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+, CONSTRAINT "fk_rails_3ec5de34fa"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE INDEX "index_signups_on_event_id" ON "signups" ("event_id")[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE INDEX "index_signups_on_account_id" ON "signups" ("account_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220921034439"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePoints (20220922034647)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "points" ("id" bigserial primary key, "account_id" bigint NOT NULL, "event_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e7c3d0176a"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+, CONSTRAINT "fk_rails_97f9f862c2"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE INDEX "index_points_on_account_id" ON "points" ("account_id")[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE INDEX "index_points_on_event_id" ON "points" ("event_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220922034647"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-17 20:33:29.979438"], ["updated_at", "2022-10-17 20:33:29.979438"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (0.9ms)[0m  [1m[32mINSERT INTO "statuses" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "officer"], ["created_at", "2022-10-17 20:33:33.357408"], ["updated_at", "2022-10-17 20:33:33.357408"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (0.4ms)[0m  [1m[32mINSERT INTO "statuses" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Member"], ["created_at", "2022-10-17 20:33:33.367730"], ["updated_at", "2022-10-17 20:33:33.367730"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (0.3ms)[0m  [1m[32mINSERT INTO "statuses" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Inactive"], ["created_at", "2022-10-17 20:33:33.374601"], ["updated_at", "2022-10-17 20:33:33.374601"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (0.4ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (1.0ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["UIN", 923874129], ["FirstName", "Joe"], ["LastName", "Smith"], ["PhoneNumber", 19283712], ["Email", "joe@smith.com"], ["status_id", 2], ["created_at", "2022-10-17 20:33:33.468545"], ["updated_at", "2022-10-17 20:33:33.468545"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (0.4ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.6ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["UIN", 344523451], ["FirstName", "Rishav"], ["LastName", "Dokania"], ["PhoneNumber", 129883712], ["Email", "rishavkrd11@tamu.edu"], ["status_id", 1], ["created_at", "2022-10-17 20:33:33.480344"], ["updated_at", "2022-10-17 20:33:33.480344"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (0.3ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.8ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["UIN", 812658276], ["FirstName", "Sam"], ["LastName", "McDonalds"], ["PhoneNumber", 12398127], ["Email", "sam@tamu.edu"], ["status_id", 2], ["created_at", "2022-10-17 20:33:33.489937"], ["updated_at", "2022-10-17 20:33:33.489937"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (0.4ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.5ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["UIN", 9818273], ["FirstName", "John"], ["LastName", "Goodman"], ["PhoneNumber", 1928371], ["Email", "john@tamu.edu"], ["status_id", 2], ["created_at", "2022-10-17 20:33:33.500402"], ["updated_at", "2022-10-17 20:33:33.500402"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (0.4ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.8ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["UIN", 1231412], ["FirstName", "Henry"], ["LastName", "Ford"], ["PhoneNumber", 198263129], ["Email", "henry@ford.com"], ["status_id", 2], ["created_at", "2022-10-17 20:33:33.510712"], ["updated_at", "2022-10-17 20:33:33.510712"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (0.4ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.5ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["UIN", 431414124], ["FirstName", "Tom"], ["LastName", "Hanks"], ["PhoneNumber", 121421124], ["Email", "tom@tu.edu"], ["status_id", 2], ["created_at", "2022-10-17 20:33:33.521396"], ["updated_at", "2022-10-17 20:33:33.521396"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (0.3ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (0.6ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["UIN", 927003214], ["FirstName", "Ryan"], ["LastName", "Crowell"], ["PhoneNumber", 121421124], ["Email", "rdcrowell13@tamu.edu"], ["status_id", 2], ["created_at", "2022-10-17 20:33:33.531120"], ["updated_at", "2022-10-17 20:33:33.531120"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mType Create (0.6ms)[0m  [1m[32mINSERT INTO "types" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Meeting"], ["created_at", "2022-10-17 20:33:33.546845"], ["updated_at", "2022-10-17 20:33:33.546845"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mType Create (0.4ms)[0m  [1m[32mINSERT INTO "types" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Event"], ["created_at", "2022-10-17 20:33:33.553406"], ["updated_at", "2022-10-17 20:33:33.553406"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mType Create (0.4ms)[0m  [1m[32mINSERT INTO "types" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Social"], ["created_at", "2022-10-17 20:33:33.559584"], ["updated_at", "2022-10-17 20:33:33.559584"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mType Create (0.4ms)[0m  [1m[32mINSERT INTO "types" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Other"], ["created_at", "2022-10-17 20:33:33.565584"], ["updated_at", "2022-10-17 20:33:33.565584"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mType Create (0.4ms)[0m  [1m[32mINSERT INTO "types" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Inactive"], ["created_at", "2022-10-17 20:33:33.571585"], ["updated_at", "2022-10-17 20:33:33.571585"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mType Load (0.4ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Create (1.0ms)[0m  [1m[32mINSERT INTO "events" ("Title", "Description", "Date", "Time", "Location", "Points", "type_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["Title", "Meetup with team"], ["Description", "Meet the officers and members of AggieRotaract"], ["Date", "2022-12-12"], ["Time", "21:45:00"], ["Location", "MSC"], ["Points", 1], ["type_id", 1], ["created_at", "2022-10-17 20:33:33.597810"], ["updated_at", "2022-10-17 20:33:33.597810"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 172.17.0.1 at 2022-10-17 20:33:46 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 10.6ms | Allocations: 854)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 239.3ms | Allocations: 9879)
+Completed 200 OK in 306ms (Views: 255.9ms | ActiveRecord: 0.0ms | Allocations: 14008)
+
+
+Started POST "/auth/auth0" for 172.17.0.1 at 2022-10-17 20:33:49 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/auth/auth0/callback?code=YQ_5XuEooyT3fgoYySsi9CPPC15zCo2PKf-nHNL4PWWSs&state=04a0aac236d86be107fcc09dacbfb3773507160fcbab5781" for 172.17.0.1 at 2022-10-17 20:33:49 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Auth0Controller#callback as HTML
+  Parameters: {"code"=>"YQ_5XuEooyT3fgoYySsi9CPPC15zCo2PKf-nHNL4PWWSs", "state"=>"04a0aac236d86be107fcc09dacbfb3773507160fcbab5781"}
+  [1m[36mAccount Load (2.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/auth0_controller.rb:39:in `find_or_create'
+Redirected to http://localhost:3000/dashboard
+Completed 302 Found in 57ms (ActiveRecord: 12.5ms | Allocations: 8768)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-17 20:33:50 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mCACHE Account Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (2.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:43
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 28.5ms | Allocations: 7524)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 61.1ms | Allocations: 11632)
+Completed 200 OK in 83ms (Views: 55.3ms | ActiveRecord: 11.0ms | Allocations: 14817)
+
+
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:33:52 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 16.0ms | Allocations: 4209)
+  Rendered layout layouts/application.html.erb (Duration: 18.1ms | Allocations: 4293)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 2.0ms | Allocations: 7255)
+
+
+  
+ActionView::Template::Error (undefined method `signups' for #<Account id: 7, UIN: 927003214, FirstName: "Ryan", LastName: "Crowell", PhoneNumber: 121421124, Email: "rdcrowell13@tamu.edu", status_id: 2, created_at: "2022-10-17 20:33:33.531120000 +0000", updated_at: "2022-10-17 20:33:33.531120000 +0000">):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36:   <%= @account.signups.each do |account| %>
+    37:     <tr>
+    38:       <td><%= account %>
+    39:     </tr>
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:34:12 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (2.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 15.5ms | Allocations: 3655)
+  Rendered layout layouts/application.html.erb (Duration: 18.4ms | Allocations: 3730)
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 3.6ms | Allocations: 6568)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<Account id: 7, UIN: 927003214, FirstName: "Ryan", LastName: "Crowell", PhoneNumber: 121421124, Email: "rdcrowell13@tamu.edu", status_id: 2, created_at: "2022-10-17 20:33:33.531120000 +0000", updated_at: "2022-10-17 20:33:33.531120000 +0000">):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36:   <%= @account.each do |account| %>
+    37:     <tr>
+    38:       <td><%= account %>
+    39:     </tr>
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:34:14 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (2.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 9.2ms | Allocations: 3229)
+  Rendered layout layouts/application.html.erb (Duration: 13.4ms | Allocations: 3298)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 3.6ms | Allocations: 5247)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<Account id: 7, UIN: 927003214, FirstName: "Ryan", LastName: "Crowell", PhoneNumber: 121421124, Email: "rdcrowell13@tamu.edu", status_id: 2, created_at: "2022-10-17 20:33:33.531120000 +0000", updated_at: "2022-10-17 20:33:33.531120000 +0000">):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36:   <%= @account.each do |account| %>
+    37:     <tr>
+    38:       <td><%= account %>
+    39:     </tr>
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:34:30 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (2.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 7.3ms | Allocations: 1830)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | Allocations: 1904)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 3.7ms | Allocations: 4547)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36:   <%= @accounts.each do |account| %>
+    37:     <tr>
+    38:       <td><%= account %>
+    39:     </tr>
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:34:36 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 11.4ms | Allocations: 3626)
+  Rendered layout layouts/application.html.erb (Duration: 15.2ms | Allocations: 3700)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 2.2ms | Allocations: 6510)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<Account id: 7, UIN: 927003214, FirstName: "Ryan", LastName: "Crowell", PhoneNumber: 121421124, Email: "rdcrowell13@tamu.edu", status_id: 2, created_at: "2022-10-17 20:33:33.531120000 +0000", updated_at: "2022-10-17 20:33:33.531120000 +0000">):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36:   <%= @account.each do |account| %>
+    37:     <tr>
+    38:       <td><%= account %>
+    39:     </tr>
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:34:58 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 11.1ms | Allocations: 3629)
+  Rendered layout layouts/application.html.erb (Duration: 14.1ms | Allocations: 3703)
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 2.2ms | Allocations: 6510)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<Account id: 7, UIN: 927003214, FirstName: "Ryan", LastName: "Crowell", PhoneNumber: 121421124, Email: "rdcrowell13@tamu.edu", status_id: 2, created_at: "2022-10-17 20:33:33.531120000 +0000", updated_at: "2022-10-17 20:33:33.531120000 +0000">):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36:   <% @account.each do |account| %>
+    37:     <tr>
+    38:       <td><%= account %>
+    39:     </tr>
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:35:14 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1829)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | Allocations: 1903)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 2.7ms | Allocations: 4713)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36:   <% @accounts.each do |account| %>
+    37:     <tr>
+    38:       <td><%= account %>
+    39:     </tr>
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:35:25 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (0.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 3.3ms | Allocations: 474)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.2ms | Allocations: 4755)
+Completed 200 OK in 58ms (Views: 44.9ms | ActiveRecord: 2.2ms | Allocations: 7608)
+
+
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:35:58 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (0.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 19.0ms | Allocations: 4808)
+  Rendered layout layouts/application.html.erb (Duration: 22.0ms | Allocations: 4882)
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 1.9ms | Allocations: 7686)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `account' for #<ActionView::Base:0x0000000000b888>
+Did you mean?  @account):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36:   <td><%= account.signups %></td>
+    37: </tbody>
+    38: </table>
+    39: <%= link_to 'Edit', edit_account_path(@account) %> |
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:36:13 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (2.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 15.1ms | Allocations: 3572)
+  Rendered layout layouts/application.html.erb (Duration: 18.2ms | Allocations: 3647)
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 3.3ms | Allocations: 6480)
+
+
+  
+ActionView::Template::Error (undefined method `signups' for #<Account id: 7, UIN: 927003214, FirstName: "Ryan", LastName: "Crowell", PhoneNumber: 121421124, Email: "rdcrowell13@tamu.edu", status_id: 2, created_at: "2022-10-17 20:33:33.531120000 +0000", updated_at: "2022-10-17 20:33:33.531120000 +0000">):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36:   <td><%= @account.signups %></td>
+    37: </tbody>
+    38: </table>
+    39: <%= link_to 'Edit', edit_account_path(@account) %> |
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:36:47 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 4.5ms | Allocations: 487)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.7ms | Allocations: 4768)
+Completed 200 OK in 60ms (Views: 46.5ms | ActiveRecord: 2.1ms | Allocations: 7621)
+
+
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:37:23 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 14.4ms | Allocations: 3604)
+  Rendered layout layouts/application.html.erb (Duration: 17.6ms | Allocations: 3678)
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 2.8ms | Allocations: 6480)
+
+
+  
+ActionView::Template::Error (undefined method `signup' for #<Account id: 7, UIN: 927003214, FirstName: "Ryan", LastName: "Crowell", PhoneNumber: 121421124, Email: "rdcrowell13@tamu.edu", status_id: 2, created_at: "2022-10-17 20:33:33.531120000 +0000", updated_at: "2022-10-17 20:33:33.531120000 +0000">):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36:   <td><%= @account.signup.Title %></td>
+    37: </tbody>
+    38: </table>
+    39: <%= link_to 'Edit', edit_account_path(@account) %> |
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:39:16 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 12.2ms | Allocations: 3577)
+  Rendered layout layouts/application.html.erb (Duration: 15.4ms | Allocations: 3651)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 1.6ms | Allocations: 6460)
+
+
+  
+ActionView::Template::Error (undefined method `signup' for #<Account id: 7, UIN: 927003214, FirstName: "Ryan", LastName: "Crowell", PhoneNumber: 121421124, Email: "rdcrowell13@tamu.edu", status_id: 2, created_at: "2022-10-17 20:33:33.531120000 +0000", updated_at: "2022-10-17 20:33:33.531120000 +0000">):
+    34: <table>
+    35: <tbody> 
+    36:   <strong>Signed Up Events:</strong>
+    37:   <td><%= @account.signup.Title %></td>
+    38: </tbody>
+    39: </table>
+    40: <%= link_to 'Edit', edit_account_path(@account) %> |
+  
+app/views/accounts/show.html.erb:37
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:39:36 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1333)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 1408)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 2.1ms | Allocations: 4223)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uin:</strong>
+  <%= @account.UIN %>
+</p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @account.FirstName %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @account.LastName %>
+</p>
+
+<p>
+  <strong>Phonenumber:</strong>
+  <%= @account.PhoneNumber %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @account.Email %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @account.status_id %>
+</p>
+
+@signups = Signup.where(account_id: @account.id)
+<table>
+<tbody> 
+  <strong>Signed Up Events:</strong>
+  <td><%= signups.Title ></td>
+</tbody>
+</table>
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', '/dashboard' %>
+
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <p>
+4:      <strong>Uin:</strong>
+5:      <%= @account.UIN %>
+6:    </p>
+7:    
+8:    <p>
+9:      <strong>Firstname:</strong>
+10:      <%= @account.FirstName %>
+11:    </p>
+12:    
+13:    <p>
+14:      <strong>Lastname:</strong>
+15:      <%= @account.LastName %>
+16:    </p>
+17:    
+18:    <p>
+19:      <strong>Phonenumber:</strong>
+20:      <%= @account.PhoneNumber %>
+21:    </p>
+22:    
+23:    <p>
+24:      <strong>Email:</strong>
+25:      <%= @account.Email %>
+26:    </p>
+27:    
+28:    <p>
+29:      <strong>Status:</strong>
+30:      <%= @account.status_id %>
+31:    </p>
+32:    
+33:    @signups = Signup.where(account_id: @account.id)
+34:    <table>
+35:    <tbody> 
+36:      <strong>Signed Up Events:</strong>
+37:      <td><%= signups.Title ></td>
+38:    </tbody>
+39:    </table>
+40:    <%= link_to 'Edit', edit_account_path(@account) %> |
+41:    <%= link_to 'Back', '/dashboard' %>
+  
+app/views/accounts/show.html.erb:37: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: unmatched close parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting ')'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting ')'
+app/views/accounts/show.html.erb:37: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: unmatched close parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting ')'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting ')'
+app/views/accounts/show.html.erb:37: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: unmatched close parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting ')'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting ')'
+app/views/accounts/show.html.erb:37: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: unmatched close parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting ')'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting ')'
+app/views/accounts/show.html.erb:37: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: unmatched close parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting ')'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting ')'
+app/views/accounts/show.html.erb:37: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: unmatched close parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting ')'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:39:44 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1320)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 1395)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 2.4ms | Allocations: 4206)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uin:</strong>
+  <%= @account.UIN %>
+</p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @account.FirstName %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @account.LastName %>
+</p>
+
+<p>
+  <strong>Phonenumber:</strong>
+  <%= @account.PhoneNumber %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @account.Email %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @account.status_id %>
+</p>
+
+@signups = Signup.where(account_id: @account.id)
+<table>
+<tbody> 
+  <strong>Signed Up Events:</strong>
+  <td><%= signups.Title % ></td>
+</tbody>
+</table>
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', '/dashboard' %>
+
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <p>
+4:      <strong>Uin:</strong>
+5:      <%= @account.UIN %>
+6:    </p>
+7:    
+8:    <p>
+9:      <strong>Firstname:</strong>
+10:      <%= @account.FirstName %>
+11:    </p>
+12:    
+13:    <p>
+14:      <strong>Lastname:</strong>
+15:      <%= @account.LastName %>
+16:    </p>
+17:    
+18:    <p>
+19:      <strong>Phonenumber:</strong>
+20:      <%= @account.PhoneNumber %>
+21:    </p>
+22:    
+23:    <p>
+24:      <strong>Email:</strong>
+25:      <%= @account.Email %>
+26:    </p>
+27:    
+28:    <p>
+29:      <strong>Status:</strong>
+30:      <%= @account.status_id %>
+31:    </p>
+32:    
+33:    @signups = Signup.where(account_id: @account.id)
+34:    <table>
+35:    <tbody> 
+36:      <strong>Signed Up Events:</strong>
+37:      <td><%= signups.Title % ></td>
+38:    </tbody>
+39:    </table>
+40:    <%= link_to 'Edit', edit_account_path(@account) %> |
+41:    <%= link_to 'Back', '/dashboard' %>
+  
+app/views/accounts/show.html.erb:37: syntax error, unexpected '>'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: unmatched close parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting ')'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting ')'
+app/views/accounts/show.html.erb:37: syntax error, unexpected '>'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: unmatched close parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting ')'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting ')'
+app/views/accounts/show.html.erb:37: syntax error, unexpected '>'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: unmatched close parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting ')'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting ')'
+app/views/accounts/show.html.erb:37: syntax error, unexpected '>'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: unmatched close parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting ')'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting ')'
+app/views/accounts/show.html.erb:37: syntax error, unexpected '>'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: unmatched close parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting ')'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting ')'
+app/views/accounts/show.html.erb:37: syntax error, unexpected '>'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: unmatched close parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting ')'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:40:12 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1325)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 1400)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 3.3ms | Allocations: 4210)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uin:</strong>
+  <%= @account.UIN %>
+</p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @account.FirstName %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @account.LastName %>
+</p>
+
+<p>
+  <strong>Phonenumber:</strong>
+  <%= @account.PhoneNumber %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @account.Email %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @account.status_id %>
+</p>
+
+@signups = Signup.where(account_id: @account.id)
+<table>
+<tbody> 
+  <strong>Signed Up Events:</strong>
+  <td><% @signups.Title % ></td>
+</tbody>
+</table>
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', '/dashboard' %>
+
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <p>
+4:      <strong>Uin:</strong>
+5:      <%= @account.UIN %>
+6:    </p>
+7:    
+8:    <p>
+9:      <strong>Firstname:</strong>
+10:      <%= @account.FirstName %>
+11:    </p>
+12:    
+13:    <p>
+14:      <strong>Lastname:</strong>
+15:      <%= @account.LastName %>
+16:    </p>
+17:    
+18:    <p>
+19:      <strong>Phonenumber:</strong>
+20:      <%= @account.PhoneNumber %>
+21:    </p>
+22:    
+23:    <p>
+24:      <strong>Email:</strong>
+25:      <%= @account.Email %>
+26:    </p>
+27:    
+28:    <p>
+29:      <strong>Status:</strong>
+30:      <%= @account.status_id %>
+31:    </p>
+32:    
+33:    @signups = Signup.where(account_id: @account.id)
+34:    <table>
+35:    <tbody> 
+36:      <strong>Signed Up Events:</strong>
+37:      <td><% @signups.Title % ></td>
+38:    </tbody>
+39:    </table>
+40:    <%= link_to 'Edit', edit_account_path(@account) %> |
+41:    <%= link_to 'Back', '/dashboard' %>
+  
+app/views/accounts/show.html.erb:37: syntax error, unexpected '>'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: end pattern with unmatched parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting `end'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting `end'
+app/views/accounts/show.html.erb:37: syntax error, unexpected '>'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: end pattern with unmatched parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting `end'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting `end'
+app/views/accounts/show.html.erb:37: syntax error, unexpected '>'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: end pattern with unmatched parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting `end'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting `end'
+app/views/accounts/show.html.erb:37: syntax error, unexpected '>'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: end pattern with unmatched parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting `end'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting `end'
+app/views/accounts/show.html.erb:37: syntax error, unexpected '>'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: end pattern with unmatched parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting `end'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting `end'
+app/views/accounts/show.html.erb:37: syntax error, unexpected '>'
+app/views/accounts/show.html.erb:38: unknown regexp options - tbdy
+app/views/accounts/show.html.erb:39: syntax error, unexpected '<'
+app/views/accounts/show.html.erb:41: unknown regexp options - dahbard
+app/views/accounts/show.html.erb:41: end pattern with unmatched parenthesis: /table>
+app/views/accounts/show.html.erb:41: syntax error, unexpected string literal, expecting `end'
+app/views/accounts/show.html.erb:44: unterminated string meets end of file
+app/views/accounts/show.html.erb:44: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:41:34 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 474)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.2ms | Allocations: 4754)
+Completed 200 OK in 56ms (Views: 43.5ms | ActiveRecord: 2.0ms | Allocations: 7606)
+
+
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:41:44 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 3.9ms | Allocations: 475)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.0ms | Allocations: 4755)
+Completed 200 OK in 65ms (Views: 45.6ms | ActiveRecord: 2.6ms | Allocations: 7607)
+
+
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:43:04 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 29.6ms | Allocations: 3573)
+  Rendered layout layouts/application.html.erb (Duration: 32.4ms | Allocations: 3647)
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 2.4ms | Allocations: 6449)
+
+
+  
+ActionView::Template::Error (undefined method `signups' for #<Account id: 7, UIN: 927003214, FirstName: "Ryan", LastName: "Crowell", PhoneNumber: 121421124, Email: "rdcrowell13@tamu.edu", status_id: 2, created_at: "2022-10-17 20:33:33.531120000 +0000", updated_at: "2022-10-17 20:33:33.531120000 +0000">):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36: 	<tr><%= @account.signups.Title %></tr>
+    37: </tbody>
+    38: </table>
+    39: <%= link_to 'Edit', edit_account_path(@account) %> |
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:43:28 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1786)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 1860)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 2.1ms | Allocations: 4669)
+
+
+  
+ActionView::Template::Error (undefined method `Title' for nil:NilClass):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36: 	<tr><%= @signups.Title %></tr>
+    37: </tbody>
+    38: </table>
+    39: <%= link_to 'Edit', edit_account_path(@account) %> |
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:43:34 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 9.3ms | Allocations: 1786)
+  Rendered layout layouts/application.html.erb (Duration: 13.6ms | Allocations: 1860)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 2.3ms | Allocations: 4669)
+
+
+  
+ActionView::Template::Error (undefined method `Title' for nil:NilClass):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36: 	<tr><%= @signup.Title %></tr>
+    37: </tbody>
+    38: </table>
+    39: <%= link_to 'Edit', edit_account_path(@account) %> |
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:43:40 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (4.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1788)
+  Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 1862)
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 6.4ms | Allocations: 4669)
+
+
+  
+ActionView::Template::Error (undefined method `Title' for nil:NilClass):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36: 	<tr><%= @signups.Title %></tr>
+    37: </tbody>
+    38: </table>
+    39: <%= link_to 'Edit', edit_account_path(@account) %> |
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:47:29 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1459)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 1527)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 2.7ms | Allocations: 3453)
+
+
+  
+ActionView::Template::Error (undefined method `Title' for nil:NilClass):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36: 	<tr><%= @signups.Title %></tr>
+    37: </tbody>
+    38: </table>
+    39: <%= link_to 'Edit', edit_account_path(@account) %> |
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:47:45 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (2.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 13.2ms | Allocations: 3574)
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | Allocations: 3648)
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 3.4ms | Allocations: 6291)
+
+
+  
+ActionView::Template::Error (undefined method `signups' for #<Account id: 7, UIN: 927003214, FirstName: "Ryan", LastName: "Crowell", PhoneNumber: 121421124, Email: "rdcrowell13@tamu.edu", status_id: 2, created_at: "2022-10-17 20:33:33.531120000 +0000", updated_at: "2022-10-17 20:33:33.531120000 +0000">):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36: 	<tr><%= @account.signups %></tr>
+    37:     
+    38: </tbody>
+    39: </table>
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:47:53 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 34.8ms | Allocations: 3576)
+  Rendered layout layouts/application.html.erb (Duration: 52.5ms | Allocations: 3650)
+Completed 500 Internal Server Error in 108ms (ActiveRecord: 3.3ms | Allocations: 6459)
+
+
+  
+ActionView::Template::Error (undefined method `signup' for #<Account id: 7, UIN: 927003214, FirstName: "Ryan", LastName: "Crowell", PhoneNumber: 121421124, Email: "rdcrowell13@tamu.edu", status_id: 2, created_at: "2022-10-17 20:33:33.531120000 +0000", updated_at: "2022-10-17 20:33:33.531120000 +0000">):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36: 	<tr><%= @account.signup %></tr>
+    37:     
+    38: </tbody>
+    39: </table>
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:48:03 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 12.4ms | Allocations: 3576)
+  Rendered layout layouts/application.html.erb (Duration: 14.5ms | Allocations: 3650)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 2.3ms | Allocations: 6459)
+
+
+  
+ActionView::Template::Error (undefined method `signup' for #<Account id: 7, UIN: 927003214, FirstName: "Ryan", LastName: "Crowell", PhoneNumber: 121421124, Email: "rdcrowell13@tamu.edu", status_id: 2, created_at: "2022-10-17 20:33:33.531120000 +0000", updated_at: "2022-10-17 20:33:33.531120000 +0000">):
+    33: <table>
+    34: <tbody> 
+    35:   <strong>Signed Up Events:</strong>
+    36: 	<tr><%= @account.signup.Title %></tr>
+    37:     
+    38: </tbody>
+    39: </table>
+  
+app/views/accounts/show.html.erb:36
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:50:45 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1793)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 1867)
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 9.7ms | Allocations: 10524)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    30:   <%= @account.status_id %>
+    31: </p>
+    32: 
+    33: <% @signup.each do |signup| %>
+    34:      <tr>
+    35:        <td><%= signup.account.FirstName %></td>          
+    36:     </tr>
+  
+app/views/accounts/show.html.erb:33
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:50:55 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1814)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | Allocations: 1888)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 2.5ms | Allocations: 4696)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    30:   <%= @account.status_id %>
+    31: </p>
+    32: 
+    33: <% @signups.each do |signup| %>
+    34:      <tr>
+    35:        <td><%= signup.account.FirstName %></td>          
+    36:     </tr>
+  
+app/views/accounts/show.html.erb:33
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:51:20 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1475)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 1549)
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 10.8ms | Allocations: 9517)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    30:   <%= @account.status_id %>
+    31: </p>
+    32: 
+    33: <% @signups.each do |signup| %>
+    34:      <tr>
+    35:        <td><%= signup.account.FirstName %></td>          
+    36:     </tr>
+  
+app/views/accounts/show.html.erb:33
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:51:24 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1516)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 1590)
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 8.8ms | Allocations: 9557)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    30:   <%= @account.status_id %>
+    31: </p>
+    32: 
+    33: <% @signups.each do |signup| %>
+    34:      <tr>
+    35:        <td><%= signup.account.FirstName %></td>          
+    36:     </tr>
+  
+app/views/accounts/show.html.erb:33
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:51:44 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1817)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 1891)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 3.0ms | Allocations: 4701)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    30:   <%= @account.status_id %>
+    31: </p>
+    32: 
+    33: <% @signup.each do |signup| %>
+    34:      <tr>
+    35:        <td><%= signup.account.FirstName %></td>          
+    36:     </tr>
+  
+app/views/accounts/show.html.erb:33
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:52:57 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (0.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1788)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 1862)
+Completed 500 Internal Server Error in 83ms (ActiveRecord: 9.8ms | Allocations: 10517)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    30:   <%= @account.status_id %>
+    31: </p>
+    32: 
+    33: <% @saccount.each do |account| %>
+    34:      <tr>
+    35:        <td><%= account.UIN %></td>          
+    36:     </tr>
+  
+app/views/accounts/show.html.erb:33
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:53:08 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 10.2ms | Allocations: 3657)
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 3731)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 1.8ms | Allocations: 6539)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<Account id: 7, UIN: 927003214, FirstName: "Ryan", LastName: "Crowell", PhoneNumber: 121421124, Email: "rdcrowell13@tamu.edu", status_id: 2, created_at: "2022-10-17 20:33:33.531120000 +0000", updated_at: "2022-10-17 20:33:33.531120000 +0000">):
+    30:   <%= @account.status_id %>
+    31: </p>
+    32: 
+    33: <% @account.each do |account| %>
+    34:      <tr>
+    35:        <td><%= account.UIN %></td>          
+    36:     </tr>
+  
+app/views/accounts/show.html.erb:33
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:53:29 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1814)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | Allocations: 1888)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 2.4ms | Allocations: 4697)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    30:   <%= @account.status_id %>
+    31: </p>
+    32: 
+    33: <% @accounts.each do |account| %>
+    34:      <tr>
+    35:        <td><%= account.UIN %></td>          
+    36:     </tr>
+  
+app/views/accounts/show.html.erb:33
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 20:57:16 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (2.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 23.9ms | Allocations: 3612)
+  Rendered layout layouts/application.html.erb (Duration: 26.4ms | Allocations: 3686)
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 4.0ms | Allocations: 6495)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<Account id: 7, UIN: 927003214, FirstName: "Ryan", LastName: "Crowell", PhoneNumber: 121421124, Email: "rdcrowell13@tamu.edu", status_id: 2, created_at: "2022-10-17 20:33:33.531120000 +0000", updated_at: "2022-10-17 20:33:33.531120000 +0000">):
+    30:   <%= @account.status_id %>
+    31: </p>
+    32: 
+    33: <% @account.each do |account| %>
+    34:      <tr>
+    35:        <td><%= account.UIN %></td>          
+    36:     </tr>
+  
+app/views/accounts/show.html.erb:33
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:04:13 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 5.3ms | Allocations: 1813)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 1887)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 2.7ms | Allocations: 4696)
+
+
+  
+ActionView::Template::Error (undefined method `signups' for nil:NilClass):
+    30:   <%= @account.status_id %>
+    31: </p>
+    32: 
+    33: <% @accounts.signups.each do |account| %>
+    34:   <div>
+    35:     <%= account.signup.Title %>
+    36:   </div>
+  
+app/views/accounts/show.html.erb:33
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:05:49 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+NameError (undefined local variable or method `account_ids' for main:Object):
+  
+app/controllers/accounts_controller.rb:74:in `<main>'
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:06:12 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1516)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 1590)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 13.0ms | Allocations: 9557)
+
+
+  
+ActionView::Template::Error (undefined method `signups' for nil:NilClass):
+    30:   <%= @account.status_id %>
+    31: </p>
+    32: 
+    33: <% @accounts.signups.each do |account| %>
+    34:   <div>
+    35:     <%= account.signup.Title %>
+    36:   </div>
+  
+app/views/accounts/show.html.erb:33
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:06:33 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 14.6ms | Allocations: 1814)
+  Rendered layout layouts/application.html.erb (Duration: 21.9ms | Allocations: 1888)
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 3.1ms | Allocations: 4698)
+
+
+  
+ActionView::Template::Error (undefined method `signup' for nil:NilClass):
+    31: </p>
+    32: 
+    33: 
+    34: <% @accounts.signup.each do |account| %>
+    35:   <div>
+    36:     <%= account.signup.Title %>
+    37:   </div>
+  
+app/views/accounts/show.html.erb:34
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:06:37 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 6.9ms | Allocations: 1813)
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 1887)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 2.2ms | Allocations: 4699)
+
+
+  
+ActionView::Template::Error (undefined method `signups' for nil:NilClass):
+    31: </p>
+    32: 
+    33: 
+    34: <% @accounts.signups.each do |account| %>
+    35:   <div>
+    36:     <%= account.signup.Title %>
+    37:   </div>
+  
+app/views/accounts/show.html.erb:34
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:09:00 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1475)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 1549)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 9.2ms | Allocations: 9516)
+
+
+  
+ActionView::Template::Error (undefined method `signups' for nil:NilClass):
+    31: </p>
+    32: 
+    33: 
+    34: <% @accounts.signups.each do |account| %>
+    35:   <div>
+    36:     <%= account.signup.Title %>
+    37:   </div>
+  
+app/views/accounts/show.html.erb:34
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:09:32 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (2.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (5.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 7.9ms | Allocations: 1325)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | Allocations: 1400)
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 7.5ms | Allocations: 4211)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uin:</strong>
+  <%= @account.UIN %>
+</p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @account.FirstName %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @account.LastName %>
+</p>
+
+<p>
+  <strong>Phonenumber:</strong>
+  <%= @account.PhoneNumber %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @account.Email %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @account.status_id %>
+</p>
+
+<p>
+  <strong>Signed Up Events:</strong>
+</p>
+<% end %>
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', '/dashboard' %>
+
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <p>
+4:      <strong>Uin:</strong>
+5:      <%= @account.UIN %>
+6:    </p>
+7:    
+8:    <p>
+9:      <strong>Firstname:</strong>
+10:      <%= @account.FirstName %>
+11:    </p>
+12:    
+13:    <p>
+14:      <strong>Lastname:</strong>
+15:      <%= @account.LastName %>
+16:    </p>
+17:    
+18:    <p>
+19:      <strong>Phonenumber:</strong>
+20:      <%= @account.PhoneNumber %>
+21:    </p>
+22:    
+23:    <p>
+24:      <strong>Email:</strong>
+25:      <%= @account.Email %>
+26:    </p>
+27:    
+28:    <p>
+29:      <strong>Status:</strong>
+30:      <%= @account.status_id %>
+31:    </p>
+32:    
+33:    <p>
+34:      <strong>Signed Up Events:</strong>
+35:    </p>
+36:    <% end %>
+37:    <%= link_to 'Edit', edit_account_path(@account) %> |
+38:    <%= link_to 'Back', '/dashboard' %>
+  
+app/views/accounts/show.html.erb:41: syntax error, unexpected `end', expecting end-of-input
+app/views/accounts/show.html.erb:41: syntax error, unexpected `end', expecting end-of-input
+app/views/accounts/show.html.erb:41: syntax error, unexpected `end', expecting end-of-input
+app/views/accounts/show.html.erb:41: syntax error, unexpected `end', expecting end-of-input
+app/views/accounts/show.html.erb:41: syntax error, unexpected `end', expecting end-of-input
+app/views/accounts/show.html.erb:41: syntax error, unexpected `end', expecting end-of-input
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:10:15 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:65:in `set_account'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 3.5ms | Allocations: 477)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 36.7ms | Allocations: 4757)
+Completed 200 OK in 57ms (Views: 42.0ms | ActiveRecord: 2.7ms | Allocations: 7609)
+
+
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:13:36 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:70:in `set_account'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:15:in `show'
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 8.9ms | Allocations: 10531)
+
+
+  
+NoMethodError (undefined method `signups' for #<Account id: 7, UIN: 927003214, FirstName: "Ryan", LastName: "Crowell", PhoneNumber: 121421124, Email: "rdcrowell13@tamu.edu", status_id: 2, created_at: "2022-10-17 20:33:33.531120000 +0000", updated_at: "2022-10-17 20:33:33.531120000 +0000">):
+  
+app/controllers/accounts_controller.rb:17:in `show'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:16:47 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:70:in `set_account'
+  [1m[36mCACHE Account Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:15:in `show'
+Completed 500 Internal Server Error in 158ms (ActiveRecord: 9.5ms | Allocations: 16206)
+
+
+  
+ActiveRecord::HasManyThroughAssociationNotFoundError (Could not find the association :signups in model Account
+Did you mean?  status):
+  
+app/controllers/accounts_controller.rb:17:in `show'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:20:27 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:70:in `set_account'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:15:in `show'
+Completed 500 Internal Server Error in 97ms (ActiveRecord: 9.5ms | Allocations: 14316)
+
+
+  
+ActiveRecord::HasManyThroughAssociationNotFoundError (Could not find the association :signups in model Account
+Did you mean?  status):
+  
+app/controllers/accounts_controller.rb:17:in `show'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:21:54 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:70:in `set_account'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:15:in `show'
+Completed 500 Internal Server Error in 81ms (ActiveRecord: 10.2ms | Allocations: 14968)
+
+
+  
+NoMethodError (undefined method `events' for #<Account id: 7, UIN: 927003214, FirstName: "Ryan", LastName: "Crowell", PhoneNumber: 121421124, Email: "rdcrowell13@tamu.edu", status_id: 2, created_at: "2022-10-17 20:33:33.531120000 +0000", updated_at: "2022-10-17 20:33:33.531120000 +0000">):
+  
+app/controllers/accounts_controller.rb:17:in `show'
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:22:22 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:70:in `set_account'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 4.3ms | Allocations: 562)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 111.7ms | Allocations: 9556)
+Completed 200 OK in 177ms (Views: 115.6ms | ActiveRecord: 10.0ms | Allocations: 21904)
+
+
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:24:08 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (2.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (3.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:70:in `set_account'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  [1m[36mSignup Load (2.3ms)[0m  [1m[34mSELECT "signups".* FROM "signups" WHERE "signups"."account_id" = $1[0m  [["account_id", 7]]
+  ↳ app/views/accounts/show.html.erb:35
+  Rendered accounts/show.html.erb within layouts/application (Duration: 59.8ms | Allocations: 5241)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 109.2ms | Allocations: 9423)
+Completed 200 OK in 151ms (Views: 110.7ms | ActiveRecord: 13.4ms | Allocations: 12763)
+
+
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:25:01 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (2.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:70:in `set_account'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  [1m[36mSignup Load (2.0ms)[0m  [1m[34mSELECT "signups".* FROM "signups" WHERE "signups"."account_id" = $1[0m  [["account_id", 7]]
+  ↳ app/views/accounts/show.html.erb:35
+  Rendered accounts/show.html.erb within layouts/application (Duration: 10.1ms | Allocations: 894)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 54.3ms | Allocations: 4758)
+Completed 200 OK in 84ms (Views: 56.9ms | ActiveRecord: 6.4ms | Allocations: 7077)
+
+
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:26:18 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:69:in `set_account'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  [1m[36mSignup Load (2.8ms)[0m  [1m[34mSELECT "signups".* FROM "signups" WHERE "signups"."account_id" = $1[0m  [["account_id", 7]]
+  ↳ app/views/accounts/show.html.erb:35
+  Rendered accounts/show.html.erb within layouts/application (Duration: 24.0ms | Allocations: 2339)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 79.9ms | Allocations: 6529)
+Completed 200 OK in 169ms (Views: 82.1ms | ActiveRecord: 21.7ms | Allocations: 17239)
+
+
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:26:44 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:69:in `set_account'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  [1m[36mSignup Load (2.8ms)[0m  [1m[34mSELECT "signups".* FROM "signups" WHERE "signups"."account_id" = $1[0m  [["account_id", 7]]
+  ↳ app/views/accounts/show.html.erb:35
+  Rendered accounts/show.html.erb within layouts/application (Duration: 34.6ms | Allocations: 3369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 205.3ms | Allocations: 12423)
+Completed 200 OK in 333ms (Views: 213.6ms | ActiveRecord: 20.1ms | Allocations: 29284)
+
+
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:27:36 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:69:in `set_account'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:15:in `show'
+Completed 500 Internal Server Error in 63ms (ActiveRecord: 8.6ms | Allocations: 11274)
+
+
+  
+NoMethodError (undefined method `signups' for #<Account id: 7, UIN: 927003214, FirstName: "Ryan", LastName: "Crowell", PhoneNumber: 121421124, Email: "rdcrowell13@tamu.edu", status_id: 2, created_at: "2022-10-17 20:33:33.531120000 +0000", updated_at: "2022-10-17 20:33:33.531120000 +0000">
+Did you mean?  signup
+               signup=):
+  
+app/controllers/accounts_controller.rb:16:in `show'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:29:16 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:69:in `set_account'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  [1m[36mSignup Load (1.0ms)[0m  [1m[34mSELECT "signups".* FROM "signups" WHERE "signups"."account_id" = $1[0m  [["account_id", 7]]
+  ↳ app/views/accounts/show.html.erb:35
+  Rendered accounts/show.html.erb within layouts/application (Duration: 16.0ms | Allocations: 3369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 117.3ms | Allocations: 12423)
+Completed 200 OK in 210ms (Views: 124.1ms | ActiveRecord: 12.8ms | Allocations: 29851)
+
+
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:31:30 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:69:in `set_account'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  Rendered accounts/show.html.erb within layouts/application (Duration: 6.4ms | Allocations: 1864)
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 1948)
+Completed 500 Internal Server Error in 76ms (ActiveRecord: 9.6ms | Allocations: 14869)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    32: 
+    33: <p>
+    34:   <strong>Signed Up Events:</strong>
+    35:   <%= @signups.each do |signup| %>
+    36:     <%= signup.Title %>
+    37:   <% end %> 
+    38: </p>
+  
+app/views/accounts/show.html.erb:35
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:32:06 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:69:in `set_account'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  [1m[36mEvent Load (2.1ms)[0m  [1m[34mSELECT "events".* FROM "events" INNER JOIN "signups" ON "events"."id" = "signups"."event_id" WHERE "signups"."account_id" = $1[0m  [["account_id", 7]]
+  ↳ app/views/accounts/show.html.erb:35
+  Rendered accounts/show.html.erb within layouts/application (Duration: 56.2ms | Allocations: 9575)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 91.0ms | Allocations: 13784)
+Completed 200 OK in 115ms (Views: 86.4ms | ActiveRecord: 13.7ms | Allocations: 17098)
+
+
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:32:08 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (2.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:69:in `set_account'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  [1m[36mEvent Load (2.1ms)[0m  [1m[34mSELECT "events".* FROM "events" INNER JOIN "signups" ON "events"."id" = "signups"."event_id" WHERE "signups"."account_id" = $1[0m  [["account_id", 7]]
+  ↳ app/views/accounts/show.html.erb:35
+  Rendered accounts/show.html.erb within layouts/application (Duration: 10.5ms | Allocations: 1105)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 52.3ms | Allocations: 4969)
+Completed 200 OK in 109ms (Views: 62.0ms | ActiveRecord: 5.2ms | Allocations: 7324)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-17 21:32:10 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:43
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 17.1ms | Allocations: 6380)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.1ms | Allocations: 10464)
+Completed 200 OK in 63ms (Views: 46.0ms | ActiveRecord: 2.6ms | Allocations: 13026)
+
+
+Started GET "/signups" for 172.17.0.1 at 2022-10-17 21:32:11 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#index as HTML
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/index.html.erb within layouts/application
+  [1m[36mSignup Load (1.7ms)[0m  [1m[34mSELECT "signups".* FROM "signups"[0m
+  ↳ app/views/signups/index.html.erb:18
+  Rendered signups/index.html.erb within layouts/application (Duration: 13.2ms | Allocations: 1344)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.2ms | Allocations: 5453)
+Completed 200 OK in 55ms (Views: 43.7ms | ActiveRecord: 3.0ms | Allocations: 7638)
+
+
+Started GET "/signups/new" for 172.17.0.1 at 2022-10-17 21:32:12 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#new as HTML
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/new.html.erb within layouts/application
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/signups/_form.html.erb:16
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/signups/_form.html.erb:21
+  Rendered signups/_form.html.erb (Duration: 120.1ms | Allocations: 8043)
+  Rendered signups/new.html.erb within layouts/application (Duration: 124.9ms | Allocations: 8423)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 148.6ms | Allocations: 12425)
+Completed 200 OK in 177ms (Views: 148.9ms | ActiveRecord: 8.9ms | Allocations: 16434)
+
+
+Started POST "/signups" for 172.17.0.1 at 2022-10-17 21:32:16 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "signup"=>{"event_id"=>"1", "account_id"=>"7", "Pickup"=>"0"}, "commit"=>"Create Signup"}
+  [1m[36mAccount Load (1.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/signups_controller.rb:29:in `block in create'
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/signups_controller.rb:29:in `block in create'
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/signups_controller.rb:29:in `block in create'
+  [1m[36mSignup Create (2.5ms)[0m  [1m[32mINSERT INTO "signups" ("event_id", "account_id", "Pickup", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["event_id", 1], ["account_id", 7], ["Pickup", false], ["created_at", "2022-10-17 21:32:16.582046"], ["updated_at", "2022-10-17 21:32:16.582046"]]
+  ↳ app/controllers/signups_controller.rb:29:in `block in create'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/signups_controller.rb:29:in `block in create'
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 9.3ms | Allocations: 8254)
+
+
+  
+ArgumentError (comparison of ActiveSupport::TimeWithZone with nil failed):
+  
+app/controllers/signups_controller.rb:29:in `>'
+app/controllers/signups_controller.rb:29:in `block in create'
+app/controllers/signups_controller.rb:28:in `create'
+Started GET "/signups/new" for 172.17.0.1 at 2022-10-17 21:32:18 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#new as HTML
+  [1m[36mAccount Load (0.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/new.html.erb within layouts/application
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/signups/_form.html.erb:16
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/signups/_form.html.erb:21
+  Rendered signups/_form.html.erb (Duration: 15.9ms | Allocations: 3118)
+  Rendered signups/new.html.erb within layouts/application (Duration: 18.8ms | Allocations: 3239)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 46.0ms | Allocations: 7230)
+Completed 200 OK in 61ms (Views: 50.8ms | ActiveRecord: 3.0ms | Allocations: 8541)
+
+
+Started GET "/signups" for 172.17.0.1 at 2022-10-17 21:32:19 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#index as HTML
+  [1m[36mAccount Load (2.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/index.html.erb within layouts/application
+  [1m[36mSignup Load (2.8ms)[0m  [1m[34mSELECT "signups".* FROM "signups"[0m
+  ↳ app/views/signups/index.html.erb:18
+  [1m[36mEvent Load (2.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mAccount Load (2.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  Rendered signups/index.html.erb within layouts/application (Duration: 24.8ms | Allocations: 2635)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 51.3ms | Allocations: 6496)
+Completed 200 OK in 72ms (Views: 50.9ms | ActiveRecord: 9.5ms | Allocations: 7804)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-17 21:32:21 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (1.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (2.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:43
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 10.4ms | Allocations: 1318)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 43.0ms | Allocations: 5180)
+Completed 200 OK in 58ms (Views: 42.9ms | ActiveRecord: 4.2ms | Allocations: 6853)
+
+
+Started GET "/accounts/7" for 172.17.0.1 at 2022-10-17 21:32:22 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mAccount Load (1.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (0.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:69:in `set_account'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering accounts/show.html.erb within layouts/application
+  [1m[36mEvent Load (2.0ms)[0m  [1m[34mSELECT "events".* FROM "events" INNER JOIN "signups" ON "events"."id" = "signups"."event_id" WHERE "signups"."account_id" = $1[0m  [["account_id", 7]]
+  ↳ app/views/accounts/show.html.erb:35
+  Rendered accounts/show.html.erb within layouts/application (Duration: 7.8ms | Allocations: 1261)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.9ms | Allocations: 5145)
+Completed 200 OK in 63ms (Views: 42.7ms | ActiveRecord: 4.0ms | Allocations: 7383)
+
+
