@@ -17,8 +17,8 @@
   <tbody>
     <% @signups.each do |signup| %>
       <tr>
-        <td><%= signup.event_id %></td>
-        <td><%= signup.account_id %></td>
+        <td><%= signup.event.Title.gsub(/[A-Za-z']+/,&:capitalize) %></td>
+        <td><%= signup.account.FirstName.capitalize() + " " + signup.account.LastName.capitalize() %></td>
         <td><%= signup.Pickup %></td>
         <td><%= link_to 'Show', signup %></td>
         <td><%= link_to 'Edit', edit_signup_path(signup) %></td>
