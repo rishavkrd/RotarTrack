@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :account_id %>
-    <%= form.text_field :account_id %>
+    <%= form.collection_select :account_id, Account.all, :id, :FirstName %>
   </div>
 
   <div class="field">
