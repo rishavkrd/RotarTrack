@@ -7,7 +7,15 @@ class AccountsController < ApplicationController
   # GET /accounts or /accounts.json
   def index
     @accounts = Account.all
+<<<<<<< HEAD
 
+=======
+    @current_user = @accounts.find_by Email: get_user_email 
+
+    unless @current_user.status_id == 1
+      render 'invalid'
+    end
+>>>>>>> main
   end
 
   # GET /accounts/1 or /accounts/1.json
@@ -54,10 +62,10 @@ class AccountsController < ApplicationController
 
   # DELETE /accounts/1 or /accounts/1.json
   def destroy
-    @account.destroy!
-
+    # @account.destroy!
+    @account.update(:status_id => 3)
     respond_to do |format|
-      format.html { redirect_to(accounts_url, notice: 'Account was successfully destroyed.') }
+      format.html { redirect_to(accounts_url, notice: 'Account was successfully archived.') }
       format.json { head(:no_content) }
     end
   end

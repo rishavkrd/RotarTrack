@@ -25,10 +25,10 @@
         <td><%= account.LastName %></td>
         <td><%= account.PhoneNumber %></td>
         <td><%= account.Email %></td>
-        <td><%= account.status_id %></td>
+        <td><%= account.status.Value.capitalize() %></td>
         <td><%= link_to 'Show', account %></td>
         <td><%= link_to 'Edit', edit_account_path(account) %></td>
-        <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Archive', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

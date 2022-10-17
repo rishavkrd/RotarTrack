@@ -1,11 +1,12 @@
 <section class="jumbotron  text-center">
-  <h1>Howdy <%= @account["FirstName"]%>! You are logged in with <%=@user["name"]%>. </h1>
+  <h1>Howdy <%= @account["FirstName"].capitalize()%>! You are logged in with <%=@user["name"]%>. </h1>
       
 </section>
 <div>
     <%= link_to 'User Dashboard', accounts_path %>
     <%= link_to 'Create New Event', new_event_path %>
     <%= link_to 'Help', '/dashboard/help' %>
+    <%= link_to 'View All Accounts (Only for officers)', '/accounts' %>
 
 </div>
 <div>
@@ -16,7 +17,7 @@
 </div>
 <div>
   <h3> For Development (to be removed in production) </h3>
-    <%= link_to 'Events', events_path %>
+    <%= link_to 'Inactive Events', events_path %>
     <%= link_to 'Points', points_path %>
     <%= link_to 'Sign Ups', signups_path %>
     <%= link_to 'Statuses', statuses_path %>
@@ -49,11 +50,11 @@
         <td><%= event.Time %></td>
         <td><%= event.Location %></td>
         <td><%= event.Points %></td>
-        <td><%= event.type_id %></td>
+        <td><%= event.type.Value %></td>
         <!-- <td><%= link_to 'Show', event %></td> -->
 
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Inactive', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

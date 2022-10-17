@@ -2,12 +2,12 @@
 
 <p>
   <strong>Account:</strong>
-  <%= @point.account_id %>
+  <%= @point.account.FirstName.capitalize() + " " + @point.account.LastName.capitalize() %>
 </p>
 
 <p>
   <strong>Event:</strong>
-  <%= @point.event_id %>
+  <%= @point.event.Title.gsub(/[A-Za-z']+/,&:capitalize) %>
 </p>
 
 <%= link_to 'Edit', edit_point_path(@point) %> |
