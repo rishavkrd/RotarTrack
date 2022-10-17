@@ -2,12 +2,12 @@
 
 <p>
   <strong>Event:</strong>
-  <%= @signup.event_id %>
+  <%= @signup.event.Title.gsub(/[A-Za-z']+/,&:capitalize) %>
 </p>
 
 <p>
   <strong>Account:</strong>
-  <%= @signup.account_id %>
+  <%= @signup.account.FirstName.capitalize() + " " + @signup.account.LastName.capitalize()%>
 </p>
 
 <p>

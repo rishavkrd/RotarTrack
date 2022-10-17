@@ -11112,3 +11112,644 @@ Processing by SignupsController#show as HTML
 Completed 200 OK in 46ms (Views: 32.0ms | ActiveRecord: 2.0ms | Allocations: 6156)
 
 
+Started GET "/signups/2" for 172.17.0.1 at 2022-10-17 17:51:40 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (2.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mSignup Load (4.2ms)[0m  [1m[34mSELECT "signups".* FROM "signups" WHERE "signups"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/signups_controller.rb:66:in `set_signup'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/show.html.erb within layouts/application
+  Rendered signups/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 125)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 57.0ms | Allocations: 4100)
+Completed 200 OK in 109ms (Views: 65.6ms | ActiveRecord: 6.5ms | Allocations: 6381)
+
+
+Started GET "/signups/2" for 172.17.0.1 at 2022-10-17 17:53:15 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (2.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mSignup Load (1.8ms)[0m  [1m[34mSELECT "signups".* FROM "signups" WHERE "signups"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/signups_controller.rb:66:in `set_signup'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/show.html.erb within layouts/application
+  [1m[36mEvent Load (2.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/show.html.erb:5
+  Rendered signups/show.html.erb within layouts/application (Duration: 16.9ms | Allocations: 1385)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 57.0ms | Allocations: 5664)
+Completed 200 OK in 92ms (Views: 62.8ms | ActiveRecord: 6.2ms | Allocations: 8341)
+
+
+Started GET "/signups/2" for 172.17.0.1 at 2022-10-17 17:53:47 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (0.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mSignup Load (1.4ms)[0m  [1m[34mSELECT "signups".* FROM "signups" WHERE "signups"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/signups_controller.rb:66:in `set_signup'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/show.html.erb within layouts/application
+  Rendered signups/show.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1259)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 1334)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 2.2ms | Allocations: 4048)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @signup.event.Title.gsub(/[A-Za-z']+/,&:capitalize) %>
+</p>
+
+<p>
+  <strong>Account:</strong>
+  <%= @signup.account.FirstName.capitalize() + " " + signup.account.LastName.capitalize()>
+</p>
+
+<p>
+  <strong>Pickup:</strong>
+  <%= @signup.Pickup %>
+</p>
+
+<%= link_to 'Edit', edit_signup_path(@signup) %> |
+<%= link_to 'Back', signups_path %>
+
+):
+1:    <p id="notice"><%= notice %></p>
+2:    
+3:    <p>
+4:      <strong>Event:</strong>
+5:      <%= @signup.event.Title.gsub(/[A-Za-z']+/,&:capitalize) %>
+6:    </p>
+7:    
+8:    <p>
+9:      <strong>Account:</strong>
+10:      <%= @signup.account.FirstName.capitalize() + " " + signup.account.LastName.capitalize()>
+11:    </p>
+12:    
+13:    <p>
+14:      <strong>Pickup:</strong>
+15:      <%= @signup.Pickup %>
+16:    </p>
+17:    
+18:    <%= link_to 'Edit', edit_signup_path(@signup) %> |
+19:    <%= link_to 'Back', signups_path %>
+  
+app/views/signups/show.html.erb:11: syntax error, unexpected '<'
+app/views/signups/show.html.erb:14: unknown regexp options - trg
+app/views/signups/show.html.erb:15: syntax error, unexpected '<'
+app/views/signups/show.html.erb:22: syntax error, unexpected `end', expecting ')'
+app/views/signups/show.html.erb:11: syntax error, unexpected '<'
+app/views/signups/show.html.erb:14: unknown regexp options - trg
+app/views/signups/show.html.erb:15: syntax error, unexpected '<'
+app/views/signups/show.html.erb:22: syntax error, unexpected `end', expecting ')'
+app/views/signups/show.html.erb:11: syntax error, unexpected '<'
+app/views/signups/show.html.erb:14: unknown regexp options - trg
+app/views/signups/show.html.erb:15: syntax error, unexpected '<'
+app/views/signups/show.html.erb:22: syntax error, unexpected `end', expecting ')'
+app/views/signups/show.html.erb:11: syntax error, unexpected '<'
+app/views/signups/show.html.erb:14: unknown regexp options - trg
+app/views/signups/show.html.erb:15: syntax error, unexpected '<'
+app/views/signups/show.html.erb:22: syntax error, unexpected `end', expecting ')'
+app/views/signups/show.html.erb:11: syntax error, unexpected '<'
+app/views/signups/show.html.erb:14: unknown regexp options - trg
+app/views/signups/show.html.erb:15: syntax error, unexpected '<'
+app/views/signups/show.html.erb:22: syntax error, unexpected `end', expecting ')'
+app/views/signups/show.html.erb:11: syntax error, unexpected '<'
+app/views/signups/show.html.erb:14: unknown regexp options - trg
+app/views/signups/show.html.erb:15: syntax error, unexpected '<'
+app/views/signups/show.html.erb:22: syntax error, unexpected `end', expecting ')'
+Started GET "/signups/2" for 172.17.0.1 at 2022-10-17 17:53:54 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mSignup Load (1.1ms)[0m  [1m[34mSELECT "signups".* FROM "signups" WHERE "signups"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/signups_controller.rb:66:in `set_signup'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/show.html.erb:5
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/show.html.erb:10
+  Rendered signups/show.html.erb within layouts/application (Duration: 30.1ms | Allocations: 6468)
+  Rendered layout layouts/application.html.erb (Duration: 33.1ms | Allocations: 6542)
+Completed 500 Internal Server Error in 55ms (ActiveRecord: 4.8ms | Allocations: 9337)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `signup' for #<ActionView::Base:0x0000000000be78>
+Did you mean?  @signup):
+     7: 
+     8: <p>
+     9:   <strong>Account:</strong>
+    10:   <%= @signup.account.FirstName.capitalize() + " " + signup.account.LastName.capitalize()%>
+    11: </p>
+    12: 
+    13: <p>
+  
+app/views/signups/show.html.erb:10
+Started GET "/signups/2" for 172.17.0.1 at 2022-10-17 17:54:31 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mSignup Load (0.9ms)[0m  [1m[34mSELECT "signups".* FROM "signups" WHERE "signups"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/signups_controller.rb:66:in `set_signup'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/show.html.erb within layouts/application
+  Rendered signups/show.html.erb within layouts/application (Duration: 7.5ms | Allocations: 1725)
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 1799)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 1.9ms | Allocations: 4519)
+
+
+  
+ActionView::Template::Error (undefined method `event' for nil:NilClass):
+    2: 
+    3: <p>
+    4:   <strong>Event:</strong>
+    5:   <%= @signups.event.Title.gsub(/[A-Za-z']+/,&:capitalize) %>
+    6: </p>
+    7: 
+    8: <p>
+  
+app/views/signups/show.html.erb:5
+Started GET "/signups/2" for 172.17.0.1 at 2022-10-17 17:54:37 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (2.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mSignup Load (1.8ms)[0m  [1m[34mSELECT "signups".* FROM "signups" WHERE "signups"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/signups_controller.rb:66:in `set_signup'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/show.html.erb:5
+  Rendered signups/show.html.erb within layouts/application (Duration: 13.9ms | Allocations: 2668)
+  Rendered layout layouts/application.html.erb (Duration: 19.7ms | Allocations: 2742)
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 5.7ms | Allocations: 5536)
+
+
+  
+ActionView::Template::Error (undefined method `account' for nil:NilClass):
+     7: 
+     8: <p>
+     9:   <strong>Account:</strong>
+    10:   <%= @signups.account.FirstName.capitalize() + " " + signup.account.LastName.capitalize()%>
+    11: </p>
+    12: 
+    13: <p>
+  
+app/views/signups/show.html.erb:10
+Started GET "/signups/2" for 172.17.0.1 at 2022-10-17 17:54:52 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mSignup Load (1.2ms)[0m  [1m[34mSELECT "signups".* FROM "signups" WHERE "signups"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/signups_controller.rb:66:in `set_signup'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.9ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/show.html.erb:5
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/show.html.erb:10
+  Rendered signups/show.html.erb within layouts/application (Duration: 34.0ms | Allocations: 6468)
+  Rendered layout layouts/application.html.erb (Duration: 38.1ms | Allocations: 6542)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 5.7ms | Allocations: 9253)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `signup' for #<ActionView::Base:0x0000000000c3a0>
+Did you mean?  @signup):
+     7: 
+     8: <p>
+     9:   <strong>Account:</strong>
+    10:   <%= @signup.account.FirstName.capitalize() + " " + signup.account.LastName.capitalize()%>
+    11: </p>
+    12: 
+    13: <p>
+  
+app/views/signups/show.html.erb:10
+Started GET "/signups/2" for 172.17.0.1 at 2022-10-17 17:55:14 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAccount Load (2.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mSignup Load (2.8ms)[0m  [1m[34mSELECT "signups".* FROM "signups" WHERE "signups"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/signups_controller.rb:66:in `set_signup'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/show.html.erb within layouts/application
+  [1m[36mEvent Load (2.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/show.html.erb:5
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/show.html.erb:10
+  Rendered signups/show.html.erb within layouts/application (Duration: 20.5ms | Allocations: 2185)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 60.9ms | Allocations: 6464)
+Completed 200 OK in 96ms (Views: 66.0ms | ActiveRecord: 8.5ms | Allocations: 9218)
+
+
+Started GET "/signups" for 172.17.0.1 at 2022-10-17 17:55:18 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#index as HTML
+  [1m[36mAccount Load (2.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/index.html.erb within layouts/application
+  [1m[36mSignup Load (1.9ms)[0m  [1m[34mSELECT "signups".* FROM "signups"[0m
+  ↳ app/views/signups/index.html.erb:18
+  [1m[36mEvent Load (1.8ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mAccount Load (2.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mCACHE Account Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  Rendered signups/index.html.erb within layouts/application (Duration: 40.2ms | Allocations: 4271)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 69.7ms | Allocations: 8143)
+Completed 200 OK in 90ms (Views: 67.5ms | ActiveRecord: 8.8ms | Allocations: 9572)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-10-17 17:55:29 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (2.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mCACHE Account Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (1.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:43
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 15.2ms | Allocations: 2262)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 57.3ms | Allocations: 6345)
+Completed 200 OK in 107ms (Views: 62.5ms | ActiveRecord: 4.7ms | Allocations: 8632)
+
+
+Started GET "/events" for 172.17.0.1 at 2022-10-17 17:55:34 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:20
+  Rendered events/index.html.erb within layouts/application (Duration: 12.1ms | Allocations: 1551)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.4ms | Allocations: 5619)
+Completed 200 OK in 50ms (Views: 41.2ms | ActiveRecord: 2.3ms | Allocations: 7791)
+
+
+Started GET "/events/1" for 172.17.0.1 at 2022-10-17 17:55:35 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAccount Load (1.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:66:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 4.3ms | Allocations: 427)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.7ms | Allocations: 4288)
+Completed 200 OK in 53ms (Views: 31.8ms | ActiveRecord: 2.9ms | Allocations: 6477)
+
+
+Started GET "/events/1" for 172.17.0.1 at 2022-10-17 17:57:11 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:66:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 4.7ms | Allocations: 599)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 47.9ms | Allocations: 4853)
+Completed 200 OK in 67ms (Views: 53.0ms | ActiveRecord: 2.2ms | Allocations: 7546)
+
+
+Started GET "/events" for 172.17.0.1 at 2022-10-17 17:57:13 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (2.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:20
+  Rendered events/index.html.erb within layouts/application (Duration: 11.3ms | Allocations: 1337)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 43.6ms | Allocations: 5224)
+Completed 200 OK in 57ms (Views: 45.5ms | ActiveRecord: 3.4ms | Allocations: 6800)
+
+
+Started GET "/events" for 172.17.0.1 at 2022-10-17 17:57:44 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (2.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:20
+  Rendered events/index.html.erb within layouts/application (Duration: 11.5ms | Allocations: 1545)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 50.3ms | Allocations: 5799)
+Completed 200 OK in 64ms (Views: 53.4ms | ActiveRecord: 3.6ms | Allocations: 7897)
+
+
+Started GET "/events/1" for 172.17.0.1 at 2022-10-17 17:57:45 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAccount Load (1.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:66:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 4.5ms | Allocations: 463)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.0ms | Allocations: 4324)
+Completed 200 OK in 50ms (Views: 33.9ms | ActiveRecord: 2.4ms | Allocations: 6354)
+
+
+Started GET "/signups" for 172.17.0.1 at 2022-10-17 17:57:47 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#index as HTML
+  [1m[36mAccount Load (0.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/index.html.erb within layouts/application
+  [1m[36mSignup Load (3.2ms)[0m  [1m[34mSELECT "signups".* FROM "signups"[0m
+  ↳ app/views/signups/index.html.erb:18
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  Rendered signups/index.html.erb within layouts/application (Duration: 32.4ms | Allocations: 4449)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 60.2ms | Allocations: 8531)
+Completed 200 OK in 73ms (Views: 58.6ms | ActiveRecord: 6.7ms | Allocations: 10380)
+
+
+Started GET "/signups" for 172.17.0.1 at 2022-10-17 17:58:11 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#index as HTML
+  [1m[36mAccount Load (1.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/index.html.erb within layouts/application
+  [1m[36mSignup Load (2.1ms)[0m  [1m[34mSELECT "signups".* FROM "signups"[0m
+  ↳ app/views/signups/index.html.erb:18
+  [1m[36mEvent Load (2.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mAccount Load (1.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  Rendered signups/index.html.erb within layouts/application (Duration: 34.1ms | Allocations: 4452)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 61.9ms | Allocations: 8731)
+Completed 200 OK in 85ms (Views: 64.4ms | ActiveRecord: 7.7ms | Allocations: 11002)
+
+
+Started GET "/signups/new" for 172.17.0.1 at 2022-10-17 17:58:13 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#new as HTML
+  [1m[36mAccount Load (1.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/new.html.erb within layouts/application
+  [1m[36mEvent Load (2.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/signups/_form.html.erb:16
+  [1m[36mAccount Load (2.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/signups/_form.html.erb:21
+  Rendered signups/_form.html.erb (Duration: 35.3ms | Allocations: 3536)
+  Rendered signups/new.html.erb within layouts/application (Duration: 42.7ms | Allocations: 3909)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 81.2ms | Allocations: 7758)
+Completed 200 OK in 126ms (Views: 90.8ms | ActiveRecord: 7.1ms | Allocations: 9184)
+
+
+Started GET "/signups" for 172.17.0.1 at 2022-10-17 17:58:27 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#index as HTML
+  [1m[36mAccount Load (2.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/index.html.erb within layouts/application
+  [1m[36mSignup Load (1.7ms)[0m  [1m[34mSELECT "signups".* FROM "signups"[0m
+  ↳ app/views/signups/index.html.erb:18
+  [1m[36mEvent Load (2.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mAccount Load (3.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  Rendered signups/index.html.erb within layouts/application (Duration: 40.8ms | Allocations: 4606)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 83.0ms | Allocations: 8876)
+Completed 200 OK in 119ms (Views: 88.1ms | ActiveRecord: 9.9ms | Allocations: 11007)
+
+
+Started GET "/signups/new" for 172.17.0.1 at 2022-10-17 17:58:28 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#new as HTML
+  [1m[36mAccount Load (2.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/new.html.erb within layouts/application
+  [1m[36mEvent Load (4.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/signups/_form.html.erb:16
+  [1m[36mAccount Load (2.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/signups/_form.html.erb:21
+  Rendered signups/_form.html.erb (Duration: 36.2ms | Allocations: 3555)
+  Rendered signups/new.html.erb within layouts/application (Duration: 45.0ms | Allocations: 3917)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 84.6ms | Allocations: 7772)
+Completed 200 OK in 124ms (Views: 84.1ms | ActiveRecord: 9.7ms | Allocations: 9687)
+
+
+Started GET "/signups/new" for 172.17.0.1 at 2022-10-17 17:58:45 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#new as HTML
+  [1m[36mAccount Load (1.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/new.html.erb within layouts/application
+  [1m[36mEvent Load (1.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/signups/_form.html.erb:16
+  [1m[36mAccount Load (2.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/signups/_form.html.erb:21
+  Rendered signups/_form.html.erb (Duration: 22.9ms | Allocations: 3647)
+  Rendered signups/new.html.erb within layouts/application (Duration: 28.8ms | Allocations: 4041)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 58.6ms | Allocations: 8267)
+Completed 200 OK in 86ms (Views: 65.8ms | ActiveRecord: 6.3ms | Allocations: 10523)
+
+
+Started GET "/signups" for 172.17.0.1 at 2022-10-17 17:58:49 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#index as HTML
+  [1m[36mAccount Load (5.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/index.html.erb within layouts/application
+  [1m[36mSignup Load (1.3ms)[0m  [1m[34mSELECT "signups".* FROM "signups"[0m
+  ↳ app/views/signups/index.html.erb:18
+  [1m[36mEvent Load (3.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mAccount Load (2.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  [1m[36mCACHE Event Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  Rendered signups/index.html.erb within layouts/application (Duration: 45.9ms | Allocations: 4311)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 72.1ms | Allocations: 8204)
+Completed 200 OK in 97ms (Views: 72.4ms | ActiveRecord: 11.9ms | Allocations: 10121)
+
+
+Started GET "/signups" for 172.17.0.1 at 2022-10-17 17:59:02 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SignupsController#index as HTML
+  [1m[36mAccount Load (2.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/index.html.erb within layouts/application
+  [1m[36mSignup Load (6.3ms)[0m  [1m[34mSELECT "signups".* FROM "signups"[0m
+  ↳ app/views/signups/index.html.erb:18
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  [1m[36mCACHE Event Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:20
+  [1m[36mCACHE Account Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/signups/index.html.erb:21
+  Rendered signups/index.html.erb within layouts/application (Duration: 271.4ms | Allocations: 17115)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 429.7ms | Allocations: 26145)
+Completed 200 OK in 582ms (Views: 431.6ms | ActiveRecord: 54.4ms | Allocations: 39197)
+
+
+Started GET "/events/1" for 172.17.0.1 at 2022-10-17 17:59:06 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAccount Load (1.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mEvent Load (1.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:66:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 52.5ms | Allocations: 5379)
+  Rendered layout layouts/application.html.erb (Duration: 55.7ms | Allocations: 5463)
+Completed 500 Internal Server Error in 82ms (ActiveRecord: 3.6ms | Allocations: 8452)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `signups_new_path' for #<ActionView::Base:0x0000000000aa78>
+Did you mean?  signups_path):
+    34:   <strong>Type:</strong>
+    35:   <%= @event.type_id %>
+    36: </p>
+    37: <%= link_to 'Sign Up', signups_new_path %> 
+    38: <%= link_to 'Edit', edit_event_path(@event) %> |
+    39: <%= link_to 'Back', events_path %>
+  
+app/views/events/show.html.erb:37
+Started GET "/events/1" for 172.17.0.1 at 2022-10-17 17:59:30 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAccount Load (1.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:66:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 36.1ms | Allocations: 4716)
+  Rendered layout layouts/application.html.erb (Duration: 39.3ms | Allocations: 4790)
+Completed 500 Internal Server Error in 60ms (ActiveRecord: 2.8ms | Allocations: 7609)
+
+
+  
+ActionView::Template::Error (undefined method `new_signups_path' for #<ActionView::Base:0x0000000000ac58>
+Did you mean?  new_signup_path
+               new_status_path):
+    34:   <strong>Type:</strong>
+    35:   <%= @event.type_id %>
+    36: </p>
+    37: <%= link_to 'Sign Up', new_signups_path(@signups) %> 
+    38: <%= link_to 'Edit', edit_event_path(@event) %> |
+    39: <%= link_to 'Back', events_path %>
+  
+app/views/events/show.html.erb:37
+Started GET "/events/1" for 172.17.0.1 at 2022-10-17 17:59:44 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAccount Load (1.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:66:in `set_event'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 8.1ms | Allocations: 667)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.5ms | Allocations: 4949)
+Completed 200 OK in 62ms (Views: 48.6ms | ActiveRecord: 2.6ms | Allocations: 7830)
+
+
+Started GET "/signups/new" for 172.17.0.1 at 2022-10-17 17:59:46 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SignupsController#new as HTML
+  [1m[36mAccount Load (3.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdcrowell13@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  Rendering layout layouts/application.html.erb
+  Rendering signups/new.html.erb within layouts/application
+  [1m[36mEvent Load (1.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/signups/_form.html.erb:16
+  [1m[36mAccount Load (1.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/views/signups/_form.html.erb:21
+  Rendered signups/_form.html.erb (Duration: 50.0ms | Allocations: 8207)
+  Rendered signups/new.html.erb within layouts/application (Duration: 59.6ms | Allocations: 8767)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 85.8ms | Allocations: 12748)
+Completed 200 OK in 126ms (Views: 92.4ms | ActiveRecord: 5.9ms | Allocations: 14838)
+
+
