@@ -1,44 +1,66 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class EventsControllerTest < ActionDispatch::IntegrationTest
-  setup do
+  before do
     @event = events(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get events_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_event_url
     assert_response :success
   end
 
-  test "should create event" do
+  test 'should create event' do
     assert_difference('Event.count') do
-      post events_url, params: { event: { Date: @event.Date, Description: @event.Description, Location: @event.Location, Points: @event.Points, Time: @event.Time, Title: @event.Title } }
+      post events_url,
+           params: {
+             event: {
+               Date: @event.Date,
+               Description: @event.Description,
+               Location: @event.Location,
+               Points: @event.Points,
+               Time: @event.Time,
+               Title: @event.Title
+             }
+           }
     end
 
     assert_redirected_to event_url(Event.last)
   end
 
-  test "should show event" do
+  test 'should show event' do
     get event_url(@event)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_event_url(@event)
     assert_response :success
   end
 
-  test "should update event" do
-    patch event_url(@event), params: { event: { Date: @event.Date, Description: @event.Description, Location: @event.Location, Points: @event.Points, Time: @event.Time, Title: @event.Title } }
+  test 'should update event' do
+    patch event_url(@event),
+          params: {
+            event: {
+              Date: @event.Date,
+              Description: @event.Description,
+              Location: @event.Location,
+              Points: @event.Points,
+              Time: @event.Time,
+              Title: @event.Title
+            }
+          }
     assert_redirected_to event_url(@event)
   end
 
-  test "should destroy event" do
+  test 'should destroy event' do
     assert_difference('Event.count', -1) do
       delete event_url(@event)
     end

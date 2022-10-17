@@ -1,6 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Auth0s", type: :request do
+# rubocop:todo Style/InlineComment
+RSpec.describe('Auth0s', type: :request) do # rubocop:todo RSpec/EmptyExampleGroup, Style/InlineComment
+  # rubocop:enable Style/InlineComment
   # describe "GET /callback" do
   #   it "returns http success" do
   #     get "/auth0/callback"
@@ -21,5 +25,4 @@ RSpec.describe "Auth0s", type: :request do
   #     expect(response).to have_http_status(:success)
   #   end
   # end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ./app/controllers/auth0_controller.rb
 class Auth0Controller < ApplicationController
   def callback
@@ -17,7 +19,7 @@ class Auth0Controller < ApplicationController
 
   def logout
     reset_session
-    redirect_to logout_url
+    redirect_to(logout_url)
   end
 
   private
@@ -32,16 +34,15 @@ class Auth0Controller < ApplicationController
   end
 
   def find_or_create
-      info = request.env.fetch('omniauth.auth').fetch('info')
-      user_email = info.fetch('email')
-      user = Account.find_by(Email: user_email)
+    info = request.env.fetch('omniauth.auth').fetch('info')
+    user_email = info.fetch('email')
+    user = Account.find_by(Email: user_email)
 
-      unless user
-        redirect_to '/profile/create'
-        else
-          redirect_to '/dashboard'
-          return user
-      end
+    if user
+      redirect_to('/dashboard')
+      user
+    else
+      redirect_to('/profile/create')
+    end
   end
-
 end
