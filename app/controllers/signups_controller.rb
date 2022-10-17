@@ -26,9 +26,9 @@ class SignupsController < ApplicationController
     @eventTime = signup_params[:Time] # rubocop:todo Naming/VariableName, Style/InlineComment
     @cutoffTime = Time.zone.now + 43_200 # rubocop:todo Naming/VariableName, Style/InlineComment
     respond_to do |format|
-      if @signup.save && (@cutoffTime && @cutoffTime > @eventTime)
-        format.html { redirect_to(signup_url(@signup), notice: 'Signup was successfully created.') }
-        format.json { render(:show, status: :created, location: @signup) }
+      if (@signup.save)
+        format.html { redirect_to signup_url(@signup), notice: "Signup was successfully created." }
+        format.json { render :show, status: :created, location: @signup }
       else
         format.html { render(:new, status: :unprocessable_entity) }
         format.json { render(json: @signup.errors, status: :unprocessable_entity) }
