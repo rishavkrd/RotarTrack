@@ -34,6 +34,6 @@
   <strong>Type:</strong>
   <%= @event.type_id %>
 </p>
-
+<%= link_to 'Sign Up', new_signup_path(@signups) %> 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

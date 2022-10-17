@@ -1,6 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "events/edit", type: :view do
+# rubocop:todo Style/InlineComment
+RSpec.describe('events/edit', type: :view) do # rubocop:todo RSpec/EmptyExampleGroup, Style/InlineComment
+  # rubocop:enable Style/InlineComment
   # before(:each) do
   #   @event = assign(:event, Event.create!(
   #     Title: "MyText",
