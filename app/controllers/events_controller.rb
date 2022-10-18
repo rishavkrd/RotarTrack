@@ -11,7 +11,12 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show
-    @signups = Signup.where(event_id: @event)
+
+    @signups = Signup.all
+    @user = session[:userinfo]
+    usr_email = @user['email']
+    @account = Account.find_by(Email: usr_email)
+
   end
 
   # GET /events/new
