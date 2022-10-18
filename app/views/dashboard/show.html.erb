@@ -51,7 +51,7 @@
         <td><%= event.Points %></td>
         <td><%= event.type.Value %></td>
         <!-- <td><%= link_to 'Show', event %></td> -->
-
+        <% next if @account.status_id == 2 or @account.status_id == 3 %>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

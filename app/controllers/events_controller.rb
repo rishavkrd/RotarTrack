@@ -10,7 +10,12 @@ class EventsController < ApplicationController
   end
 
   # GET /events/1 or /events/1.json
-  def show; end
+  def show
+    @signups = Signup.all
+    @user = session[:userinfo]
+    usr_email = @user['email']
+    @account = Account.find_by(Email: usr_email)
+  end
 
   # GET /events/new
   def new
