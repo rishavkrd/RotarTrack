@@ -11,7 +11,6 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show
-    @signups = Signup.where(event_id: @event)
   end
 
   # GET /events/new
