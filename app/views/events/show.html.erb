@@ -35,6 +35,7 @@
   <%= @event.type.Value %>
 </p>
 
+
 <h1>Signups</h1>
 
 <table>
@@ -60,6 +61,7 @@
     <% end %>
   </tbody>
 </table>
+
 <%= link_to 'Sign Up', new_signup_path(@signups) %> 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', dashboard_path %>
