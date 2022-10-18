@@ -34,26 +34,7 @@
   <strong>Type:</strong>
   <%= @event.type.Value %>
 </p>
-<table>
-  <thead>
-    <tr>
-      <th>Event</th>
-      <th>Account</th>
-      <th>Pickup</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @signups.each do |signup| %>
-      <tr>
-        <td><%= signup.event_id %></td>
-        <td><%= signup.account_id %></td>
-        <td><%= signup.Pickup %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 <%= link_to 'Sign Up', new_signup_path(@signups) %> 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', dashboard_path %>
