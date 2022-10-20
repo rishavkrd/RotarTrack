@@ -1,29 +1,38 @@
 # frozen_string_literal: true
 
-Status.create!([
-  { Value: 'officer' },
-  { Value: 'Member' },
-  { Value: 'Inactive' }
-]
-              )
+# Create default roles
+roles = ['Admin', 'Officer', 'Member', 'Inactive']
+existing_roles = Status.all.map { |r| r.Value }
+
+roles.each do |role|
+  unless existing_roles.include?(role)
+    Status.create!(Value: role)
+  end
+end
+
+# Create accounts
 Account.create!([
-  { UIN: 923_874_129, FirstName: 'Joe', LastName: 'Smith', PhoneNumber: 19_283_712, Email: 'joe@smith.com', status_id: 2 },
-  { UIN: 344_523_451, FirstName: 'Rishav', LastName: 'Dokania', PhoneNumber: 129_883_712, Email: 'rishavkrd11@tamu.edu', status_id: 1 },
-  { UIN: 812_658_276, FirstName: 'Sam', LastName: 'McDonalds', PhoneNumber: 12_398_127, Email: 'sam@tamu.edu', status_id: 2 },
-  { UIN: 9_818_273, FirstName: 'John', LastName: 'Goodman', PhoneNumber: 1_928_371, Email: 'john@tamu.edu', status_id: 2 },
-  { UIN: 1_231_412, FirstName: 'Henry', LastName: 'Ford', PhoneNumber: 198_263_129, Email: 'henry@ford.com', status_id: 2 },
-  { UIN: 431_414_124, FirstName: 'Tom', LastName: 'Hanks', PhoneNumber: 121_421_124, Email: 'tom@tu.edu', status_id: 2 },
-  { UIN: 927_003_214, FirstName: 'Ryan', LastName: 'Crowell', PhoneNumber: 121_421_124, Email: 'rdcrowell13@tamu.edu', status_id: 2}
+  { UIN: 923_874_129, FirstName: 'Joe', LastName: 'Smith', PhoneNumber: 19_283_712, Email: 'joe@smith.com', status_id: 2 , uuid: 'TEST_ACCOUNT_01' },
+  { UIN: 344_523_451, FirstName: 'Rishav', LastName: 'Dokania', PhoneNumber: 129_883_712, Email: 'rishavkrd11@tamu.edu', status_id: 1, uuid: 'TEST_ACCOUNT_02' },
+  { UIN: 812_658_276, FirstName: 'Sam', LastName: 'McDonalds', PhoneNumber: 12_398_127, Email: 'sam@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_03' },
+  { UIN: 9_818_273, FirstName: 'John', LastName: 'Goodman', PhoneNumber: 1_928_371, Email: 'john@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_04' },
+  { UIN: 1_231_412, FirstName: 'Henry', LastName: 'Ford', PhoneNumber: 198_263_129, Email: 'henry@ford.com', status_id: 2, uuid:'TEST_ACCOUNT_05' },
+  { UIN: 431_414_124, FirstName: 'Tom', LastName: 'Hanks', PhoneNumber: 121_421_124, Email: 'tom@tu.edu', status_id: 2, uuid:'TEST_ACCOUNT_06' },
+  { UIN: 927_003_214, FirstName: 'Ryan', LastName: 'Crowell', PhoneNumber: 121_421_124, Email: 'rdcrowell13@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_07'}
 ]
                )
-Type.create!([
-  { Value: 'Meeting' },
-  { Value: 'Event' },
-  { Value: 'Social' },
-  { Value: 'Other' },
-  { Value: 'Inactive' }
-]
-            )
+
+# Create default meeting types
+types = ['Meeting', 'Event', 'Social', 'Other', 'Inactive']
+existing_types = Type.all.map { |r| r.Value }
+
+types.each do |type|
+  unless existing_types.include?(type)
+    Type.create!(Value: type)
+  end
+end         
+
+# Create default event
 Event.create!([
   {
     Title: 'Meetup with team',
@@ -34,5 +43,4 @@ Event.create!([
     Points: 1,
     type_id: 1
   }
-]
-             )
+])

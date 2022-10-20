@@ -5,10 +5,12 @@ class ProfileController < ApplicationController
     redirect_to('/') if session[:userinfo].blank?
     @user = session[:userinfo]
     @account = Account.new
+    @user_uid = session[:useruuid]
   end
 
   def new
-    @account = Account.new(:UIN => params[:account][:UIN], :FirstName => params[:account][:FirstName], :LastName => params[:account][:LastName], :PhoneNumber => params[:account][:PhoneNumber], :Email => get_user_email, :status_id => 2)
+    member_id = Status.where(Value: 'Member').pick(:id)
+    @account = Account.new(:UIN => params[:account][:UIN], :FirstName => params[:account][:FirstName], :LastName => params[:account][:LastName], :PhoneNumber => params[:account][:PhoneNumber], :Email => get_user_email, :status_id => member_id, :uuid => session[:useruuid])
     if @account.save!
         flash[:notice] = "You've completed your account."
         redirect_to "/dashboard"

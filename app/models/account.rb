@@ -2,5 +2,5 @@
 
 class Account < ApplicationRecord
   belongs_to :status
-  validates :UIN, :FirstName, :LastName, :PhoneNumber, :Email, :status_id, presence: true
+  validates :UIN, :FirstName, :LastName, :PhoneNumber, :Email, :status_id, :uuid, presence: true
 end

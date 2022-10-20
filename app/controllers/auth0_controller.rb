@@ -7,7 +7,9 @@ class Auth0Controller < ApplicationController
     # In this code, you will pull the raw_info supplied from the id_token and assign it to the session.
     # Refer to https://github.com/auth0/omniauth-auth0#authentication-hash for complete information on 'omniauth.auth' contents.
     auth_info = request.env['omniauth.auth']
+    puts auth_info[:uid]
     session[:userinfo] = auth_info['extra']['raw_info']
+    session[:useruuid] = auth_info[:uid]
 
     find_or_create
   end
@@ -34,9 +36,8 @@ class Auth0Controller < ApplicationController
   end
 
   def find_or_create
-    info = request.env.fetch('omniauth.auth').fetch('info')
-    user_email = info.fetch('email')
-    user = Account.find_by(Email: user_email)
+    user_uid = session[:useruuid]
+    user = Account.find_by(uuid: user_uid)
 
     if user
       redirect_to('/dashboard')
