@@ -43,7 +43,7 @@
 
   <div class="field">
     <%= form.label :type_id %>
-    <%= form.text_field :type_id %>
+    <%= form.collection_select :type_id, Type.all, :id, :Value %>
   </div>
 
   <div class="actions">
