@@ -9,13 +9,20 @@ class AccountsController < ApplicationController
     @accounts = Account.all
     @current_user = @accounts.find_by Email: get_user_email 
 
+
     unless @current_user.status_id == 1
       render 'invalid'
     end
   end
 
   # GET /accounts/1 or /accounts/1.json
-  def show; end
+  def show
+
+    @points = Point.all
+    @mypoints=@points.where(account_id: @account.id)
+    @total_points = @mypoints.all.sum (:Points)
+
+  end
 
   # GET /accounts/new
   def new
