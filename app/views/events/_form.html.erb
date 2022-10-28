@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label :Time %>
-    <%= form.time_select :Time %>
+    <%= form.time_select :Time, {minute_step: 15, ampm: true} %>
   </div>
 
   <div class="field">

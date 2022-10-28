@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :event_id %>
-    <%= form.text_field :event_id %>
+    <%= form.collection_select :event_id, Event.all, :id, :Title %>
   </div>
 
   <div class="actions">

@@ -23,7 +23,7 @@
         <td><%= event.Title %></td>
         <td><%= event.Description %></td>
         <td><%= event.Date %></td>
-        <td><%= event.Time %></td>
+        <td><%= event.Time.strftime("%I:%M %p") %></td>
         <td><%= event.Location %></td>
         <td><%= event.Points %></td>
         <td><%= event.type.Value %></td>

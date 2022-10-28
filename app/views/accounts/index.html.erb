@@ -29,6 +29,7 @@
         <td><%= link_to 'Show', account %></td>
         <td><%= link_to 'Edit', edit_account_path(account) %></td>
         <td><%= link_to 'Archive', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Add Points', { :controller => "points", :action => "new" } %></td>
       </tr>
     <% end %>
   </tbody>
