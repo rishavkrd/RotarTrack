@@ -24,6 +24,7 @@ class PointsController < ApplicationController
   # POST /points or /points.json
   def create
     @point = Point.new(point_params)
+    
 
     respond_to do |format|
       if @point.save
