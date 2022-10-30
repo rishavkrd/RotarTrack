@@ -15,6 +15,7 @@ class PointsController < ApplicationController
   # GET /points/new
   def new
     @point = Point.new
+    @account = Account.find(params[:account_id])
   end
 
   # GET /points/1/edit

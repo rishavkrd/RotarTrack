@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :events
   resources :authentications
   resources :accounts
+  resources :accounts, shallow: true do
+    resources :points
+  end
   resources :statuses
   get '/dashboard' => 'dashboard#show'
   get '/dashboard/help' => 'dashboard#help'
