@@ -23,9 +23,13 @@ class SignupsController < ApplicationController
   # POST /signups or /signups.json
   def create
     @signup = Signup.new(signup_params)
-    @eventTime = signup_params[:Time] # rubocop:todo Naming/VariableName, Style/InlineComment
-    @cutoffTime = Time.zone.now + 43_200 # rubocop:todo Naming/VariableName, Style/InlineComment
+    eventDateTime = DateTime.new(@signup.event.Date.year, @signup.event.Date.month, @signup.event.Date.day, @signup.event.Time.hour, @signup.event.Time.min, @signup.event.Time.sec)
+    cutoffDateTime = eventDateTime - (6/24.0)
     respond_to do |format|
+      if (DateTime.now.in_time_zone("Central Time (US & Canada)") > cutoffDateTime)
+        format.html { render(:new, notice: "Cannot signup within 6 hours of event start time.") }
+        format.json { render(json: @signup.errors, status: :unprocessable_entity) }
+      end
       if (@signup.save)
         format.html { redirect_to signup_url(@signup), notice: "Signup was successfully created." }
         format.json { render :show, status: :created, location: @signup }
@@ -38,7 +42,13 @@ class SignupsController < ApplicationController
 
   # PATCH/PUT /signups/1 or /signups/1.json
   def update
+    eventDateTime = DateTime.new(@signup.event.Date.year, @signup.event.Date.month, @signup.event.Date.day, @signup.event.Time.hour, @signup.event.Time.min, @signup.event.Time.sec)
+    cutoffDateTime = eventDateTime - (6/24.0)
     respond_to do |format|
+      if (DateTime.now.in_time_zone("Central Time (US & Canada)") > cutoffDateTime)
+        format.html { render(:new, notice: "Cannot signup within 6 hours of event start time.") }
+        format.json { render(json: @signup.errors, status: :unprocessable_entity) }
+      end
       if @signup.update(signup_params)
         format.html { redirect_to(signup_url(@signup), notice: 'Signup was successfully updated.') }
         format.json { render(:show, status: :ok, location: @signup) }
