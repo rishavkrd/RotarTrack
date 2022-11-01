@@ -11,12 +11,15 @@ class ProfileController < ApplicationController
   def new
     member_id = Status.where(Value: 'Member').pick(:id)
     @account = Account.new(:UIN => params[:account][:UIN], :FirstName => params[:account][:FirstName], :LastName => params[:account][:LastName], :PhoneNumber => params[:account][:PhoneNumber], :Email => get_user_email, :status_id => member_id, :uuid => session[:useruuid])
-    if @account.save!
-        flash[:notice] = "You've completed your account."
-        redirect_to "/dashboard"
-    else
-        flash.now[:notice] = "Failed to create account"
-        render :create
+    respond_to do |format|
+      if @account.save
+        format.html { redirect_to("/dashboard", notice: 'Account was successfully created.') }
+        format.json { render(:show, status: :created, location: @account) }
+      else
+        format.html { render(:create, status: :unprocessable_entity) }
+        format.json { render(json: @account.errors, status: :unprocessable_entity) }
+      end
     end
   end
+
 end
