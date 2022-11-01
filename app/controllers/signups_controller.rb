@@ -25,22 +25,16 @@ class SignupsController < ApplicationController
     @signup = Signup.new(signup_params)
     eventDateTime = DateTime.new(@signup.event.Date.year, @signup.event.Date.month, @signup.event.Date.day, @signup.event.Time.hour, @signup.event.Time.min, @signup.event.Time.sec)
     cutoffDateTime = eventDateTime - (6/24.0)
-    p eventDateTime
-    p cutoffDateTime
-    p DateTime.now.in_time_zone("Central Time (US & Canada)")
     signupTime = DateTime.now.in_time_zone("Central Time (US & Canada)")
     convertedTime = DateTime.new(signupTime.year, signupTime.month, signupTime.day, signupTime.hour, signupTime.min, signupTime.sec)
-    p convertedTime
     if (convertedTime > cutoffDateTime)
       respond_to do |format|
-        p "current time is over cutoff"
         format.html { redirect_to({ :action => "new"}, notice: "Cannot sign up for event within 6 hours of start time") }
         format.json { render :new, status: :unprocessable_entity, location: @signup }
       end
     else
       respond_to do |format|
         if (@signup.save)
-          p "signup created"
           format.html { redirect_to signup_url(@signup), notice: "Signup was successfully created." }
           format.json { render :show, status: :created, location: @signup }
         else
@@ -55,12 +49,8 @@ class SignupsController < ApplicationController
   def update
     eventDateTime = DateTime.new(@signup.event.Date.year, @signup.event.Date.month, @signup.event.Date.day, @signup.event.Time.hour, @signup.event.Time.min, @signup.event.Time.sec)
     cutoffDateTime = eventDateTime - (6/24.0)
-    p eventDateTime
-    p cutoffDateTime
-    p DateTime.now.in_time_zone("Central Time (US & Canada)")
     signupTime = DateTime.now.in_time_zone("Central Time (US & Canada)")
     convertedTime = DateTime.new(signupTime.year, signupTime.month, signupTime.day, signupTime.hour, signupTime.min, signupTime.sec)
-    p convertedTime
     if (convertedTime > cutoffDateTime)
       respond_to do |format|
         format.html { redirect_to({ :action => "edit"}, notice: "Cannot sign up for event within 6 hours of start time") }
@@ -69,7 +59,6 @@ class SignupsController < ApplicationController
     else
       respond_to do |format|
         if (@signup.save)
-          p "signup created"
           format.html { redirect_to signup_url(@signup), notice: "Signup was successfully created." }
           format.json { render :show, status: :created, location: @signup }
         else
