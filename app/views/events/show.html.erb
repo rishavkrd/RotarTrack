@@ -56,7 +56,7 @@
         <td><%= signup.account.FirstName.capitalize() + " " + signup.account.LastName.capitalize() %></td>
         <td><%= signup.account.Email %></td>
         <td><%= signup.account.PhoneNumber %></td>
-        <td><%= signup.Pickup %></td>
+        <td><%= convertBool(signup.Pickup) %></td>
         <% next if signup.account_id != @account.id %>
         <td><%= link_to 'Show', signup %></td>
         <td><%= link_to 'Edit', edit_signup_path(signup) %></td>
