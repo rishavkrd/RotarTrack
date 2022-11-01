@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+  
   <div class="field">
     <%= form.label :event_id %>
     <%= form.collection_select :event_id, Event.all, :id, :Title %>
