@@ -15,7 +15,13 @@ class AccountsController < ApplicationController
   end
 
   # GET /accounts/1 or /accounts/1.json
-  def show; end
+  def show
+
+    @points = Point.all
+    @mypoints=@points.where(account_id: @account.id)
+    @total_points = @mypoints.all.sum (:Points)
+
+  end
 
   # GET /accounts/new
   def new
