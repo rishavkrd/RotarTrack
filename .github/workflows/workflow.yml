@@ -43,7 +43,7 @@ jobs:
         run: bundler exec rspec .
 
       - name: Run rubocop
-        run: bundler exec rubocop --force-exclusion vendor/*/** --out rubocop.txt
+        run: bundler exec rubocop --out rubocop.txt
       - name: Upload coverage results
         uses: actions/upload-artifact@master
         if: always()
