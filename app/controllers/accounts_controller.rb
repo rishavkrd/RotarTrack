@@ -7,21 +7,16 @@ class AccountsController < ApplicationController
   # GET /accounts or /accounts.json
   def index
     @accounts = Account.all
-    @current_user = @accounts.find_by Email: get_user_email 
+    @current_user = @accounts.find_by(Email: get_user_email)
 
-
-    unless @current_user.status_id == 1
-      render 'invalid'
-    end
+    render('invalid') unless @current_user.status_id == 1
   end
 
   # GET /accounts/1 or /accounts/1.json
   def show
-
     @points = Point.all
-    @mypoints=@points.where(account_id: @account.id)
-    @total_points = @mypoints.all.sum (:Points)
-
+    @mypoints = @points.where(account_id: @account.id)
+    @total_points = @mypoints.all.sum(:Points)
   end
 
   # GET /accounts/new
@@ -63,7 +58,7 @@ class AccountsController < ApplicationController
   # DELETE /accounts/1 or /accounts/1.json
   def destroy
     # @account.destroy!
-    @account.update(:status_id => 3)
+    @account.update!(status_id: 3)
     respond_to do |format|
       format.html { redirect_to(accounts_url, notice: 'Account was successfully archived.') }
       format.json { head(:no_content) }

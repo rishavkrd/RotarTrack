@@ -11,12 +11,10 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show
-
     @signups = Signup.all
     @user = session[:userinfo]
     usr_email = @user['email']
     @account = Account.find_by(Email: usr_email)
-
   end
 
   # GET /events/new
@@ -58,7 +56,7 @@ class EventsController < ApplicationController
   # DELETE /events/1 or /events/1.json
   def destroy
     # @event.destroy!
-    @event.update(:type_id => 5)
+    @event.update!(type_id: 5)
 
     respond_to do |format|
       format.html { redirect_to(dashboard_path, notice: 'Event was successfully made archived.') }
