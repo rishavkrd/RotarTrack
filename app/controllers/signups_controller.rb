@@ -23,28 +23,48 @@ class SignupsController < ApplicationController
   # POST /signups or /signups.json
   def create
     @signup = Signup.new(signup_params)
-    @eventTime = signup_params[:Time] # rubocop:todo Naming/VariableName, Style/InlineComment
-    @cutoffTime = Time.zone.now + 43_200 # rubocop:todo Naming/VariableName, Style/InlineComment
-    respond_to do |format|
-      if (@signup.save)
-        format.html { redirect_to signup_url(@signup), notice: "Signup was successfully created." }
-        format.json { render :show, status: :created, location: @signup }
-      else
-        format.html { render(:new, status: :unprocessable_entity) }
-        format.json { render(json: @signup.errors, status: :unprocessable_entity) }
+    eventDateTime = DateTime.new(@signup.event.Date.year, @signup.event.Date.month, @signup.event.Date.day, @signup.event.Time.hour, @signup.event.Time.min, @signup.event.Time.sec)
+    cutoffDateTime = eventDateTime - (6/24.0)
+    signupTime = DateTime.now.in_time_zone("Central Time (US & Canada)")
+    convertedTime = DateTime.new(signupTime.year, signupTime.month, signupTime.day, signupTime.hour, signupTime.min, signupTime.sec)
+    if (convertedTime > cutoffDateTime)
+      respond_to do |format|
+        format.html { redirect_to({ :action => "new"}, notice: "Cannot sign up for event within 6 hours of start time") }
+        format.json { render :new, status: :unprocessable_entity, location: @signup }
+      end
+    else
+      respond_to do |format|
+        if (@signup.save)
+          format.html { redirect_to signup_url(@signup), notice: "Signup was successfully created." }
+          format.json { render :show, status: :created, location: @signup }
+        else
+          format.html { render(:new, status: :unprocessable_entity) }
+          format.json { render(json: @signup.errors, status: :unprocessable_entity) }
+        end
       end
     end
   end
 
   # PATCH/PUT /signups/1 or /signups/1.json
   def update
-    respond_to do |format|
-      if @signup.update(signup_params)
-        format.html { redirect_to(signup_url(@signup), notice: 'Signup was successfully updated.') }
-        format.json { render(:show, status: :ok, location: @signup) }
-      else
-        format.html { render(:edit, status: :unprocessable_entity) }
-        format.json { render(json: @signup.errors, status: :unprocessable_entity) }
+    eventDateTime = DateTime.new(@signup.event.Date.year, @signup.event.Date.month, @signup.event.Date.day, @signup.event.Time.hour, @signup.event.Time.min, @signup.event.Time.sec)
+    cutoffDateTime = eventDateTime - (6/24.0)
+    signupTime = DateTime.now.in_time_zone("Central Time (US & Canada)")
+    convertedTime = DateTime.new(signupTime.year, signupTime.month, signupTime.day, signupTime.hour, signupTime.min, signupTime.sec)
+    if (convertedTime > cutoffDateTime)
+      respond_to do |format|
+        format.html { redirect_to({ :action => "edit"}, notice: "Cannot sign up for event within 6 hours of start time") }
+        format.json { render :edit, status: :unprocessable_entity, location: @signup }
+      end
+    else
+      respond_to do |format|
+        if (@signup.save)
+          format.html { redirect_to signup_url(@signup), notice: "Signup was successfully created." }
+          format.json { render :show, status: :created, location: @signup }
+        else
+          format.html { render(:edit, status: :unprocessable_entity) }
+          format.json { render(json: @signup.errors, status: :unprocessable_entity) }
+        end
       end
     end
   end

@@ -7,10 +7,9 @@
 <table>
   <thead>
     <tr>
-      <th>Uin</th>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Phonenumber</th>
+      <th>UIN</th>
+      <th>Name</th>
+      <th>Phone Number</th>
       <th>Email</th>
       <th>Status</th>
       <th colspan="3"></th>
@@ -21,14 +20,14 @@
     <% @accounts.each do |account| %>
       <tr>
         <td><%= account.UIN %></td>
-        <td><%= account.FirstName %></td>
-        <td><%= account.LastName %></td>
+        <td><%= account.FirstName%> <%= account.LastName%></td>
         <td><%= account.PhoneNumber %></td>
         <td><%= account.Email %></td>
         <td><%= account.status.Value.capitalize() %></td>
         <td><%= link_to 'Show', account %></td>
         <td><%= link_to 'Edit', edit_account_path(account) %></td>
         <td><%= link_to 'Archive', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Add Points', new_point_path(account_id: account.id) %></td>
       </tr>
     <% end %>
   </tbody>

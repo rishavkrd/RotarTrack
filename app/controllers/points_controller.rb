@@ -15,6 +15,7 @@ class PointsController < ApplicationController
   # GET /points/new
   def new
     @point = Point.new
+    @account = Account.find(params[:account_id])
   end
 
   # GET /points/1/edit
@@ -23,6 +24,7 @@ class PointsController < ApplicationController
   # POST /points or /points.json
   def create
     @point = Point.new(point_params)
+    
 
     respond_to do |format|
       if @point.save
