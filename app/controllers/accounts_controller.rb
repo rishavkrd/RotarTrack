@@ -7,10 +7,9 @@ class AccountsController < ApplicationController
   # GET /accounts or /accounts.json
   def index
     @accounts = Account.all
-    @current_user = @accounts.find_by Email: get_user_email 
+    @current_user = @accounts.find_by uuid: session[:useruuid]
 
-
-    unless @current_user.status_id == 1
+    unless @current_user.status_id == 2
       render 'invalid'
     end
   end
@@ -63,7 +62,7 @@ class AccountsController < ApplicationController
   # DELETE /accounts/1 or /accounts/1.json
   def destroy
     # @account.destroy!
-    @account.update(:status_id => 3)
+    @account.update(:status_id => 4)
     respond_to do |format|
       format.html { redirect_to(accounts_url, notice: 'Account was successfully archived.') }
       format.json { head(:no_content) }
@@ -79,6 +78,6 @@ class AccountsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def account_params
-    params.require(:account).permit(:UIN, :FirstName, :LastName, :PhoneNumber, :Email, :status_id)
+    params.require(:account).permit(:UIN, :FirstName, :LastName, :PhoneNumber, :Email, :status_id, :uuid)
   end
 end

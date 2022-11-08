@@ -5,16 +5,21 @@ class ProfileController < ApplicationController
     redirect_to('/') if session[:userinfo].blank?
     @user = session[:userinfo]
     @account = Account.new
+    @user_uid = session[:useruuid]
   end
 
   def new
-    @account = Account.new(:UIN => params[:account][:UIN], :FirstName => params[:account][:FirstName], :LastName => params[:account][:LastName], :PhoneNumber => params[:account][:PhoneNumber], :Email => get_user_email, :status_id => 2)
-    if @account.save!
-        flash[:notice] = "You've completed your account."
-        redirect_to "/dashboard"
-    else
-        flash.now[:notice] = "Failed to create account"
-        render :create
+    member_id = Status.where(Value: 'Member').pick(:id)
+    @account = Account.new(:UIN => params[:account][:UIN], :FirstName => params[:account][:FirstName], :LastName => params[:account][:LastName], :PhoneNumber => params[:account][:PhoneNumber], :Email => get_user_email, :status_id => member_id, :uuid => session[:useruuid])
+    respond_to do |format|
+      if @account.save
+        format.html { redirect_to("/dashboard", notice: 'Account was successfully created.') }
+        format.json { render(:show, status: :created, location: @account) }
+      else
+        format.html { render(:create, status: :unprocessable_entity) }
+        format.json { render(json: @account.errors, status: :unprocessable_entity) }
+      end
     end
   end
+
 end

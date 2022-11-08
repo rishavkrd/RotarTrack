@@ -4,6 +4,7 @@ class DashboardController < ApplicationController
   include Secured
   def show
     @user = session[:userinfo]
+    @uid = session[:useruuid]
     @events = Event.all
     usr_email = @user['email']
     @account = Account.find_by(Email: usr_email)
