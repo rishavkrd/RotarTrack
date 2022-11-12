@@ -1,21 +1,21 @@
-<div class="flex-none md:flex flex-row w-full h-screen">
-  <div class="bg-maroon-800 w-3/5"></div>
-  <div class="bg-slate-50 w-2/5">
-    <div class="p-14">
+<div class="flex-none md:flex flex-row align-middle w-full h-screen">
+  <div class="hidden md:flex bg-maroon-800 w-3/5 h-full">
+    <%= image_tag "rotary_street_cleaning.jpeg", class: 'w-full h-full object-cover object-center' %>
+  </div>
+  <div class="h-full bg-slate-50 md:w-2/5 flex flex-col place-items-center">
+    <div class="px-14 mt-32">
       <%= image_tag "rotary_logo.png", class: 'w-32 opacity-50 mx-auto' %>
       <div class="my-8">
         <h1 class="text-center text-2xl font-bold">Aggie Rotaract</h1>
         <h2 class="text-center font-medium text-slate-500 transform-up mb-24 uppercase">RotarTrack System</h2>
         <div class="flex flex-col items-center">
           <% if !session[:userinfo].present? %>
-            <%= button_to 'Continue to Login', '/auth/auth0', method: :post, class: 'btn-primary px-14', id: 'qsLoginBtn'%>
+            <%= button_to 'Continue to Login', '/auth/auth0', method: :post, class: 'btn btn-primary px-14', id: 'qsLoginBtn'%>
           <% else %>
-            <%= button_to 'Logout', 'auth/logout', method: :get, class: 'btn-primary px-14' %>
+            <%= button_to 'Logout', 'auth/logout', method: :get, class: 'btn btn-primary px-14' %>
           <% end %>
-        </div>
-        <div>
         </div>
       </div>
     </div>
-    <div>
-    </div>
+  </div>
+</div>
