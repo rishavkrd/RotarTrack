@@ -29947,3 +29947,24 @@ Completed 200 OK in 33636ms (Views: 33627.0ms | ActiveRecord: 0.0ms | Allocation
 Completed 200 OK in 29928ms (Views: 29922.2ms | ActiveRecord: 0.0ms | Allocations: 18750)
 
 
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-13 21:03:17 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (7.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdomalley@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (4.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6328e837ac12bb168612e905"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (5.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:90
+  [1m[36mType Load (5.4ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:93
+  [1m[36mCACHE Type Load (0.0ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:93
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 95.1ms | Allocations: 3339)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 262.5ms | Allocations: 12139)
+Completed 200 OK in 319ms (Views: 256.8ms | ActiveRecord: 23.4ms | Allocations: 13960)
+
+

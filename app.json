@@ -1,8 +1,8 @@
 {
     "stack": "heroku-20",
-    "buildpacks": [
-        {
-            "url": "heroku/nodejs"
+    "env" : {
+        "NODE_OPTIONS":{
+            "value":"--openssl-legacy-provider"
         }
-    ]
+    }
 }
