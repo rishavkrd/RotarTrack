@@ -29826,3 +29826,72 @@ Processing by DashboardController#show as HTML
 Completed 200 OK in 578ms (Views: 243.1ms | ActiveRecord: 134.3ms | Allocations: 18185)
 
 
+Started GET "/" for 172.17.0.1 at 2022-11-13 20:58:45 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (6.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 3814.5ms | Allocations: 33426)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /csce431/RotarTrack/public/packs
+[Webpacker] Hash: 0fe7dcd9d8f9ebcf52de
+Version: webpack 4.46.0
+Time: 9905ms
+Built at: 11/13/2022 8:59:13 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-2e212f7c8f867558ac6e.js    121 KiB  application  [emitted] [immutable]  application
+js/application-2e212f7c8f867558ac6e.js.map    136 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-2e212f7c8f867558ac6e.js js/application-2e212f7c8f867558ac6e.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 492 bytes {application} [built]
+    + 3 hidden modules
+
+  Rendered layout layouts/application.html.erb (Duration: 28080.5ms | Allocations: 48499)
+Completed 200 OK in 28191ms (Views: 28107.9ms | ActiveRecord: 0.0ms | Allocations: 52375)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-13 20:59:50 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (10.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdomalley@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (3.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6328e837ac12bb168612e905"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (7.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:90
+  [1m[36mType Load (11.8ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:93
+  [1m[36mCACHE Type Load (0.1ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:93
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 265.9ms | Allocations: 14758)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 476.5ms | Allocations: 23729)
+Completed 200 OK in 771ms (Views: 424.8ms | ActiveRecord: 162.1ms | Allocations: 35420)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-13 20:59:52 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (10.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdomalley@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (4.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6328e837ac12bb168612e905"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (10.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:90
+  [1m[36mType Load (15.7ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:93
+  [1m[36mCACHE Type Load (0.4ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:93
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 179.5ms | Allocations: 3383)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 929.6ms | Allocations: 12174)
+Completed 200 OK in 1036ms (Views: 958.2ms | ActiveRecord: 41.6ms | Allocations: 14168)
+
+
