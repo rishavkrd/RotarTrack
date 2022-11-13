@@ -6,6 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
+/log
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -78,5 +79,14 @@ yarn-debug.log*
 yarn-debug.log*
 .yarn-integrity
 
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
 /app/assets/builds/*
 !/app/assets/builds/.keep
+

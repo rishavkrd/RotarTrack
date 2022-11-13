@@ -7,7 +7,7 @@ class DashboardController < ApplicationController
     @uid = session[:useruuid]
     @events = Event.all
     usr_email = @user['email']
-    @account = Account.find_by(Email: usr_email)
+    @account = Account.find_by uuid: session[:useruuid]
     
     # respond_to do |format|
     # if @account==nil
