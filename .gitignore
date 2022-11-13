@@ -78,7 +78,7 @@ yarn-debug.log*
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-
+!/node_modules/daisyui/
 
 /public/packs
 /public/packs-test
