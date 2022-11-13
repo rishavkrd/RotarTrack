@@ -30374,3 +30374,246 @@ Processing by HomeController#show as HTML
 Completed 200 OK in 165ms (Views: 161.2ms | ActiveRecord: 0.0ms | Allocations: 10630)
 
 
+Started GET "/" for 172.17.0.1 at 2022-11-13 21:40:46 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 40.2ms | Allocations: 1641)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /csce431/RotarTrack/public/packs
+[Webpacker] Hash: 804a8059a304061a3e74
+Version: webpack 4.46.0
+Time: 7233ms
+Built at: 11/13/2022 9:41:05 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-271cf8931bb708d2d8bb.js    121 KiB  application  [emitted] [immutable]  application
+js/application-271cf8931bb708d2d8bb.js.map    133 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-271cf8931bb708d2d8bb.js js/application-271cf8931bb708d2d8bb.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 493 bytes {application} [built]
+    + 3 hidden modules
+
+  Rendered layout layouts/application.html.erb (Duration: 19246.5ms | Allocations: 11960)
+Completed 200 OK in 19293ms (Views: 19274.8ms | ActiveRecord: 0.0ms | Allocations: 13337)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-13 21:41:49 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (5.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdomalley@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (5.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6328e837ac12bb168612e905"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (5.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:70
+  [1m[36mType Load (6.3ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  [1m[36mCACHE Type Load (0.0ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 147.4ms | Allocations: 16452)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 301.8ms | Allocations: 25361)
+Completed 200 OK in 374ms (Views: 308.0ms | ActiveRecord: 23.4ms | Allocations: 27957)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-13 21:41:50 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (5.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdomalley@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (3.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6328e837ac12bb168612e905"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (5.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:70
+  [1m[36mType Load (5.6ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  [1m[36mCACHE Type Load (0.0ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 113.8ms | Allocations: 15625)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 281.7ms | Allocations: 24445)
+Completed 200 OK in 314ms (Views: 273.8ms | ActiveRecord: 20.3ms | Allocations: 26396)
+
+
+Started GET "/" for 172.17.0.1 at 2022-11-13 21:42:42 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 30.4ms | Allocations: 1230)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 190.8ms | Allocations: 10023)
+Completed 200 OK in 204ms (Views: 198.5ms | ActiveRecord: 0.0ms | Allocations: 10492)
+
+
+Started GET "/auth/logout" for 172.17.0.1 at 2022-11-13 21:42:44 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Auth0Controller#logout as HTML
+Redirected to https://rotartrack.us.auth0.com/v2/logout?client_id=giksZR9ko8z8SrwI6Y8RolkR0SaySMJO&returnTo=http%3A%2F%2Flocalhost%3A3000%2F
+Completed 302 Found in 11ms (ActiveRecord: 0.0ms | Allocations: 578)
+
+
+Started GET "/" for 172.17.0.1 at 2022-11-13 21:42:45 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 26.2ms | Allocations: 1483)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 158.8ms | Allocations: 10304)
+Completed 200 OK in 168ms (Views: 164.0ms | ActiveRecord: 0.0ms | Allocations: 10783)
+
+
+Started GET "/" for 172.17.0.1 at 2022-11-13 21:43:16 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 57.4ms | Allocations: 1780)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 279.4ms | Allocations: 10868)
+Completed 200 OK in 325ms (Views: 304.0ms | ActiveRecord: 0.0ms | Allocations: 12237)
+
+
+Started POST "/auth/auth0" for 172.17.0.1 at 2022-11-13 21:43:18 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/" for 172.17.0.1 at 2022-11-13 21:43:25 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 41.0ms | Allocations: 1773)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 260.6ms | Allocations: 10931)
+Completed 200 OK in 306ms (Views: 296.3ms | ActiveRecord: 0.0ms | Allocations: 12296)
+
+
+Started GET "/" for 172.17.0.1 at 2022-11-13 21:43:27 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 26.8ms | Allocations: 1340)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 182.6ms | Allocations: 10122)
+Completed 200 OK in 197ms (Views: 187.6ms | ActiveRecord: 0.0ms | Allocations: 10625)
+
+
+Started POST "/auth/auth0" for 172.17.0.1 at 2022-11-13 21:43:29 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/" for 172.17.0.1 at 2022-11-13 21:43:30 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 37.7ms | Allocations: 1340)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 209.5ms | Allocations: 10122)
+Completed 200 OK in 224ms (Views: 214.9ms | ActiveRecord: 0.0ms | Allocations: 10577)
+
+
+Started GET "/" for 172.17.0.1 at 2022-11-13 21:43:31 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 20.8ms | Allocations: 1340)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 153.0ms | Allocations: 10121)
+Completed 200 OK in 161ms (Views: 158.4ms | ActiveRecord: 0.0ms | Allocations: 10576)
+
+
+Started GET "/" for 172.17.0.1 at 2022-11-13 21:43:32 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 29.6ms | Allocations: 1340)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 180.9ms | Allocations: 10122)
+Completed 200 OK in 190ms (Views: 185.5ms | ActiveRecord: 0.0ms | Allocations: 10577)
+
+
+Started GET "/" for 172.17.0.1 at 2022-11-13 21:43:38 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 31.0ms | Allocations: 1340)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 174.3ms | Allocations: 10121)
+Completed 200 OK in 190ms (Views: 184.0ms | ActiveRecord: 0.0ms | Allocations: 10576)
+
+
+Started GET "/" for 172.17.0.1 at 2022-11-13 21:43:39 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 42.4ms | Allocations: 1340)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 180.3ms | Allocations: 10121)
+Completed 200 OK in 187ms (Views: 184.7ms | ActiveRecord: 0.0ms | Allocations: 10576)
+
+
+Started POST "/auth/auth0" for 172.17.0.1 at 2022-11-13 21:43:40 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/auth/auth0/callback?code=rTT1OYvI5KCcEUMhfAuvT8csW6c5wFNDfB0joh28lZsGK&state=beba9d3480195fd03bde06272fdecf73adf46aa3bcb83ed8" for 172.17.0.1 at 2022-11-13 21:43:45 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Auth0Controller#callback as HTML
+  Parameters: {"code"=>"rTT1OYvI5KCcEUMhfAuvT8csW6c5wFNDfB0joh28lZsGK", "state"=>"beba9d3480195fd03bde06272fdecf73adf46aa3bcb83ed8"}
+  [1m[36mAccount Load (4.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6328e837ac12bb168612e905"], ["LIMIT", 1]]
+  ↳ app/controllers/auth0_controller.rb:40:in `find_or_create'
+Redirected to http://localhost:3000/dashboard
+Completed 302 Found in 31ms (ActiveRecord: 4.8ms | Allocations: 1003)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-13 21:43:46 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (4.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdomalley@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (3.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6328e837ac12bb168612e905"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (5.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:70
+  [1m[36mType Load (4.9ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  [1m[36mCACHE Type Load (0.1ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 138.0ms | Allocations: 16694)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 294.6ms | Allocations: 25682)
+Completed 200 OK in 344ms (Views: 299.5ms | ActiveRecord: 18.0ms | Allocations: 28121)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-13 21:44:20 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (9.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdomalley@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (4.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6328e837ac12bb168612e905"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (5.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:70
+  [1m[36mType Load (5.0ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  [1m[36mCACHE Type Load (0.1ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 150.1ms | Allocations: 15928)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 298.8ms | Allocations: 24800)
+Completed 200 OK in 359ms (Views: 293.1ms | ActiveRecord: 24.1ms | Allocations: 26671)
+
+
