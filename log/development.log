@@ -30617,3 +30617,110 @@ Processing by DashboardController#show as HTML
 Completed 200 OK in 359ms (Views: 293.1ms | ActiveRecord: 24.1ms | Allocations: 26671)
 
 
+Started GET "/" for 172.17.0.1 at 2022-11-13 22:04:11 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (6.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 1868.8ms | Allocations: 33671)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 2109.2ms | Allocations: 47914)
+Completed 200 OK in 2202ms (Views: 2130.2ms | ActiveRecord: 0.0ms | Allocations: 51784)
+
+
+Started GET "/" for 172.17.0.1 at 2022-11-13 22:04:14 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 23.8ms | Allocations: 1640)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 151.0ms | Allocations: 10513)
+Completed 200 OK in 158ms (Views: 155.2ms | ActiveRecord: 0.0ms | Allocations: 11091)
+
+
+Started GET "/" for 172.17.0.1 at 2022-11-13 22:04:31 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 38.6ms | Allocations: 1617)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 371.3ms | Allocations: 18389)
+Completed 200 OK in 405ms (Views: 387.1ms | ActiveRecord: 0.0ms | Allocations: 19852)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-13 22:05:43 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (9.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdomalley@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (4.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6328e837ac12bb168612e905"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (7.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:70
+  [1m[36mType Load (6.1ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  [1m[36mCACHE Type Load (0.0ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 296.5ms | Allocations: 29935)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 443.3ms | Allocations: 39069)
+Completed 200 OK in 676ms (Views: 394.6ms | ActiveRecord: 138.7ms | Allocations: 51049)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-13 22:05:44 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (6.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdomalley@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (5.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6328e837ac12bb168612e905"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (5.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:70
+  [1m[36mType Load (4.9ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  [1m[36mCACHE Type Load (0.1ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 136.5ms | Allocations: 18486)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 287.6ms | Allocations: 27377)
+Completed 200 OK in 330ms (Views: 283.2ms | ActiveRecord: 21.7ms | Allocations: 29916)
+
+
+Started GET "/" for 172.17.0.1 at 2022-11-13 22:06:47 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 154.3ms | Allocations: 7109)
+  Rendered layout layouts/application.html.erb (Duration: 160.4ms | Allocations: 7193)
+Completed 500 Internal Server Error in 187ms (ActiveRecord: 0.0ms | Allocations: 8558)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `rotary_street_cleaning' for #<ActionView::Base:0x0000000000bd10>):
+    1: <div class="flex-none md:flex flex-row align-middle w-full h-screen">
+    2:   <div class="hidden md:flex bg-maroon-800 w-3/5 h-full">
+    3:     <img src="<%= image_path rotary_street_cleaning.jpeg %>" class='w-full h-full object-cover object-center'/>
+    4:   </div>
+    5:   <div class="h-full bg-slate-50 md:w-2/5 flex flex-col place-items-center">
+    6:     <div class="px-14 mt-32">
+  
+app/views/home/show.html.erb:3
+Started GET "/" for 172.17.0.1 at 2022-11-13 22:07:02 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 34.0ms | Allocations: 1572)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 197.4ms | Allocations: 10758)
+Completed 200 OK in 225ms (Views: 216.0ms | ActiveRecord: 0.0ms | Allocations: 12176)
+
+
