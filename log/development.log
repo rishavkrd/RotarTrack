@@ -29968,3 +29968,139 @@ Processing by DashboardController#show as HTML
 Completed 200 OK in 319ms (Views: 256.8ms | ActiveRecord: 23.4ms | Allocations: 13960)
 
 
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-13 21:12:55 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (7.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdomalley@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (3.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6328e837ac12bb168612e905"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (10.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:78
+  [1m[36mType Load (5.8ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:81
+  [1m[36mCACHE Type Load (0.0ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:81
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 74.7ms | Allocations: 4208)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 430.6ms | Allocations: 18931)
+Completed 200 OK in 725ms (Views: 433.9ms | ActiveRecord: 118.9ms | Allocations: 25733)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-13 21:13:17 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (10.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdomalley@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (4.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6328e837ac12bb168612e905"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (6.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:70
+  [1m[36mType Load (5.8ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  [1m[36mCACHE Type Load (0.1ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 95.2ms | Allocations: 4128)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 270.6ms | Allocations: 13236)
+Completed 200 OK in 357ms (Views: 277.9ms | ActiveRecord: 27.7ms | Allocations: 15989)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-13 21:14:59 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (4.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdomalley@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (4.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6328e837ac12bb168612e905"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (6.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:70
+  [1m[36mType Load (4.6ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  [1m[36mCACHE Type Load (0.0ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 242.2ms | Allocations: 17374)
+  Rendered layout layouts/application.html.erb (Duration: 245.5ms | Allocations: 17457)
+Completed 500 Internal Server Error in 428ms (ActiveRecord: 135.1ms | Allocations: 27487)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `greeting' for #<ActionView::Base:0x0000000000f4d8>):
+     97:   <div>
+     98:     <div class="card bg-base-100 shadow-xl">
+     99:       <div class="card-body">
+    100:         <h2 class="card-title"><%= greeting %> <%= @account["FirstName"].capitalize()%>!</h2>
+    101:       </div>
+    102:     </div>
+    103:   </div>
+  
+app/views/dashboard/show.html.erb:100
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-13 21:16:11 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (4.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdomalley@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (4.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6328e837ac12bb168612e905"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (7.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:70
+  [1m[36mType Load (4.4ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  [1m[36mCACHE Type Load (0.0ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 216.1ms | Allocations: 21552)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 363.6ms | Allocations: 30760)
+Completed 200 OK in 522ms (Views: 318.3ms | ActiveRecord: 90.9ms | Allocations: 39914)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-13 21:16:13 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (3.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdomalley@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (4.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6328e837ac12bb168612e905"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (5.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:70
+  [1m[36mType Load (5.2ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  [1m[36mCACHE Type Load (0.0ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 113.2ms | Allocations: 12570)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 250.0ms | Allocations: 21364)
+Completed 200 OK in 282ms (Views: 243.0ms | ActiveRecord: 18.9ms | Allocations: 23254)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-13 21:16:35 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (4.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "rdomalley@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (4.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6328e837ac12bb168612e905"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (5.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:70
+  [1m[36mType Load (4.7ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  [1m[36mCACHE Type Load (0.0ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:73
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 216.6ms | Allocations: 21597)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 353.7ms | Allocations: 30504)
+Completed 200 OK in 490ms (Views: 310.0ms | ActiveRecord: 93.5ms | Allocations: 39596)
+
+
