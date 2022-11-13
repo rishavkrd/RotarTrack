@@ -1,8 +1,3 @@
 {
-    "stack": "heroku-20",
-    "env" : {
-        "NODE_OPTIONS":{
-            "value":"--openssl-legacy-provider"
-        }
-    }
+    "stack": "heroku-20"
 }
