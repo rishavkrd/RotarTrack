@@ -1,61 +1,84 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>UIN:</strong>
-  <%= @account.UIN %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @account.FirstName%> <%= @account.LastName %>
-</p>
-
-<p>
-  <strong>Phone Number:</strong>
-  <%= @account.PhoneNumber %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @account.Email %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @account.status.Value.capitalize() %>
-</p>
-
-<p>
-<h2>Points</h2>
-<p>
-  <strong> Total Points: <%=@total_points%></strong>
-</p>
-  <table>
-  <thead>
-    <tr>
-      <th>Account</th>
-      <th>Event</th>
-      <th>Points</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @mypoints.each do |point| %>
-      <tr>
-
-        <td><%= point.account.FirstName.capitalize() + " " + point.account.LastName.capitalize() %></td>
-        <td><%= point.event.Title.gsub(/[A-Za-z']+/,&:capitalize) %></td>
-
-        <td><%= point.Points %></td>
-        <td><%= link_to 'Show', point %></td>
-        <td><%= link_to 'Edit', edit_point_path(point) %></td>
-        <td><%= link_to 'Destroy', point, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</p>
-
-<%= link_to 'Edit', edit_account_path(@account) %> |
-<%= link_to 'Back', '/dashboard' %>
+<div class="flex flex-col md:grid grid-cols-12 gap-8">
+	<div class="card col-span-4 bg-base-100 shadow-xl">
+		<div class="card-body">
+			<div class="avatar mx-auto">
+				<div class="w-64 rounded-full">
+					<img src="<%= image_path "blank_profile_photo.webp" %>" />
+				</div>
+			</div>
+			<div class="stats lg:stats-horizontal my-4">
+				<div class="stat">
+					<div class="stat-title">Sign Ups</div>
+					<div class="stat-value"><%= @registered_events %></div>
+				</div>
+				<div class="stat">
+					<div class="stat-title">Points</div>
+					<div class="stat-value"><%= @total_points %></div>
+				</div>
+			</div>
+			<h2 class="text-3xl font-semibold mb-2"><%= @account.FirstName%> <%=@account.LastName%></h2>
+			<div class="flex flex-col mb-4">
+				<div class="flex flex-row gap-4">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+					</svg>
+					<a class="mb-4 hover:underline" href="mailto:<%= @account.Email%>"><%= @account.Email %></a>
+				</div>
+				<div class="flex flex-row gap-4">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+					</svg>
+					<a class="mb-4 hover:underline" href="tel:<%= @account.PhoneNumber%>"><%= number_to_phone(@account.PhoneNumber, area_code: true)  %></a>
+				</div>
+				<div class="flex flex-row gap-4">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+					</svg>
+					<p><%= @account.UIN %></p>
+				</div>
+			</div>
+			<button class="btn btn-block btn-sm">Edit Profile</button>
+		</div>
+	</div>
+	<div class="card bg-base-100 shadow-xl col-span-8">
+		<div class="card-body">
+        <h2 class="card-title">Recent Signups</h2>
+            <div class="overflow-x-auto">
+                <table class="table w-full">
+                    <!-- head -->
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Job</th>
+                            <th>Favorite Color</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- row 1 -->
+                        <tr>
+                            <th>1</th>
+                            <td>Cy Ganderton</td>
+                            <td>Quality Control Specialist</td>
+                            <td>Blue</td>
+                        </tr>
+                        <!-- row 2 -->
+                        <tr class="hover">
+                            <th>2</th>
+                            <td>Hart Hagerty</td>
+                            <td>Desktop Support Technician</td>
+                            <td>Purple</td>
+                        </tr>
+                        <!-- row 3 -->
+                        <tr>
+                            <th>3</th>
+                            <td>Brice Swyre</td>
+                            <td>Tax Accountant</td>
+                            <td>Red</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+	</div>
+</div>
