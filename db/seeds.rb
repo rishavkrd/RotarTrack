@@ -19,6 +19,7 @@ Account.create!([
   { UIN: 1_231_412, FirstName: 'Henry', LastName: 'Ford', PhoneNumber: 1234567890, Email: 'henry@ford.com', status_id: 2, uuid:'TEST_ACCOUNT_05' },
   { UIN: 431_414_124, FirstName: 'Tom', LastName: 'Hanks', PhoneNumber: 1234567890, Email: 'tom@tu.edu', status_id: 2, uuid:'TEST_ACCOUNT_06' },
   { UIN: 927_003_214, FirstName: 'Ryan', LastName: 'Crowell', PhoneNumber: 1234567890, Email: 'rdcrowell13@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_07'}
+  { UIN: 526009857, FirstName: 'Ryan', LastName: 'O\'Malley', PhoneNumber: 8155575141, Email: 'rdomalley@tamu.edu', status_id: 1, uuid:'test'}
 ]
                )
 

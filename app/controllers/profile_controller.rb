@@ -1,9 +1,15 @@
 # frozen_string_literal: true
 
 class ProfileController < ApplicationController
+  layout "default_page"
   def create
     redirect_to('/') if session[:userinfo].blank?
     @user = session[:userinfo]
+    user_uid = session[:useruuid]
+    curruser = Account.find_by(uuid: user_uid)
+    if curruser
+      redirect_to '/dashboard'
+    end
     @account = Account.new
     @user_uid = session[:useruuid]
   end
