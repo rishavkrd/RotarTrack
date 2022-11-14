@@ -27970,6 +27970,7 @@ Processing by ProfileController#create as HTML
 Completed 200 OK in 97ms (Views: 85.7ms | ActiveRecord: 0.0ms | Allocations: 12329)
 
 
+<<<<<<< HEAD
 Started GET "/profile/create" for 172.17.0.1 at 2022-11-14 04:26:15 +0000
 Processing by ProfileController#create as HTML
   Rendering layout layouts/application.html.erb
@@ -31281,3 +31282,5 @@ Completed 200 OK in 449ms (Views: 287.1ms | ActiveRecord: 97.7ms | Allocations: 
 
 =======
 >>>>>>> f0e98eff (added config/application.rb)
+=======
+>>>>>>> main

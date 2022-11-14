@@ -23,6 +23,11 @@ class AccountsController < ApplicationController
     @points = Point.all
     @mypoints=@points.where(account_id: @account.id)
     @total_points = @mypoints.all.sum (:Points)
+    @user = session[:userinfo]
+    usr_email = @user['email']
+    @myaccount = Account.find_by(Email: usr_email)
+    @allsingups = Signup.all
+    @mysignups = @allsingups.where(account_id: @myaccount.id)
   end
 
   # GET /accounts/new

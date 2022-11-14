@@ -56,6 +56,29 @@
   </tbody>
 </table>
 </p>
+<h2>My signups</h2>
+<p>
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Pickup?</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mysignups.each do |signup| %>
+      <tr>
+        <td><%= signup.event.Title.gsub(/[A-Za-z']+/,&:capitalize) %></td>
+        <td><%= convertBool(signup.Pickup) %></td>
+        <td><%= link_to 'Edit', edit_signup_path(signup) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</p>
+
 
 <%= link_to 'Edit', edit_account_path(@account) %> |
 <%= link_to 'Back', '/dashboard' %>
