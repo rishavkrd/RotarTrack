@@ -12,7 +12,7 @@
           <% if !session[:userinfo].present? %>
             <%= link_to 'Continue to Login', '/auth/auth0', method: :post, class: 'btn btn-primary px-14', id: 'qsLoginBtn'%>
           <% else %>
-            <%= link_to 'Logout', 'auth/logout', method: :get, class: 'btn btn-primary px-14' %>
+            <%= link_to 'Take Me to The Dashboard', 'dashboard', method: :get, class: 'btn btn-primary px-14' %>
           <% end %>
         </div>
       </div>
