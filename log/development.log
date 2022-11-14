@@ -27202,3 +27202,502 @@ Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.2
   
 ActionController::RoutingError (No route matches [GET] "/packs/js/application-04042ce92cfc7f3f6255.js"):
   
+Started GET "/" for 172.17.0.1 at 2022-11-14 03:31:22 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActiveRecord::NoDatabaseError (FATAL:  database "test_app_development" does not exist
+):
+  
+activerecord (6.1.7) lib/active_record/connection_adapters/postgresql_adapter.rb:81:in `rescue in new_client'
+activerecord (6.1.7) lib/active_record/connection_adapters/postgresql_adapter.rb:77:in `new_client'
+activerecord (6.1.7) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `public_send'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `new_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:926:in `checkout_new_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:905:in `try_to_checkout_new_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:866:in `acquire_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:588:in `checkout'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:428:in `connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:1128:in `retrieve_connection'
+activerecord (6.1.7) lib/active_record/connection_handling.rb:327:in `retrieve_connection'
+activerecord (6.1.7) lib/active_record/connection_handling.rb:283:in `connection'
+activerecord (6.1.7) lib/active_record/migration.rb:611:in `connection'
+activerecord (6.1.7) lib/active_record/migration.rb:606:in `build_watcher'
+activerecord (6.1.7) lib/active_record/migration.rb:588:in `block in call'
+activerecord (6.1.7) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.7) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:19:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.3) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.4) lib/rack/proxy.rb:78:in `call'
+railties (6.1.7) lib/rails/engine.rb:539:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (849.2ms)[0m  [1m[35mCREATE DATABASE "test_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (475.9ms)[0m  [1m[35mCREATE DATABASE "test_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (50.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (17.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775)[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTypes (20220917061107)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (160.1ms)[0m  [1m[35mCREATE TABLE "types" ("id" bigserial primary key, "Value" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (5.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220917061107"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEvents (20220918061309)
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (31.6ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "Title" text, "Description" text, "Date" date, "Time" time, "Location" text, "Points" integer, "type_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c6c031df6e"
+FOREIGN KEY ("type_id")
+  REFERENCES "types" ("id")
+)[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE INDEX "index_events_on_type_id" ON "events" ("type_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220918061309"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateStatuses (20220919033633)
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (21.1ms)[0m  [1m[35mCREATE TABLE "statuses" ("id" bigserial primary key, "Value" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (11.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220919033633"]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAccounts (20220920034149)
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (22.8ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "UIN" integer, "FirstName" text, "LastName" text, "PhoneNumber" integer, "Email" text, "status_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_77d18abef7"
+FOREIGN KEY ("status_id")
+  REFERENCES "statuses" ("id")
+)[0m
+  [1m[35m (11.7ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_status_id" ON "accounts" ("status_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220920034149"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSignups (20220921034439)
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (36.0ms)[0m  [1m[35mCREATE TABLE "signups" ("id" bigserial primary key, "event_id" bigint NOT NULL, "account_id" bigint NOT NULL, "Pickup" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_872531dfe1"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+, CONSTRAINT "fk_rails_3ec5de34fa"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+)[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE INDEX "index_signups_on_event_id" ON "signups" ("event_id")[0m
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE INDEX "index_signups_on_account_id" ON "signups" ("account_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220921034439"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePoints (20220922034647)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.3ms)[0m  [1m[35mCREATE TABLE "points" ("id" bigserial primary key, "account_id" bigint NOT NULL, "event_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e7c3d0176a"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+, CONSTRAINT "fk_rails_97f9f862c2"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+)[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE INDEX "index_points_on_account_id" ON "points" ("account_id")[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE INDEX "index_points_on_event_id" ON "points" ("event_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220922034647"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ChangeAccountPhoneNumberText (20221018021932)
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (55.1ms)[0m  [1m[35mALTER TABLE "accounts" ALTER COLUMN "PhoneNumber" TYPE text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (5.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221018021932"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUuidToAccounts (20221020222314)
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "accounts" ADD "uuid" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221020222314"]]
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPointsToPoints (20221026201609)
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "points" ADD "Points" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221026201609"]]
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ChangeUinToBeStringInAccounts (20221026212203)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (33.0ms)[0m  [1m[35mALTER TABLE "accounts" ALTER COLUMN "UIN" TYPE text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221026212203"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (4.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-11-14 03:37:08.926070"], ["updated_at", "2022-11-14 03:37:08.926070"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mStatus Load (1.0ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses"[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (1.5ms)[0m  [1m[32mINSERT INTO "statuses" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Admin"], ["created_at", "2022-11-14 03:37:17.835046"], ["updated_at", "2022-11-14 03:37:17.835046"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (0.9ms)[0m  [1m[32mINSERT INTO "statuses" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Officer"], ["created_at", "2022-11-14 03:37:17.846558"], ["updated_at", "2022-11-14 03:37:17.846558"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (1.0ms)[0m  [1m[32mINSERT INTO "statuses" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Member"], ["created_at", "2022-11-14 03:37:17.854933"], ["updated_at", "2022-11-14 03:37:17.854933"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (0.9ms)[0m  [1m[32mINSERT INTO "statuses" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Inactive"], ["created_at", "2022-11-14 03:37:17.861659"], ["updated_at", "2022-11-14 03:37:17.861659"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.1ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (3.5ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at", "uuid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["UIN", "923874129"], ["FirstName", "Joe"], ["LastName", "Smith"], ["PhoneNumber", "19283712"], ["Email", "joe@smith.com"], ["status_id", 2], ["created_at", "2022-11-14 03:37:17.970054"], ["updated_at", "2022-11-14 03:37:17.970054"], ["uuid", "TEST_ACCOUNT_01"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.1ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Create (1.5ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at", "uuid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["UIN", "344523451"], ["FirstName", "Rishav"], ["LastName", "Dokania"], ["PhoneNumber", "129883712"], ["Email", "rishavkrd11@tamu.edu"], ["status_id", 1], ["created_at", "2022-11-14 03:37:17.993121"], ["updated_at", "2022-11-14 03:37:17.993121"], ["uuid", "TEST_ACCOUNT_02"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.1ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (1.1ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at", "uuid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["UIN", "812658276"], ["FirstName", "Sam"], ["LastName", "McDonalds"], ["PhoneNumber", "12398127"], ["Email", "sam@tamu.edu"], ["status_id", 2], ["created_at", "2022-11-14 03:37:18.015855"], ["updated_at", "2022-11-14 03:37:18.015855"], ["uuid", "TEST_ACCOUNT_03"]]
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (0.6ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (1.1ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at", "uuid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["UIN", "9818273"], ["FirstName", "John"], ["LastName", "Goodman"], ["PhoneNumber", "1928371"], ["Email", "john@tamu.edu"], ["status_id", 2], ["created_at", "2022-11-14 03:37:18.036967"], ["updated_at", "2022-11-14 03:37:18.036967"], ["uuid", "TEST_ACCOUNT_04"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (0.6ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (1.1ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at", "uuid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["UIN", "1231412"], ["FirstName", "Henry"], ["LastName", "Ford"], ["PhoneNumber", "198263129"], ["Email", "henry@ford.com"], ["status_id", 2], ["created_at", "2022-11-14 03:37:18.052452"], ["updated_at", "2022-11-14 03:37:18.052452"], ["uuid", "TEST_ACCOUNT_05"]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (0.5ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (1.0ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at", "uuid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["UIN", "431414124"], ["FirstName", "Tom"], ["LastName", "Hanks"], ["PhoneNumber", "121421124"], ["Email", "tom@tu.edu"], ["status_id", 2], ["created_at", "2022-11-14 03:37:18.070663"], ["updated_at", "2022-11-14 03:37:18.070663"], ["uuid", "TEST_ACCOUNT_06"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (0.6ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (1.1ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at", "uuid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["UIN", "927003214"], ["FirstName", "Ryan"], ["LastName", "Crowell"], ["PhoneNumber", "121421124"], ["Email", "rdcrowell13@tamu.edu"], ["status_id", 2], ["created_at", "2022-11-14 03:37:18.085644"], ["updated_at", "2022-11-14 03:37:18.085644"], ["uuid", "TEST_ACCOUNT_07"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mType Load (1.0ms)[0m  [1m[34mSELECT "types".* FROM "types"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mType Create (1.0ms)[0m  [1m[32mINSERT INTO "types" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Meeting"], ["created_at", "2022-11-14 03:37:18.111669"], ["updated_at", "2022-11-14 03:37:18.111669"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mType Create (0.5ms)[0m  [1m[32mINSERT INTO "types" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Event"], ["created_at", "2022-11-14 03:37:18.121041"], ["updated_at", "2022-11-14 03:37:18.121041"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mType Create (0.5ms)[0m  [1m[32mINSERT INTO "types" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Social"], ["created_at", "2022-11-14 03:37:18.127891"], ["updated_at", "2022-11-14 03:37:18.127891"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mType Create (0.4ms)[0m  [1m[32mINSERT INTO "types" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Other"], ["created_at", "2022-11-14 03:37:18.134474"], ["updated_at", "2022-11-14 03:37:18.134474"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mType Create (0.7ms)[0m  [1m[32mINSERT INTO "types" ("Value", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["Value", "Inactive"], ["created_at", "2022-11-14 03:37:18.142659"], ["updated_at", "2022-11-14 03:37:18.142659"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mType Load (0.5ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Create (1.2ms)[0m  [1m[32mINSERT INTO "events" ("Title", "Description", "Date", "Time", "Location", "Points", "type_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["Title", "Meetup with team"], ["Description", "Meet the officers and members of AggieRotaract"], ["Date", "2022-12-12"], ["Time", "21:45:00"], ["Location", "MSC"], ["Points", 1], ["type_id", 1], ["created_at", "2022-11-14 03:37:18.175873"], ["updated_at", "2022-11-14 03:37:18.175873"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE DATABASE "test_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE DATABASE "test_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mStatus Load (1.3ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.0ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (2.4ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at", "uuid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["UIN", "923874129"], ["FirstName", "Joe"], ["LastName", "Smith"], ["PhoneNumber", "19283712"], ["Email", "joe@smith.com"], ["status_id", 2], ["created_at", "2022-11-14 03:41:03.735684"], ["updated_at", "2022-11-14 03:41:03.735684"], ["uuid", "TEST_ACCOUNT_01"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (0.8ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Create (1.2ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at", "uuid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["UIN", "344523451"], ["FirstName", "Rishav"], ["LastName", "Dokania"], ["PhoneNumber", "129883712"], ["Email", "rishavkrd11@tamu.edu"], ["status_id", 1], ["created_at", "2022-11-14 03:41:03.751853"], ["updated_at", "2022-11-14 03:41:03.751853"], ["uuid", "TEST_ACCOUNT_02"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.1ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (1.2ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at", "uuid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["UIN", "812658276"], ["FirstName", "Sam"], ["LastName", "McDonalds"], ["PhoneNumber", "12398127"], ["Email", "sam@tamu.edu"], ["status_id", 2], ["created_at", "2022-11-14 03:41:03.773446"], ["updated_at", "2022-11-14 03:41:03.773446"], ["uuid", "TEST_ACCOUNT_03"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (0.9ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (1.2ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at", "uuid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["UIN", "9818273"], ["FirstName", "John"], ["LastName", "Goodman"], ["PhoneNumber", "1928371"], ["Email", "john@tamu.edu"], ["status_id", 2], ["created_at", "2022-11-14 03:41:03.793589"], ["updated_at", "2022-11-14 03:41:03.793589"], ["uuid", "TEST_ACCOUNT_04"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.0ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (1.8ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at", "uuid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["UIN", "1231412"], ["FirstName", "Henry"], ["LastName", "Ford"], ["PhoneNumber", "198263129"], ["Email", "henry@ford.com"], ["status_id", 2], ["created_at", "2022-11-14 03:41:03.810509"], ["updated_at", "2022-11-14 03:41:03.810509"], ["uuid", "TEST_ACCOUNT_05"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.1ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (1.4ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at", "uuid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["UIN", "431414124"], ["FirstName", "Tom"], ["LastName", "Hanks"], ["PhoneNumber", "121421124"], ["Email", "tom@tu.edu"], ["status_id", 2], ["created_at", "2022-11-14 03:41:03.826812"], ["updated_at", "2022-11-14 03:41:03.826812"], ["uuid", "TEST_ACCOUNT_06"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.0ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAccount Create (1.2ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at", "uuid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["UIN", "927003214"], ["FirstName", "Ryan"], ["LastName", "Crowell"], ["PhoneNumber", "121421124"], ["Email", "rdcrowell13@tamu.edu"], ["status_id", 2], ["created_at", "2022-11-14 03:41:03.846355"], ["updated_at", "2022-11-14 03:41:03.846355"], ["uuid", "TEST_ACCOUNT_07"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mType Load (2.5ms)[0m  [1m[34mSELECT "types".* FROM "types"[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mType Load (1.2ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Create (3.2ms)[0m  [1m[32mINSERT INTO "events" ("Title", "Description", "Date", "Time", "Location", "Points", "type_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["Title", "Meetup with team"], ["Description", "Meet the officers and members of AggieRotaract"], ["Date", "2022-12-12"], ["Time", "21:45:00"], ["Location", "MSC"], ["Points", 1], ["type_id", 1], ["created_at", "2022-11-14 03:41:03.901680"], ["updated_at", "2022-11-14 03:41:03.901680"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 172.17.0.1 at 2022-11-14 03:41:23 +0000
+  [1m[35m (13.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 857.8ms | Allocations: 61757)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /csce431/RotarTrack/public/packs
+[Webpacker] Hash: 0fe7dcd9d8f9ebcf52de
+Version: webpack 4.46.0
+Time: 9524ms
+Built at: 11/14/2022 3:41:41 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-2e212f7c8f867558ac6e.js    121 KiB  application  [emitted] [immutable]  application
+js/application-2e212f7c8f867558ac6e.js.map    136 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-2e212f7c8f867558ac6e.js js/application-2e212f7c8f867558ac6e.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 492 bytes {application} [built]
+    + 3 hidden modules
+
+  Rendered layout layouts/application.html.erb (Duration: 18496.3ms | Allocations: 104538)
+Completed 200 OK in 18573ms (Views: 18532.6ms | ActiveRecord: 0.0ms | Allocations: 111391)
+
+
+Started POST "/auth/auth0" for 172.17.0.1 at 2022-11-14 03:41:47 +0000
+Started GET "/auth/auth0/callback?code=9TK8hwI5LI7WfNIfbOL2TJpCUbGECHvg6ks2zWrzdQIr0&state=d1a51faea3d382d580a3c6ee27c3f7265abc9f073855ef3f" for 172.17.0.1 at 2022-11-14 03:41:48 +0000
+Processing by Auth0Controller#callback as HTML
+  Parameters: {"code"=>"9TK8hwI5LI7WfNIfbOL2TJpCUbGECHvg6ks2zWrzdQIr0", "state"=>"d1a51faea3d382d580a3c6ee27c3f7265abc9f073855ef3f"}
+  [1m[36mAccount Load (8.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6371168b71f11c36cf877bc0"], ["LIMIT", 1]]
+  ↳ app/controllers/auth0_controller.rb:40:in `find_or_create'
+Redirected to http://localhost:3000/profile/create
+Completed 302 Found in 55ms (ActiveRecord: 17.2ms | Allocations: 4919)
+
+
+Started GET "/profile/create" for 172.17.0.1 at 2022-11-14 03:41:49 +0000
+Processing by ProfileController#create as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profile/create.html.erb within layouts/application
+  Rendered profile/create.html.erb within layouts/application (Duration: 94.4ms | Allocations: 7175)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 196.7ms | Allocations: 16223)
+Completed 200 OK in 696ms (Views: 200.9ms | ActiveRecord: 39.7ms | Allocations: 21947)
+
+
+Started POST "/profile/create" for 172.17.0.1 at 2022-11-14 03:42:10 +0000
+Processing by ProfileController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "account"=>{"FirstName"=>"ku", "LastName"=>"anj", "PhoneNumber"=>"1", "UIN"=>"718273"}, "commit"=>"Create your Account"}
+  [1m[35m (14.3ms)[0m  [1m[34mSELECT "statuses"."id" FROM "statuses" WHERE "statuses"."Value" = $1 LIMIT $2[0m  [["Value", "Member"], ["LIMIT", 1]]
+  ↳ app/controllers/profile_controller.rb:12:in `new'
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/profile_controller.rb:15:in `block in new'
+  [1m[36mStatus Load (8.5ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/profile_controller.rb:15:in `block in new'
+  [1m[36mAccount Create (16.9ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at", "uuid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["UIN", "718273"], ["FirstName", "ku"], ["LastName", "anj"], ["PhoneNumber", "1"], ["Email", "test1@tamu.edu"], ["status_id", 3], ["created_at", "2022-11-14 03:42:10.921398"], ["updated_at", "2022-11-14 03:42:10.921398"], ["uuid", "auth0|6371168b71f11c36cf877bc0"]]
+  ↳ app/controllers/profile_controller.rb:15:in `block in new'
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/profile_controller.rb:15:in `block in new'
+Redirected to http://localhost:3000/dashboard
+Completed 302 Found in 219ms (ActiveRecord: 74.0ms | Allocations: 10919)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-14 03:42:10 +0000
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (7.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "test1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (3.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6371168b71f11c36cf877bc0"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (5.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:44
+  [1m[36mType Load (1.6ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:53
+  [1m[36mCACHE Type Load (0.0ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:53
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 93.0ms | Allocations: 12667)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 124.8ms | Allocations: 21677)
+Completed 200 OK in 185ms (Views: 101.4ms | ActiveRecord: 44.7ms | Allocations: 25302)
+
+
+Started GET "/auth/logout" for 172.17.0.1 at 2022-11-14 03:45:43 +0000
+Processing by Auth0Controller#logout as HTML
+Redirected to https://rotartrack.us.auth0.com/v2/logout?client_id=giksZR9ko8z8SrwI6Y8RolkR0SaySMJO&returnTo=http%3A%2F%2Flocalhost%3A3000%2F
+Completed 302 Found in 5ms (ActiveRecord: 0.0ms | Allocations: 527)
+
+
+Started GET "/" for 172.17.0.1 at 2022-11-14 03:45:44 +0000
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 8.4ms | Allocations: 1034)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 65.2ms | Allocations: 9864)
+Completed 200 OK in 82ms (Views: 77.6ms | ActiveRecord: 0.0ms | Allocations: 10643)
+
+
+Started POST "/auth/auth0" for 172.17.0.1 at 2022-11-14 03:45:46 +0000
+Started GET "/auth/auth0/callback?code=ELYU-6LikUk21BJB8xvBPGUiTljA5kI7fmeltosakA35n&state=effa5dd6353e6f48ca1e6d6332fa0abc3b6a9f5859233382" for 172.17.0.1 at 2022-11-14 03:46:00 +0000
+Processing by Auth0Controller#callback as HTML
+  Parameters: {"code"=>"ELYU-6LikUk21BJB8xvBPGUiTljA5kI7fmeltosakA35n", "state"=>"effa5dd6353e6f48ca1e6d6332fa0abc3b6a9f5859233382"}
+  [1m[36mAccount Load (3.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|636fbd0371f11c36cf8778de"], ["LIMIT", 1]]
+  ↳ app/controllers/auth0_controller.rb:40:in `find_or_create'
+Redirected to http://localhost:3000/profile/create
+Completed 302 Found in 42ms (ActiveRecord: 11.2ms | Allocations: 3050)
+
+
+Started GET "/profile/create" for 172.17.0.1 at 2022-11-14 03:46:01 +0000
+Processing by ProfileController#create as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profile/create.html.erb within layouts/application
+  Rendered profile/create.html.erb within layouts/application (Duration: 7.0ms | Allocations: 2532)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.5ms | Allocations: 11564)
+Completed 200 OK in 111ms (Views: 65.1ms | ActiveRecord: 14.6ms | Allocations: 16690)
+
+
+Started POST "/profile/create" for 172.17.0.1 at 2022-11-14 03:46:10 +0000
+Processing by ProfileController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "account"=>{"FirstName"=>"kun", "LastName"=>"ahs", "PhoneNumber"=>"61736", "UIN"=>"98981"}, "commit"=>"Create your Account"}
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT "statuses"."id" FROM "statuses" WHERE "statuses"."Value" = $1 LIMIT $2[0m  [["Value", "Member"], ["LIMIT", 1]]
+  ↳ app/controllers/profile_controller.rb:12:in `new'
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/profile_controller.rb:15:in `block in new'
+  [1m[36mStatus Load (6.1ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/profile_controller.rb:15:in `block in new'
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/profile_controller.rb:15:in `block in new'
+  Rendering layout layouts/application.html.erb
+  Rendering profile/create.html.erb within layouts/application
+  Rendered profile/create.html.erb within layouts/application (Duration: 36.5ms | Allocations: 3313)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 82.5ms | Allocations: 12261)
+Completed 422 Unprocessable Entity in 200ms (Views: 89.7ms | ActiveRecord: 33.8ms | Allocations: 20528)
+
+
+Started POST "/profile/create" for 172.17.0.1 at 2022-11-14 03:51:30 +0000
+Processing by ProfileController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "account"=>{"FirstName"=>"kun", "LastName"=>"ahs", "PhoneNumber"=>"2819831829", "UIN"=>"989818918"}, "commit"=>"Create your Account"}
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "statuses"."id" FROM "statuses" WHERE "statuses"."Value" = $1 LIMIT $2[0m  [["Value", "Member"], ["LIMIT", 1]]
+  ↳ app/controllers/profile_controller.rb:12:in `new'
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/profile_controller.rb:15:in `block in new'
+  [1m[36mStatus Load (2.8ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/profile_controller.rb:15:in `block in new'
+  [1m[36mAccount Create (4.5ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at", "uuid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["UIN", "989818918"], ["FirstName", "kun"], ["LastName", "ahs"], ["PhoneNumber", "2819831829"], ["Email", "test2@gmail.com"], ["status_id", 3], ["created_at", "2022-11-14 03:51:30.307285"], ["updated_at", "2022-11-14 03:51:30.307285"], ["uuid", "auth0|636fbd0371f11c36cf8778de"]]
+  ↳ app/controllers/profile_controller.rb:15:in `block in new'
+  [1m[36mTRANSACTION (10.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/profile_controller.rb:15:in `block in new'
+Redirected to http://localhost:3000/dashboard
+Completed 302 Found in 253ms (ActiveRecord: 114.8ms | Allocations: 8722)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-14 03:51:30 +0000
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (1.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (1.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|636fbd0371f11c36cf8778de"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (9.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:44
+  [1m[36mType Load (2.1ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:53
+  [1m[36mCACHE Type Load (0.0ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:53
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 145.0ms | Allocations: 11993)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 187.0ms | Allocations: 21118)
+Completed 200 OK in 220ms (Views: 155.3ms | ActiveRecord: 44.5ms | Allocations: 24305)
+
+
+Started GET "/auth/logout" for 172.17.0.1 at 2022-11-14 03:51:44 +0000
+Processing by Auth0Controller#logout as HTML
+Redirected to https://rotartrack.us.auth0.com/v2/logout?client_id=giksZR9ko8z8SrwI6Y8RolkR0SaySMJO&returnTo=http%3A%2F%2Flocalhost%3A3000%2F
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms | Allocations: 418)
+
+
+Started GET "/" for 172.17.0.1 at 2022-11-14 03:51:44 +0000
+Processing by HomeController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/show.html.erb within layouts/application
+  Rendered home/show.html.erb within layouts/application (Duration: 4.7ms | Allocations: 856)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 84.8ms | Allocations: 9623)
+Completed 200 OK in 92ms (Views: 89.7ms | ActiveRecord: 0.0ms | Allocations: 10091)
+
+
+Started POST "/auth/auth0" for 172.17.0.1 at 2022-11-14 03:51:46 +0000
+Started GET "/auth/auth0/callback?code=fwxZBSlIkrswm4UJMS-Hq2ruL9tmYbFALXSdssM1U1Xs7&state=2b8c2424c4f30273bd79eac5682584120a4aed4156d65fbb" for 172.17.0.1 at 2022-11-14 03:52:43 +0000
+Processing by Auth0Controller#callback as HTML
+  Parameters: {"code"=>"fwxZBSlIkrswm4UJMS-Hq2ruL9tmYbFALXSdssM1U1Xs7", "state"=>"2b8c2424c4f30273bd79eac5682584120a4aed4156d65fbb"}
+  [1m[36mAccount Load (2.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6371bb891c38a373c603fe84"], ["LIMIT", 1]]
+  ↳ app/controllers/auth0_controller.rb:40:in `find_or_create'
+Redirected to http://localhost:3000/profile/create
+Completed 302 Found in 10ms (ActiveRecord: 2.0ms | Allocations: 886)
+
+
+Started GET "/profile/create" for 172.17.0.1 at 2022-11-14 03:52:44 +0000
+Processing by ProfileController#create as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profile/create.html.erb within layouts/application
+  Rendered profile/create.html.erb within layouts/application (Duration: 10.8ms | Allocations: 1337)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 65.3ms | Allocations: 10302)
+Completed 200 OK in 71ms (Views: 67.0ms | ActiveRecord: 0.0ms | Allocations: 10803)
+
+
+Started POST "/profile/create" for 172.17.0.1 at 2022-11-14 03:52:54 +0000
+Processing by ProfileController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "account"=>{"FirstName"=>"9203", "LastName"=>"klnr", "PhoneNumber"=>"1234567890", "UIN"=>"123456789"}, "commit"=>"Create your Account"}
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT "statuses"."id" FROM "statuses" WHERE "statuses"."Value" = $1 LIMIT $2[0m  [["Value", "Member"], ["LIMIT", 1]]
+  ↳ app/controllers/profile_controller.rb:12:in `new'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/profile_controller.rb:15:in `block in new'
+  [1m[36mStatus Load (6.3ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/profile_controller.rb:15:in `block in new'
+  [1m[36mAccount Create (4.3ms)[0m  [1m[32mINSERT INTO "accounts" ("UIN", "FirstName", "LastName", "PhoneNumber", "Email", "status_id", "created_at", "updated_at", "uuid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["UIN", "123456789"], ["FirstName", "9203"], ["LastName", "klnr"], ["PhoneNumber", "1234567890"], ["Email", "test10@gmail.com"], ["status_id", 3], ["created_at", "2022-11-14 03:52:54.092494"], ["updated_at", "2022-11-14 03:52:54.092494"], ["uuid", "auth0|6371bb891c38a373c603fe84"]]
+  ↳ app/controllers/profile_controller.rb:15:in `block in new'
+  [1m[36mTRANSACTION (12.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/profile_controller.rb:15:in `block in new'
+Redirected to http://localhost:3000/dashboard
+Completed 302 Found in 53ms (ActiveRecord: 26.9ms | Allocations: 4574)
+
+
+Started GET "/dashboard" for 172.17.0.1 at 2022-11-14 03:52:54 +0000
+Processing by DashboardController#show as HTML
+  [1m[36mAccount Load (3.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."Email" = $1 LIMIT $2[0m  [["Email", "test10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/secured.rb:15:in `logged_in_using_omniauth?'
+  [1m[36mAccount Load (2.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."uuid" = $1 LIMIT $2[0m  [["uuid", "auth0|6371bb891c38a373c603fe84"], ["LIMIT", 1]]
+  ↳ app/controllers/dashboard_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/show.html.erb within layouts/application
+  [1m[36mEvent Load (3.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/dashboard/show.html.erb:44
+  [1m[36mType Load (2.7ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:53
+  [1m[36mCACHE Type Load (0.0ms)[0m  [1m[34mSELECT "types".* FROM "types" WHERE "types"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/dashboard/show.html.erb:53
+  Rendered dashboard/show.html.erb within layouts/application (Duration: 32.1ms | Allocations: 2693)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 84.6ms | Allocations: 11570)
+Completed 200 OK in 110ms (Views: 81.3ms | ActiveRecord: 11.3ms | Allocations: 13383)
+
+
