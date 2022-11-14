@@ -1,80 +1,85 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @event.Title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @event.Description %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @event.Date %>
-</p>
-
-<p>
-  <strong>Time:</strong>
-  <%= @event.Time.strftime("%I:%M %p") %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @event.Location %>
-</p>
-
-<p>
-  <strong>Points:</strong>
-  <%= @event.Points %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @event.type.Value %>
-</p>
-
-
-<h1>Signups</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Account</th>
-      <th>Email</th>
-      <th>Phone Number</th>
-      <th>Pickup</th>
-      <th colspan="6"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @signups.each do |signup| %>
-      <tr>
-        <% next if signup.event_id != @event.id %>
-        <td><%= signup.account.FirstName.capitalize() + " " + signup.account.LastName.capitalize() %></td>
-        <td><%= signup.account.Email %></td>
-        <td><%= signup.account.PhoneNumber %></td>
-        <td><%= convertBool(signup.Pickup) %></td>
-        <% if signup.account_id == @account.id %>
-          <% @hasSignedUp = true%>
+<div class="flex flex-col md:grid grid-cols-12 gap-8">
+	<div class="card col-span-4 bg-base-100 shadow-xl">
+		<div class="card-body">
+			<p class="badge"><%= @event.type.Value %></p>
+			<h2 class="text-3xl font-semibold"><%= @event.Title %></h2>
+			<p><%= @event.Description %></p>
+			<div class="stats lg:stats-horizontal my-4">
+				<div class="stat">
+					<div class="stat-title">Points</div>
+					<div class="stat-value"><%= @event.Points %></div>
+				</div>
+				<div class="stat">
+					<div class="stat-title">In Attendance</div>
+					<div class="stat-value"><%= @signups.size %></div>
+				</div>
+			</div>
+			<p class="text-xl text-slate-500 mb-2"></p>
+			<div class="flex flex-col mb-4">
+				<div class="flex flex-row gap-4">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+					</svg>
+					<a class="mb-4 hover:underline"><%= @event.Date.strftime("%A, %B %-d") %></a>
+				</div>
+				<div class="flex flex-row gap-4">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+					</svg>
+					<p class="mb-4"><%= @event.Time.strftime("%-I:%M %p") %></p>
+				</div>
+				<div class="flex flex-row gap-4">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+						<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+					</svg>
+					<a class="hover:underline"><%= @event.Location  %></a>
+				</div>
+			</div>
+			<% if @current_user.status_id == 1 or @current_user.status_id == 2 %>
+				<a href="<%= edit_event_path(@event)%>"class="btn btn-block btn-sm">Edit Event</a>
+			<% end %>
+		</div>
+	</div>
+	<div class="card bg-base-100 shadow-xl col-span-8">
+		<div class="card-body">
+			<div class="flex flex-row justify-between">
+        <h2 class="card-title">Recent Signups</h2>
+        <% if !@hasSignedUp %>
+          <%= link_to 'Sign Up', new_signup_path(account_id: @account.id, event_id: @event.id), class:'btn btn btn-primary' %>
         <% end %>
-        <% next if signup.account_id != @account.id %>
-        <td><%= link_to 'Show', signup %></td>
-        <td><%= link_to 'Edit', edit_signup_path(signup) %></td>
-        <td><%= link_to 'Destroy', signup, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-
-
-<% if !@hasSignedUp %>
-  <%= link_to 'Sign Up', new_signup_path(account_id: @account.id, event_id: @event.id) %> 
-<% end %>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', dashboard_path %>
+      </div>
+			<div class="overflow-x-auto">
+				<table class="table w-full">
+					<thead>
+						<tr>
+							<th>Account</th>
+							<th>Email</th>
+							<th>Phone Number</th>
+							<th>Pickup</th>
+							<th colspan="6"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @signups.each do |signup| %>
+							<tr>
+								<% next if signup.event_id != @event.id %>
+								<td><%= signup.account.FirstName.capitalize() + " " + signup.account.LastName.capitalize() %></td>
+								<td><%= signup.account.Email %></td>
+								<td><%= signup.account.PhoneNumber %></td>
+								<td><%= convertBool(signup.Pickup) %></td>
+								<% if signup.account_id == @account.id %>
+									<% @hasSignedUp = true%>
+								<% end %>
+								<% next if signup.account_id != @account.id %>
+								<td><%= link_to 'Show', signup, class:'btn btn-sm' %></td>
+								<td><%= link_to 'Edit', edit_signup_path(signup), class:'btn btn-sm' %></td>
+								<td><%= link_to 'Destroy', signup, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-sm' %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
