@@ -37,7 +37,7 @@
 					<p><%= @account.UIN %></p>
 				</div>
 			</div>
-			<button class="btn btn-block btn-sm">Edit Profile</button>
+			<a href="<%= edit_account_path(@account)%>"class="btn btn-block btn-sm">Edit Profile</a>
 		</div>
 	</div>
 	<div class="card bg-base-100 shadow-xl col-span-8">
@@ -48,23 +48,23 @@
 					<!-- head -->
 					<thead>
 						<tr>
-							<th>Name</th>
-							<th>Job</th>
-							<th>Favorite Color</th>
+							<th>Event Title</th>
+							<th>Date</th>
+							<th>Requires Ride</th>
+                            <th></th>
+                            <th></th>
 						</tr>
 					</thead>
 					<tbody>
 						<% @registered_events.each do |signup| %>
 							<tr>
-								<% next if signup.event_id != @event.id %>
-								<td><%= signup.account.FirstName.capitalize() + " " + signup.account.LastName.capitalize() %></td>
-								<td><%= signup.account.Email %></td>
-								<td><%= signup.account.PhoneNumber %></td>
+								<td><%= Event.find(signup.event_id).Title %></td>
+								<td><%= Event.find(signup.event_id).Date.strftime("%b %-d") %> <%= Event.find(signup.event_id).Time.strftime("%-I:%M %p") %></td>
 								<td><%= convertBool(signup.Pickup) %></td>
-								<% next if signup.account_id != @account.id %>
-								<td><%= link_to 'Show', signup %></td>
-								<td><%= link_to 'Edit', edit_signup_path(signup) %></td>
-								<td><%= link_to 'Destroy', signup, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+								<% if signup.account_id == @current_user.id or @current_user.status_id == 1 or @current_user.status_id == 2 %>
+								<td><%= link_to 'Edit', edit_signup_path(signup), class:'btn btn-sm' %></td>
+								<td><%= link_to 'Unregister', signup, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-error" %></td>
+                                <% end %>
 							</tr>
 						<% end %>
 					</tbody>

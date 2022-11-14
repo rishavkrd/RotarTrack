@@ -78,13 +78,13 @@
 				<div class="card-body">
 					<h2 class="card-title mb-2">Howdy, <%= @account["FirstName"].capitalize()%>!</h2>
 					<div class="flex flex-col divide-y-2">
-						<a href="" class='pill flex flex-row justify-between'>
+						<a href="<% unless $current_user.nil? %><%=edit_account_path($current_user)%><%end%>" class='pill flex flex-row justify-between'>
 							<p>Edit Your Profile</p>
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-slate-500 w-6 h-6">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
 							</svg>
 						</a>
-						<a href="" class='pill flex flex-row justify-between'>
+						<a href="<% unless $current_user.nil? %><%=account_path($current_user)%><%end%>" class='pill flex flex-row justify-between'>
 							<p>View My Events</p>
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-slate-500 w-6 h-6">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
