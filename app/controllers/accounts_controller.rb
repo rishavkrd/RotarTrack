@@ -11,7 +11,7 @@ class AccountsController < ApplicationController
     @accounts = Account.all
     @current_user = @accounts.find_by uuid: session[:useruuid]
 
-    unless @current_user.status_id == 2
+    unless @current_user.status_id == 2 or @current_user.status_id == 1
       render 'invalid'
     end
   end

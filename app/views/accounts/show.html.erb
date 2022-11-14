@@ -63,7 +63,7 @@
 								<td><%= Event.find(signup.event_id).Date.strftime("%b %-d") %> <%= Event.find(signup.event_id).Time.strftime("%-I:%M %p") %></td>
 								<td><%= convertBool(signup.Pickup) %></td>
 								<% if signup.account_id == @current_user.id or @current_user.status_id == 1 or @current_user.status_id == 2 %>
-									<td><%= link_to 'Edit', edit_signup_path(signup), class:'btn btn-sm' %></td>
+									<td><%= link_to 'Edit', edit_signup_path(signup), class:'btn btn-sm btn-ghost' %></td>
 									<td><%= link_to 'Unregister', signup, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-error" %></td>
 								<% end %>
 							</tr>

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ProfileController < ApplicationController
+  layout "default_page"
   def create
     redirect_to('/') if session[:userinfo].blank?
     @user = session[:userinfo]

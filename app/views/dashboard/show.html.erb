@@ -90,6 +90,13 @@
 								<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
 							</svg>
 						</a>
+						<% if @current_user.status_id == 1 %>
+							<%= link_to 'Inactive Events (ADMIN DEV)', events_path, class:'pill flex flex-row justify-between' %>
+							<%= link_to 'Points (ADMIN DEV)', points_path, class:'pill flex flex-row justify-between'  %>
+							<%= link_to 'Sign Ups (ADMIN DEV)', signups_path, class:'pill flex flex-row justify-between'  %>
+							<%= link_to 'Statuses (ADMIN DEV)', statuses_path, class:'pill flex flex-row justify-between'  %>
+							<%= link_to 'Events Type (ADMIN DEV)', types_path, class:'pill flex flex-row justify-between'  %>
+						<% end %>
 					</div>
 					<div class="stats stats-vertical lg:stats-horizontal">
 						<div class="stat">

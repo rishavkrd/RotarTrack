@@ -12,7 +12,8 @@ module Secured
     if session[:userinfo].present?
       @user = session[:userinfo]
       user_email = @user['email']
-      user = Account.find_by(Email: user_email)
+      user_uid = session[:useruuid]
+      user = Account.find_by(uuid: user_uid)
       redirect_to('/profile/create') unless user
     end
   end

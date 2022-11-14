@@ -11,7 +11,7 @@ class DashboardController < ApplicationController
     @account = Account.find_by uuid: session[:useruuid]
     @mypoints=Point.where(account_id: @account.id)
     @total_points = @mypoints.all.sum (:Points)
-
+    @current_user = @account
     @registered_events = Signup.where(account_id: @account.id).size
     
     # respond_to do |format|
