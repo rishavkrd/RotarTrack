@@ -4,6 +4,7 @@ class DashboardController < ApplicationController
   include Secured
   layout "default_page"
   def show
+    $current_user = Account.find_by uuid: session[:useruuid]
     @user = session[:userinfo]
     @uid = session[:useruuid]
     @events = Event.where("? >= ?",:Date, Time.now).order(:Date)
@@ -11,7 +12,7 @@ class DashboardController < ApplicationController
     @account = Account.find_by uuid: session[:useruuid]
     @mypoints=Point.where(account_id: @account.id)
     @total_points = @mypoints.all.sum (:Points)
-
+    @current_user = @account
     @registered_events = Signup.where(account_id: @account.id).size
     
     # respond_to do |format|

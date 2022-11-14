@@ -1,40 +1,45 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Inactive Events</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Location</th>
-      <th>Points</th>
-      <th>Type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <% next if event.type_id != 5 %>
-        <td><%= event.Title %></td>
-        <td><%= event.Description %></td>
-        <td><%= event.Date %></td>
-        <td><%= event.Time.strftime("%I:%M %p") %></td>
-        <td><%= event.Location %></td>
-        <td><%= event.Points %></td>
-        <td><%= event.type.Value %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Archive', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Event', new_event_path %>
+<div class="card bg-base-100 shadow">
+	<div class="card-body">
+		<div class="flex flex-row justify-between">
+			<h2 class="card-title">Events</h2>
+			<% if @current_user.status_id == 1 or @current_user.status_id == 2 %>
+				<%= link_to 'New Event', new_event_path, class:'btn float-right mb-4'%>
+			<% end %>
+		</div>
+		<table class="table w-full">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Description</th>
+					<th>Date</th>
+					<th>Time</th>
+					<th>Location</th>
+					<th>Points</th>
+					<th>Type</th>
+					<th colspan="3"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @events.each do |event| %>
+					<tr>
+						<% unless event.type_id == 5 %>
+							<td><%= event.Title %></td>
+							<td><%= event.Description %></td>
+							<td><%= event.Date %></td>
+							<td><%= event.Time.strftime("%I:%M %p") %></td>
+							<td><%= event.Location %></td>
+							<td><%= event.Points %></td>
+							<td><span class="badge badge-ghost"><%= event.type.Value %></span></td>
+							<td><%= link_to 'Show', event, class:'btn btn-sm btn-ghost' %></td>
+							<% if @current_user.status_id == 1 and @current_user.status_id == 2 %>
+								<td><%= link_to 'Edit', edit_event_path(event), class:'btn btn-sm btn-ghost' %></td>
+								<td><%= link_to 'Archive', event, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-sm btn-error' %></td>
+							<% end %>
+						<% end %>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

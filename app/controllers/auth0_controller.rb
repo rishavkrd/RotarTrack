@@ -38,12 +38,18 @@ class Auth0Controller < ApplicationController
 
   def find_or_create
     user_uid = session[:useruuid]
+    @user = session[:userinfo]
+    user_email = @user['email']
     user = Account.find_by(uuid: user_uid)
+    user_by_email = Account.find_by(Email: user_email)
 
     if user
       $current_user = Account.find_by uuid: session[:useruuid]
       redirect_to('/dashboard')
-      user
+    elsif user_by_email
+      user_by_email.uuid = user_uid
+      user_by_email.save
+      redirect_to('/dashboard')
     else
       redirect_to('/profile/create')
     end

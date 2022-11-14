@@ -11,7 +11,7 @@ class AccountsController < ApplicationController
     @accounts = Account.all
     @current_user = @accounts.find_by uuid: session[:useruuid]
 
-    unless @current_user.status_id == 2
+    unless @current_user.status_id == 2 or @current_user.status_id == 1
       render 'invalid'
     end
   end
@@ -19,6 +19,8 @@ class AccountsController < ApplicationController
   # GET /accounts/1 or /accounts/1.json
   def show
     @accounts = Account.all
+    @registered_events = Signup.where(account_id: @account.id)
+    @registered_events_count = @registered_events.size
     @current_user = @accounts.find_by uuid: session[:useruuid]
     if @current_user.status_id == 1 or @current_user.status_id == 2 or @current_user.id == @account.id
       @points = Point.all
@@ -32,16 +34,19 @@ class AccountsController < ApplicationController
 
   # GET /accounts/new
   def new
+    @current_user = Account.find_by uuid: session[:useruuid]
     @account = Account.new
   end
 
   # GET /accounts/1/edit
-  def edit; end
+  def edit
+    @current_user = Account.find_by uuid: session[:useruuid]
+  end
 
   # POST /accounts or /accounts.json
   def create
     @account = Account.new(account_params)
-
+    @current_user = @accounts.find_by uuid: session[:useruuid]
     respond_to do |format|
       if @account.save
         format.html { redirect_to(account_url(@account), notice: 'Account was successfully created.') }
@@ -55,6 +60,7 @@ class AccountsController < ApplicationController
 
   # PATCH/PUT /accounts/1 or /accounts/1.json
   def update
+    @current_user = Account.find_by uuid: session[:useruuid]
     respond_to do |format|
       if @account.update(account_params)
         format.html { redirect_to(account_url(@account), notice: 'Account was successfully updated.') }
@@ -69,10 +75,15 @@ class AccountsController < ApplicationController
   # DELETE /accounts/1 or /accounts/1.json
   def destroy
     # @account.destroy!
-    @account.update(:status_id => 4)
-    respond_to do |format|
-      format.html { redirect_to(accounts_url, notice: 'Account was successfully archived.') }
-      format.json { head(:no_content) }
+    @current_user = Account.find_by uuid: session[:useruuid]
+    if(@current_user.status_id == 1 or @current_user.status_id == 2)
+      @account.update(:status_id => 4)
+      respond_to do |format|
+        format.html { redirect_to(accounts_url, notice: 'Account was successfully archived.') }
+        format.json { head(:no_content) }
+      end
+    else
+      render 'invalid'
     end
   end
 

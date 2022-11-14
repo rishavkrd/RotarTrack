@@ -1,4 +1,4 @@
-<div class="flex flex-col mt-8 gap-8 px-16">
+<div class="flex flex-col gap-8">
 	<% if notice %>
 		<div class="alert shadow-lg">
 			<div>
@@ -16,7 +16,7 @@
 					<h2 class="card-title">Upcoming Events</h2>
 					<p class="text-slate-500 mb-12">Catch one of the next events, and earn some points to fufill your membership obligations.</p>
 					<div class="mb-8">
-						<div class="flex flex-col divide-y-2">
+						<div class="flex flex-col divide-y-2 divide-slate-200">
 							<% @events.each do |event, index| %>
 								<div class="pill">
 									<a class="flex flex-row" href="<%=url_for event%>">
@@ -29,9 +29,8 @@
 										<div class="divider divider-horizontal"></div>
 										<div class="flex flex-col flex-wrap w-full">
 											<span class="badge mb-2 badge"><%= event.type.Value %></span>
-											<p class="text-lg"><%=event.Title%></p>
-											<p class="mb-4 text-slate-500"><%= event.Description %></p>
-											<div class="flex flex-row flex-wrap gap-8">
+											<p class="text-lg mb-2"><%=event.Title%></p>
+											<div class="flex flex-row flex-wrap gap-1 md:gap-8">
 												<div class="flex flex-row gap-2 text-slate-500">
 													<div>
 														<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -77,19 +76,26 @@
 			<div class="card bg-base-100 shadow">
 				<div class="card-body">
 					<h2 class="card-title mb-2">Howdy, <%= @account["FirstName"].capitalize()%>!</h2>
-					<div class="flex flex-col divide-y-2">
-						<a href="" class='pill flex flex-row justify-between'>
+					<div class="flex flex-col divide-y-2 divide-slate-200">
+						<a href="<% unless $current_user.nil? %><%=edit_account_path($current_user)%><%end%>" class='pill flex flex-row justify-between'>
 							<p>Edit Your Profile</p>
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-slate-500 w-6 h-6">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
 							</svg>
 						</a>
-						<a href="" class='pill flex flex-row justify-between'>
+						<a href="<% unless $current_user.nil? %><%=account_path($current_user)%><%end%>" class='pill flex flex-row justify-between'>
 							<p>View My Events</p>
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-slate-500 w-6 h-6">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
 							</svg>
 						</a>
+						<% if @current_user.status_id == 1 %>
+							<%= link_to 'Inactive Events (ADMIN DEV)', events_path, class:'pill flex flex-row justify-between' %>
+							<%= link_to 'Points (ADMIN DEV)', points_path, class:'pill flex flex-row justify-between'  %>
+							<%= link_to 'Sign Ups (ADMIN DEV)', signups_path, class:'pill flex flex-row justify-between'  %>
+							<%= link_to 'Statuses (ADMIN DEV)', statuses_path, class:'pill flex flex-row justify-between'  %>
+							<%= link_to 'Events Type (ADMIN DEV)', types_path, class:'pill flex flex-row justify-between'  %>
+						<% end %>
 					</div>
 					<div class="stats stats-vertical lg:stats-horizontal">
 						<div class="stat">

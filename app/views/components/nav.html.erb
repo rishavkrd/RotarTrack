@@ -1,5 +1,5 @@
 <!-- NAVBAR -->
-<div class="navbar bg-base-100 shadow-sm">
+<div class="navbar bg-base-100 shadow-sm mb-8">
 	<div class="navbar-start">
 		<div class="dropdown">
 			<label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -37,7 +37,7 @@
 			</label>
 			<ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
 				<li>
-					<a href="<%= account_path($current_user)%>" class="justify-between">
+					<a href="<% unless $current_user.nil? %><%=account_path($current_user)%><%end%>" class="justify-between">
 						Profile
 					</a>
 				</li>
