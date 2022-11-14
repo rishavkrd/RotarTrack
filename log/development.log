@@ -27970,3 +27970,13 @@ Processing by ProfileController#create as HTML
 Completed 200 OK in 97ms (Views: 85.7ms | ActiveRecord: 0.0ms | Allocations: 12329)
 
 
+Started GET "/profile/create" for 172.17.0.1 at 2022-11-14 04:26:15 +0000
+Processing by ProfileController#create as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering profile/create.html.erb within layouts/application
+  Rendered profile/create.html.erb within layouts/application (Duration: 6.7ms | Allocations: 1315)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 102.7ms | Allocations: 10179)
+Completed 200 OK in 124ms (Views: 114.3ms | Allocations: 10727)
+
+
