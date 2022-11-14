@@ -34,6 +34,7 @@
 /public/packs-test
 /node_modules/*
 !/node_modules/camelcase-css
+!/node_modules/postcss
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
