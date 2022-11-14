@@ -36,6 +36,7 @@
 !/node_modules/camelcase-css
 !/node_modules/postcss
 !/node_modules/source-map
+!/node_modules/css-selector-tokenizer
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
