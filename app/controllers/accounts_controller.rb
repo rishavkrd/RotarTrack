@@ -50,13 +50,15 @@ class AccountsController < ApplicationController
 
   # PATCH/PUT /accounts/1 or /accounts/1.json
   def update
+    unless @account.uuid == session[:useruuid]
+      render 'invalid'
+    end
+
     respond_to do |format|
-      if @account.update(account_params) && @account.Email.end_with?("@tamu.edu")
+      if @account.update(account_params)
         format.html { redirect_to(account_url(@account), notice: 'Account was successfully updated.') }
         format.json { render(:show, status: :ok, location: @account) }
       else
-        puts "++++++++++++++++account is #{@account.Email}"
-        # errors.add(@account.Email, "Email must be a TAMU email.")
         format.html { render(:edit, status: :unprocessable_entity) }
         format.json { render(json: @account.errors, status: :unprocessable_entity) }
       end
