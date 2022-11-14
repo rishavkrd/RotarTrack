@@ -19,7 +19,8 @@ class AccountsController < ApplicationController
   # GET /accounts/1 or /accounts/1.json
   def show
     @accounts = Account.all
-    @registered_events = Signup.where(account_id: @account.id).size
+    @registered_events = Signup.where(account_id: @account.id)
+    @registered_events_count = @registered_events.size
     @current_user = @accounts.find_by uuid: session[:useruuid]
     if @current_user.status_id == 1 or @current_user.status_id == 2 or @current_user.id == @account.id
       @points = Point.all
