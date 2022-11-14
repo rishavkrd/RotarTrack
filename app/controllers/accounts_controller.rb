@@ -16,7 +16,7 @@ class AccountsController < ApplicationController
 
   # GET /accounts/1 or /accounts/1.json
   def show
-    unless @account.uuid == session[:useruuid]
+    unless @account.uuid == session[:useruuid] || @account.status_id == 2
       render 'invalid'
     end
 
