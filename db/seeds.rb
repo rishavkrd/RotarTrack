@@ -18,9 +18,9 @@ Account.create!([
   { UIN: 9_818_273, FirstName: 'John', LastName: 'Goodman', PhoneNumber: 1_928_371, Email: 'john@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_04' },
   { UIN: 1_231_412, FirstName: 'Henry', LastName: 'Ford', PhoneNumber: 198_263_129, Email: 'henry@ford.com', status_id: 2, uuid:'TEST_ACCOUNT_05' },
   { UIN: 431_414_124, FirstName: 'Tom', LastName: 'Hanks', PhoneNumber: 121_421_124, Email: 'tom@tu.edu', status_id: 2, uuid:'TEST_ACCOUNT_06' },
-  { UIN: 927_003_214, FirstName: 'Ryan', LastName: 'Crowell', PhoneNumber: 121_421_124, Email: 'rdcrowell13@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_07'}
-]
-               )
+  { UIN: 927_003_214, FirstName: 'Ryan', LastName: 'Crowell', PhoneNumber: 121_421_124, Email: 'rdcrowell13@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_07'},
+  { UIN: 526009857, FirstName: 'Ryan', LastName: 'O\'Malley', PhoneNumber: 8155575141, Email: 'rdomalley@tamu.edu', status_id: 1, uuid:'test'}
+])
 
 # Create default meeting types
 types = ['Meeting', 'Event', 'Social', 'Other', 'Inactive']

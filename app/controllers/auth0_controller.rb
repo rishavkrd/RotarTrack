@@ -47,8 +47,9 @@ class Auth0Controller < ApplicationController
       $current_user = Account.find_by uuid: session[:useruuid]
       redirect_to('/dashboard')
     elsif user_by_email
-      user_by_email.Email = user_email
+      user_by_email.uuid = user_uid
       user_by_email.save
+      redirect_to('/dashboard')
     else
       redirect_to('/profile/create')
     end

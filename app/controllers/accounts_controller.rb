@@ -60,7 +60,7 @@ class AccountsController < ApplicationController
 
   # PATCH/PUT /accounts/1 or /accounts/1.json
   def update
-    @current_user = @accounts.find_by uuid: session[:useruuid]
+    @current_user = Account.find_by uuid: session[:useruuid]
     respond_to do |format|
       if @account.update(account_params)
         format.html { redirect_to(account_url(@account), notice: 'Account was successfully updated.') }

@@ -14,7 +14,15 @@ module Secured
       user_email = @user['email']
       user_uid = session[:useruuid]
       user = Account.find_by(uuid: user_uid)
-      redirect_to('/profile/create') unless user
+      user_by_email = Account.find_by(Email: user_email)
+      if user
+        $current_user = Account.find_by uuid: session[:useruuid]
+      elsif user_by_email
+        user_by_email.uuid = user_uid
+        user_by_email.save
+      else
+        redirect_to('/profile/create')
+      end
     end
   end
 end
