@@ -4,6 +4,7 @@ class DashboardController < ApplicationController
   include Secured
   layout "default_page"
   def show
+    $current_user = Account.find_by uuid: session[:useruuid]
     @user = session[:userinfo]
     @uid = session[:useruuid]
     @events = Event.where("? >= ?",:Date, Time.now).order(:Date)
