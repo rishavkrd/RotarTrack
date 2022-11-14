@@ -25,10 +25,10 @@ RSpec.describe('Auth0s', type: :request) do # rubocop:todo RSpec/EmptyExampleGro
   #     expect(response).to have_http_status(:success)
   #   end
   # end
-  describe "GET /root" do
-    it "returns http success" do
-      get "/"
-      expect(response).to have_http_status(:success)
-    end
-  end
+  # describe "GET /root" do
+  #   it "returns http success" do
+  #     get "/"
+  #     expect(response).to have_http_status(:success)
+  #   end
+  # end
 end
