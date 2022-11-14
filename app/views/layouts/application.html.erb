@@ -1,18 +1,6 @@
 <!DOCTYPE html>
 <html data-theme="aggie" class="bg-slate-50">
-  <head>
-    <title>RotarTrack</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.39.1/dist/full.css" rel="stylesheet" type="text/css" />
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-  </head>
+  <%= render template:"layouts/headers"%>
 
   <body>
       <%= yield %>
