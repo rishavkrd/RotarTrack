@@ -9,18 +9,20 @@ class AccountsController < ApplicationController
     @accounts = Account.all
     @current_user = @accounts.find_by uuid: session[:useruuid]
 
-    unless @current_user.status_id == 2
+    unless @current_user.status_id == 2 
       render 'invalid'
     end
   end
 
   # GET /accounts/1 or /accounts/1.json
   def show
+    unless @account.uuid == session[:useruuid]
+      render 'invalid'
+    end
 
     @points = Point.all
     @mypoints=@points.where(account_id: @account.id)
     @total_points = @mypoints.all.sum (:Points)
-
   end
 
   # GET /accounts/new
@@ -49,10 +51,12 @@ class AccountsController < ApplicationController
   # PATCH/PUT /accounts/1 or /accounts/1.json
   def update
     respond_to do |format|
-      if @account.update(account_params)
+      if @account.update(account_params) && @account.Email.end_with?("@tamu.edu")
         format.html { redirect_to(account_url(@account), notice: 'Account was successfully updated.') }
         format.json { render(:show, status: :ok, location: @account) }
       else
+        puts "++++++++++++++++account is #{@account.Email}"
+        # errors.add(@account.Email, "Email must be a TAMU email.")
         format.html { render(:edit, status: :unprocessable_entity) }
         format.json { render(json: @account.errors, status: :unprocessable_entity) }
       end

@@ -11,6 +11,7 @@
             <%= button_to 'Continue to Login', '/auth/auth0', method: :post, class: 'btn-primary px-14', id: 'qsLoginBtn'%>
           <% else %>
             <%= button_to 'Logout', 'auth/logout', method: :get, class: 'btn-primary px-14' %>
+            <%= button_to 'Dashboard', '/dashboard', method: :get, class: 'btn-primary px-14' %>
           <% end %>
         </div>
         <div>

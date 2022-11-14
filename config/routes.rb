@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   resources :statuses
   get '/dashboard' => 'dashboard#show'
   get '/dashboard/help' => 'dashboard#help'
+
+  #get '/accounts/:UIN' => 'account#show'
+
   get '/auth/auth0/callback' => 'auth0#callback'
   get '/auth/failure' => 'auth0#failure'
   get '/auth/logout' => 'auth0#logout'
