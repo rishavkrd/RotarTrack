@@ -1,9 +1,27 @@
 <div class="flex flex-col md:grid grid-cols-12 gap-8">
 	<div class="card col-span-4 bg-base-100 shadow-xl">
 		<div class="card-body">
-			<p class="badge"><%= @event.type.Value %></p>
-			<h2 class="text-3xl font-semibold"><%= @event.Title %></h2>
-			<p><%= @event.Description %></p>
+			<div class="flex flex-row justify-between">
+				<div>
+					<p class="badge badge-ghost mb-2"><%= @event.type.Value %></p>
+					<h2 class="text-3xl font-semibold"><%= @event.Title %></h2>
+				</div>
+        <% if @current_user.status_id == 1 or @current_user.status_id == 2 %>
+          <div class="dropdown dropdown-bottom dropdown-end">
+            <label tabindex="0" class="btn btn-ghost m-1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <path fill-rule="evenodd" d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 00-.986.57c-.166.115-.334.126-.45.083L6.3 5.508a1.875 1.875 0 00-2.282.819l-.922 1.597a1.875 1.875 0 00.432 2.385l.84.692c.095.078.17.229.154.43a7.598 7.598 0 000 1.139c.015.2-.059.352-.153.43l-.841.692a1.875 1.875 0 00-.432 2.385l.922 1.597a1.875 1.875 0 002.282.818l1.019-.382c.115-.043.283-.031.45.082.312.214.641.405.985.57.182.088.277.228.297.35l.178 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.02.382a1.875 1.875 0 002.28-.819l.923-1.597a1.875 1.875 0 00-.432-2.385l-.84-.692c-.095-.078-.17-.229-.154-.43a7.614 7.614 0 000-1.139c-.016-.2.059-.352.153-.43l.84-.692c.708-.582.891-1.59.433-2.385l-.922-1.597a1.875 1.875 0 00-2.282-.818l-1.02.382c-.114.043-.282.031-.449-.083a7.49 7.49 0 00-.985-.57c-.183-.087-.277-.227-.297-.348l-.179-1.072a1.875 1.875 0 00-1.85-1.567h-1.843zM12 15.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z" clip-rule="evenodd" />
+              </svg>
+            </label>
+            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+              <% if @current_user.status_id == 1 or @current_user.status_id == 2 %>
+                <li><a href="<%= edit_event_path(@event)%>">Edit Event</a></li>
+              <% end %>
+            </ul>
+          </div>
+        <%end %>
+			</div>
+			<p class="text-gray-500"><%= @event.Description %></p>
 			<div class="stats lg:stats-horizontal my-4">
 				<div class="stat">
 					<div class="stat-title">Points</div>
@@ -33,22 +51,19 @@
 						<path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
 						<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
 					</svg>
-					<a class="hover:underline"><%= @event.Location  %></a>
+					<a class="hover:underline mb-8"><%= @event.Location  %></a>
 				</div>
+        <% if !@hasSignedUp %>
+          <%= link_to 'Sign Up', new_signup_path(account_id: @account.id, event_id: @event.id), class:'btn btn-block btn-sm' %>
+        <% end %>
 			</div>
-			<% if @current_user.status_id == 1 or @current_user.status_id == 2 %>
-				<a href="<%= edit_event_path(@event)%>"class="btn btn-block btn-sm">Edit Event</a>
-			<% end %>
 		</div>
 	</div>
 	<div class="card bg-base-100 shadow-xl col-span-8">
 		<div class="card-body">
 			<div class="flex flex-row justify-between">
-        <h2 class="card-title">Recent Signups</h2>
-        <% if !@hasSignedUp %>
-          <%= link_to 'Sign Up', new_signup_path(account_id: @account.id, event_id: @event.id), class:'btn btn btn-primary' %>
-        <% end %>
-      </div>
+				<h2 class="card-title">Recent Signups</h2>
+			</div>
 			<div class="overflow-x-auto">
 				<table class="table w-full">
 					<thead>
