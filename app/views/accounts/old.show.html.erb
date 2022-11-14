@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>UIN:</strong>
+  <%= @account.UIN %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @account.FirstName%> <%= @account.LastName %>
+</p>
+
+<p>
+  <strong>Phone Number:</strong>
+  <%= @account.PhoneNumber %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @account.Email %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @account.status.Value.capitalize() %>
+</p>
+
+<p>
+<h2>Points</h2>
+<p>
+  <strong> Total Points: <%=@total_points%></strong>
+</p>
+  <table>
+  <thead>
+    <tr>
+      <th>Account</th>
+      <th>Event</th>
+      <th>Points</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mypoints.each do |point| %>
+      <tr>
+
+        <td><%= point.account.FirstName.capitalize() + " " + point.account.LastName.capitalize() %></td>
+        <td><%= point.event.Title.gsub(/[A-Za-z']+/,&:capitalize) %></td>
+
+        <td><%= point.Points %></td>
+        <td><%= link_to 'Show', point %></td>
+        <td><%= link_to 'Edit', edit_point_path(point) %></td>
+        <td><%= link_to 'Destroy', point, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</p>
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', '/dashboard' %>

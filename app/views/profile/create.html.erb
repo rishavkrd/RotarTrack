@@ -1,53 +1,39 @@
-<p id="notice"><%= notice %></p>
-<p> Let's put the finishing touches on your account </p>
-
-<%= form_for :account do |form| %>
-  <% if @account.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
-
-      <ul>
-        <% @account.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div class="container p-16">
+  <div id="alert"><span><%= notice %></span></div>
+  <h1 class="text-4xl font-bold mb-12">Just a few finishing touches...</h1>
+  <%= form_for :account do |form| %>
+    <% if @account.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+        <ul>
+          <% @account.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-row gap-8">
+        <div class="form-control w-full max-w-xs">
+          <%= form.label "First Name", class: 'label-text' %>
+          <%= form.text_field :FirstName, class:"input-bordered input w-full max-w-xs", placeholder:'Joe' %>
+        </div>
+        <div class="form-control w-full max-w-xs">
+          <%= form.label "Last Name", class: 'label-text' %>
+          <%= form.text_field :LastName, class:"input-bordered input w-full max-w-xs", placeholder:"Aggie" %>
+        </div>
+      </div>
+      <div class="form-control w-full max-w-xs">
+        <%= form.label "Phone Number", class: 'label-text' %>
+        <%= form.number_field :PhoneNumber, class:"input-bordered input w-full max-w-xs", placeholder:'8885551234' %>
+      </div>
+      <div class="form-control w-full max-w-xs mb-8">
+        <%= form.label "TAMU UIN", class: 'label-text' %>
+        <%= form.number_field :UIN, class:"input-bordered input w-full max-w-xs", placeholder:'123456789'%>
+      </div>
+      <div class="actions">
+        <%= form.submit "Create your Account", class: 'btn btn-primary' %>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label "First Name" %>
-    <%= form.text_field :FirstName, placeholder: "Jane" %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Last Name" %>
-    <%= form.text_field :LastName, placeholder: "Aggie" %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Phone Number" %>
-    <%= form.number_field :PhoneNumber, placeholder: "2813308004" %>
-  </div>
-
-  <div class="field">
-    <%= form.label "UIN" %>
-    <%= form.number_field :UIN, placeholder: "783629738" %>
-  </div>
-  
-  <div>
-  <p>
-  <strong>Email:</strong>
-  <%= @user["email"] %>
-  </p>
-
-  <p>
-  <strong>Status:</strong>
-  Member
-  </p>
-  </div>
-  <div class="actions">
-    <%= form.submit "Create your Account" %>
-  </div>
-
-  
-<% end %>
+</div>
