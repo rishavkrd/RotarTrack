@@ -27980,6 +27980,7 @@ Processing by ProfileController#create as HTML
 Completed 200 OK in 124ms (Views: 114.3ms | Allocations: 10727)
 
 
+<<<<<<< HEAD
   [1m[35m (1383.7ms)[0m  [1m[35mCREATE DATABASE "test_app_development" ENCODING = 'unicode'[0m
   [1m[35m (907.1ms)[0m  [1m[35mCREATE DATABASE "test_app_test" ENCODING = 'unicode'[0m
   [1m[35m (47.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
@@ -31278,3 +31279,5 @@ Processing by DashboardController#show as HTML
 Completed 200 OK in 449ms (Views: 287.1ms | ActiveRecord: 97.7ms | Allocations: 24649)
 
 
+=======
+>>>>>>> f0e98eff (added config/application.rb)
