@@ -2,12 +2,17 @@
 
 class DashboardController < ApplicationController
   include Secured
+  layout "default_page"
   def show
     @user = session[:userinfo]
     @uid = session[:useruuid]
-    @events = Event.all
+    @events = Event.where("? >= ?",:Date, Time.now).order(:Date)
     usr_email = @user['email']
     @account = Account.find_by uuid: session[:useruuid]
+    @mypoints=Point.where(account_id: @account.id)
+    @total_points = @mypoints.all.sum (:Points)
+
+    @registered_events = Signup.where(account_id: @account.id).size
     
     # respond_to do |format|
     # if @account==nil
@@ -31,6 +36,7 @@ class DashboardController < ApplicationController
     end
   end
   helper_method :greeting
+  
 
   def help; end
 end

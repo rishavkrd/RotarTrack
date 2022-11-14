@@ -21,6 +21,7 @@ class Auth0Controller < ApplicationController
 
   def logout
     reset_session
+    $current_user = nil
     redirect_to(logout_url)
   end
 
@@ -40,6 +41,7 @@ class Auth0Controller < ApplicationController
     user = Account.find_by(uuid: user_uid)
 
     if user
+      $current_user = Account.find_by uuid: session[:useruuid]
       redirect_to('/dashboard')
       user
     else

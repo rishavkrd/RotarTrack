@@ -10,9 +10,9 @@
         <h2 class="text-center font-medium text-slate-500 transform-up mb-24 uppercase">RotarTrack System</h2>
         <div class="flex flex-col items-center">
           <% if !session[:userinfo].present? %>
-            <%= button_to 'Continue to Login', '/auth/auth0', method: :post, class: 'btn btn-primary px-14', id: 'qsLoginBtn'%>
+            <%= link_to 'Continue to Login', '/auth/auth0', method: :post, class: 'btn btn-primary px-14', id: 'qsLoginBtn'%>
           <% else %>
-            <%= button_to 'Logout', 'auth/logout', method: :get, class: 'btn btn-primary px-14' %>
+            <%= link_to 'Logout', 'auth/logout', method: :get, class: 'btn btn-primary px-14' %>
           <% end %>
         </div>
       </div>

@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class AccountsController < ApplicationController
+  layout "default_page"
   include Secured
   before_action :set_account, only: %i[show edit update destroy]
 
   # GET /accounts or /accounts.json
   def index
+    
     @accounts = Account.all
     @current_user = @accounts.find_by uuid: session[:useruuid]
 
@@ -16,10 +18,15 @@ class AccountsController < ApplicationController
 
   # GET /accounts/1 or /accounts/1.json
   def show
-
-    @points = Point.all
-    @mypoints=@points.where(account_id: @account.id)
-    @total_points = @mypoints.all.sum (:Points)
+    @accounts = Account.all
+    @current_user = @accounts.find_by uuid: session[:useruuid]
+    if @current_user.status_id == 1 or @current_user.status_id == 2 or @current_user.id == @account.id
+      @points = Point.all
+      @mypoints=@points.where(account_id: @account.id)
+      @total_points = @mypoints.all.sum (:Points)
+    else
+      render 'invalid'
+    end
 
   end
 
