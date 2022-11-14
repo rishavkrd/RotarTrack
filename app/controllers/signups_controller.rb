@@ -20,6 +20,8 @@ class SignupsController < ApplicationController
   # GET /signups/new
   def new
     @signup = Signup.new
+    @account = Account.find(params[:account_id])
+    @event = Event.find(params[:event_id])
   end
 
   # GET /signups/1/edit

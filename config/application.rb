@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module TestApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    # config.web_console.permissions = '172.17.0.1'
     config.load_defaults 6.1
 
     # Configuration for the application, engines, and railties goes here.

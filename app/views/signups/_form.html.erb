@@ -12,13 +12,11 @@
   <% end %>
   
   <div class="field">
-    <%= form.label :event_id %>
-    <%= form.collection_select :event_id, Event.all, :id, :Title %>
+  <%= form.hidden_field :event_id, value: @signup.event.id%>
   </div>
-
+  
   <div class="field">
-    <%= form.label :account_id %>
-    <%= form.collection_select :account_id, Account.all, :id, :FirstName %>
+  <%= form.hidden_field :account_id, value: @signup.account.id%>
   </div>
 
   <div class="field">

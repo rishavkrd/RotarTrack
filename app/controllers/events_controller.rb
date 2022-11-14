@@ -18,6 +18,7 @@ class EventsController < ApplicationController
     @user = session[:userinfo]
     usr_email = @user['email']
     @account = Account.find_by(Email: usr_email)
+    @hasSignedUp = false
 
   end
 

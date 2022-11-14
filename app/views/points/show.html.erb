@@ -9,6 +9,10 @@
   <strong>Event:</strong>
   <%= @point.event.Title.gsub(/[A-Za-z']+/,&:capitalize) %>
 </p>
+<p>
+  <strong>Points:</strong>
+  <%= @point.Points %>
+</p>
 
-<%= link_to 'Edit', edit_point_path(@point) %> |
-<%= link_to 'Back', points_path %>
+
+<%= link_to 'Back', accounts_path %>	
