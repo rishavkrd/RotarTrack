@@ -16,7 +16,8 @@
 					<div class="stat-value"><%= @total_points %></div>
 				</div>
 			</div>
-			<h2 class="text-3xl font-semibold mb-2"><%= @account.FirstName%> <%=@account.LastName%></h2>
+			<h2 class="text-3xl font-semibold"><%= @account.FirstName%> <%=@account.LastName%></h2>
+			<p class="text-xl text-slate-500 mb-2"><%= @account.status.Value.capitalize()%></p>
 			<div class="flex flex-col mb-4">
 				<div class="flex flex-row gap-4">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -44,15 +45,15 @@
 		<div class="card-body">
 			<h2 class="card-title">Recent Signups</h2>
 			<div class="overflow-x-auto">
-				<table class="table w-full">
+				<table class="table w-full mb-32">
 					<!-- head -->
 					<thead>
 						<tr>
 							<th>Event Title</th>
 							<th>Date</th>
 							<th>Requires Ride</th>
-                            <th></th>
-                            <th></th>
+							<th></th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -62,8 +63,31 @@
 								<td><%= Event.find(signup.event_id).Date.strftime("%b %-d") %> <%= Event.find(signup.event_id).Time.strftime("%-I:%M %p") %></td>
 								<td><%= convertBool(signup.Pickup) %></td>
 								<% if signup.account_id == @current_user.id or @current_user.status_id == 1 or @current_user.status_id == 2 %>
-								<td><%= link_to 'Edit', edit_signup_path(signup), class:'btn btn-sm' %></td>
-								<td><%= link_to 'Unregister', signup, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-error" %></td>
+									<td><%= link_to 'Edit', edit_signup_path(signup), class:'btn btn-sm' %></td>
+									<td><%= link_to 'Unregister', signup, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-error" %></td>
+								<% end %>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+				<h2 class="card-title mb-2">Points</h2>
+				<table class="table w-full">
+					<thead>
+						<tr>
+							<th>Event</th>
+							<th>Points</th>
+							<th colspan="3"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @mypoints.each do |point| %>
+							<tr>
+								<td><%= point.event.Title.gsub(/[A-Za-z']+/,&:capitalize) %></td>
+								<td><%= point.Points %></td>
+								<td><%= link_to 'Show', point, class:'btn btn-ghost btn-sm'%></td>
+                                <% if @current_user.status_id == 1 or @current_user.status_id == 2 %>
+								    <td><%= link_to 'Edit', edit_point_path(point), class:'btn btn-ghost btn-sm' %></td>
+								    <td><%= link_to 'Delete', point, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-error btn-sm' %></td>
                                 <% end %>
 							</tr>
 						<% end %>

@@ -16,7 +16,7 @@
 					<h2 class="card-title">Upcoming Events</h2>
 					<p class="text-slate-500 mb-12">Catch one of the next events, and earn some points to fufill your membership obligations.</p>
 					<div class="mb-8">
-						<div class="flex flex-col divide-y-2">
+						<div class="flex flex-col divide-y-2 divide-slate-200">
 							<% @events.each do |event, index| %>
 								<div class="pill">
 									<a class="flex flex-row" href="<%=url_for event%>">
@@ -77,7 +77,7 @@
 			<div class="card bg-base-100 shadow">
 				<div class="card-body">
 					<h2 class="card-title mb-2">Howdy, <%= @account["FirstName"].capitalize()%>!</h2>
-					<div class="flex flex-col divide-y-2">
+					<div class="flex flex-col divide-y-2 divide-slate-200">
 						<a href="<% unless $current_user.nil? %><%=edit_account_path($current_user)%><%end%>" class='pill flex flex-row justify-between'>
 							<p>Edit Your Profile</p>
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-slate-500 w-6 h-6">

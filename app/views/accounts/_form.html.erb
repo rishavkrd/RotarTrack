@@ -1,47 +1,44 @@
 <%= form_with(model: account) do |form| %>
-  <% if account.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(account.errors.count, "error") %> prohibited this account from being saved:</h2>
+	<% if account.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(account.errors.count, "error") %> prohibited this account from being saved:</h2>
+			<ul>
+				<% account.errors.each do |error| %>
+					<li><%= error.full_message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<div class="flex flex-col gap-4">
+		<div class="flex flex-row gap-8">
+			<div class="form-control w-full max-w-xs">
+				<%= form.label "First Name", class: 'label-text' %>
+				<%= form.text_field :FirstName, class:"input-bordered input w-full max-w-xs", placeholder:'Joe' %>
+			</div>
+			<div class="form-control w-full max-w-xs">
+				<%= form.label "Last Name", class: 'label-text' %>
+				<%= form.text_field :LastName, class:"input-bordered input w-full max-w-xs", placeholder:"Aggie" %>
+			</div>
+		</div>
+		<div class="form-control w-full max-w-xs">
+			<%= form.label "Phone Number", class: 'label-text' %>
+			<%= form.number_field :PhoneNumber, class:"input-bordered input w-full max-w-xs", placeholder:'8885551234' %>
+		</div>
+		<div class="field form-control w-full max-w-xs">
+			<%= form.label :Email %>
+			<%= form.text_field :Email, class:'input input-bordered w-full max-w-xs' %>
+		</div>
+		<div class="form-control w-full max-w-xs">
+			<%= form.label "TAMU UIN", class: 'label-text' %>
+			<%= form.number_field :UIN, class:"input-bordered input w-full max-w-xs", placeholder:'123456789'%>
+		</div>
+		<div class="form-control w-full max-w-xs mb-8">
+			<%= form.label :status_id, class:'label-text' %>
+			<%= form.collection_select :status_id, Status.all, :id, :Value, class:'select select-bordered' %>
+		</div>
 
-      <ul>
-        <% account.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :UIN, "UIN" %>
-    <%= form.number_field :UIN %>
-  </div>
-
-  <div class="field">
-    <%= form.label :FirstName, "First Name" %>
-    <%= form.text_area :FirstName %>
-  </div>
-
-  <div class="field">
-    <%= form.label :LastName, "Last Name" %>
-    <%= form.text_area :LastName %>
-  </div>
-
-  <div class="field">
-    <%= form.label :PhoneNumber, "Phone Number" %>
-    <%= form.number_field :PhoneNumber %>
-  </div>
-
-  <div class="field">
-    <%= form.label :Email %>
-    <%= form.text_area :Email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status_id %>
-    <%= form.collection_select :status_id, Status.all, :id, :Value %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+		<div class="actions">
+			<%= form.submit class: 'btn btn-primary' %>
+		</div>
+	</div>
 <% end %>
