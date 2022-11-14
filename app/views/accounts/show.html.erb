@@ -49,8 +49,8 @@
 
         <td><%= point.Points %></td>
         <td><%= link_to 'Show', point %></td>
-        <td><%= link_to 'Edit', edit_point_path(point) %></td>
-        <td><%= link_to 'Destroy', point, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td><%= link_to 'Delete Point', point, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
