@@ -18,7 +18,9 @@
 <div>
   <h3> For Development (to be removed in production) </h3>
     <%= link_to 'Inactive Events', events_path %>
-    <%= link_to 'Points', points_path %>
+    <% if @account.status_id == 2 %>
+      <%= link_to 'Points', points_path %>
+    <% end %>
     <%= link_to 'Sign Ups', signups_path %>
     <%= link_to 'Statuses', statuses_path %>
     <%= link_to 'Events Type', types_path %>
