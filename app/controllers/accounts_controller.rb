@@ -49,7 +49,7 @@ class AccountsController < ApplicationController
     @current_user = @accounts.find_by uuid: session[:useruuid]
     respond_to do |format|
       if @account.save
-        format.html { redirect_to(account_url(@account), notice: 'Account was successfully created.') }
+        format.html { redirect_to(account_url(@account), success: 'Account was successfully created.') }
         format.json { render(:show, status: :created, location: @account) }
       else
         format.html { render(:new, status: :unprocessable_entity) }
@@ -63,7 +63,7 @@ class AccountsController < ApplicationController
     @current_user = Account.find_by uuid: session[:useruuid]
     respond_to do |format|
       if @account.update(account_params)
-        format.html { redirect_to(account_url(@account), notice: 'Account was successfully updated.') }
+        format.html { redirect_to(account_url(@account), success: 'Account was successfully updated.') }
         format.json { render(:show, status: :ok, location: @account) }
       else
         format.html { render(:edit, status: :unprocessable_entity) }
@@ -79,7 +79,7 @@ class AccountsController < ApplicationController
     if(@current_user.status_id == 1 or @current_user.status_id == 2)
       @account.update(:status_id => 4)
       respond_to do |format|
-        format.html { redirect_to(accounts_url, notice: 'Account was successfully archived.') }
+        format.html { redirect_to(accounts_url, success: 'Account was successfully archived.') }
         format.json { head(:no_content) }
       end
     else

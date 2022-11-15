@@ -16,8 +16,8 @@
 					<div class="stat-value"><%= @total_points %></div>
 				</div>
 			</div>
-			<h2 class="text-3xl font-semibold"><%= @account.FirstName%> <%=@account.LastName%></h2>
-			<p class="text-xl text-slate-500 mb-2"><%= @account.status.Value.capitalize()%></p>
+			<p class="badge badge-lg"><%= @account.status.Value.capitalize()%></p>
+			<h2 class="text-3xl font-semibold mb-4"><%= @account.FirstName%> <%=@account.LastName%></h2>
 			<div class="flex flex-col mb-4">
 				<div class="flex flex-row gap-4">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

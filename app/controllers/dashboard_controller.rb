@@ -7,7 +7,7 @@ class DashboardController < ApplicationController
     $current_user = Account.find_by uuid: session[:useruuid]
     @user = session[:userinfo]
     @uid = session[:useruuid]
-    @events = Event.where("? >= ?",:Date, Time.now).order(:Date)
+    @events = Event.where("? >= ?",:Date, Time.now).order(:Date).limit(3)
     usr_email = @user['email']
     @account = Account.find_by uuid: session[:useruuid]
     @mypoints=Point.where(account_id: @account.id)
