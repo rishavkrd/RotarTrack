@@ -32,7 +32,7 @@
 							<td><%= event.Points %></td>
 							<td><span class="badge badge-ghost"><%= event.type.Value %></span></td>
 							<td><%= link_to 'Show', event, class:'btn btn-sm btn-ghost' %></td>
-							<% if @current_user.status_id == 1 and @current_user.status_id == 2 %>
+							<% if @current_user.status_id == 1 or @current_user.status_id == 2 %>
 								<td><%= link_to 'Edit', edit_event_path(event), class:'btn btn-sm btn-ghost' %></td>
 								<td><%= link_to 'Archive', event, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-sm btn-error' %></td>
 							<% end %>
