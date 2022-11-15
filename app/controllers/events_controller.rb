@@ -8,12 +8,12 @@ class EventsController < ApplicationController
   # GET /events or /events.json
   def index
     @current_user = Account.find_by uuid: session[:useruuid]
-    @events = Event.all
+    @events = Event.all.order(:Date)
   end
 
   # GET /events/1 or /events/1.json
   def show
-
+    @current_user = Account.find_by uuid: session[:useruuid]
     @signups = Signup.all
     @user = session[:userinfo]
     usr_email = @user['email']

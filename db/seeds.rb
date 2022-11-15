@@ -12,14 +12,14 @@ end
 
 # Create accounts
 Account.create!([
-  { UIN: 923_874_129, FirstName: 'Joe', LastName: 'Smith', PhoneNumber: 19_283_712, Email: 'joe@smith.com', status_id: 2 , uuid: 'TEST_ACCOUNT_01' },
-  { UIN: 344_523_451, FirstName: 'Rishav', LastName: 'Dokania', PhoneNumber: 129_883_712, Email: 'rishavkrd11@tamu.edu', status_id: 1, uuid: 'TEST_ACCOUNT_02' },
-  { UIN: 812_658_276, FirstName: 'Sam', LastName: 'McDonalds', PhoneNumber: 12_398_127, Email: 'sam@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_03' },
-  { UIN: 9_818_273, FirstName: 'John', LastName: 'Goodman', PhoneNumber: 1_928_371, Email: 'john@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_04' },
-  { UIN: 1_231_412, FirstName: 'Henry', LastName: 'Ford', PhoneNumber: 198_263_129, Email: 'henry@ford.com', status_id: 2, uuid:'TEST_ACCOUNT_05' },
-  { UIN: 431_414_124, FirstName: 'Tom', LastName: 'Hanks', PhoneNumber: 121_421_124, Email: 'tom@tu.edu', status_id: 2, uuid:'TEST_ACCOUNT_06' },
-  { UIN: 927_003_214, FirstName: 'Ryan', LastName: 'Crowell', PhoneNumber: 121_421_124, Email: 'rdcrowell13@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_07'},
-  { UIN: 526009857, FirstName: 'Ryan', LastName: 'O\'Malley', PhoneNumber: 8155575141, Email: 'rdomalley@tamu.edu', status_id: 1, uuid:'test'}
+  { UIN: 123456789, FirstName: 'Joe', LastName: 'Smith', PhoneNumber: 1234567890, Email: 'joe@smith.com', status_id: 2 , uuid: 'TEST_ACCOUNT_01' },
+  { UIN: 123456789, FirstName: 'Rishav', LastName: 'Dokania', PhoneNumber: 1234567890, Email: 'rishavkrd11@tamu.edu', status_id: 1, uuid: 'TEST_ACCOUNT_02' },
+  { UIN: 123456789, FirstName: 'Sam', LastName: 'McDonalds', PhoneNumber: 1234567890, Email: 'sam@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_03' },
+  { UIN: 123456789, FirstName: 'John', LastName: 'Goodman', PhoneNumber: 1234567890, Email: 'john@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_04' },
+  { UIN: 123456789, FirstName: 'Henry', LastName: 'Ford', PhoneNumber: 1234567890, Email: 'henry@ford.com', status_id: 2, uuid:'TEST_ACCOUNT_05' },
+  { UIN: 123456789, FirstName: 'Tom', LastName: 'Hanks', PhoneNumber: 1234567890, Email: 'tom@tu.edu', status_id: 2, uuid:'TEST_ACCOUNT_06' },
+  { UIN: 123456789, FirstName: 'Ryan', LastName: 'Crowell', PhoneNumber: 1234567890, Email: 'rdcrowell13@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_07'},
+  { UIN: 526009857, FirstName: 'Ryan', LastName: 'O\'Malley', PhoneNumber: 8155575141, Email: 'rdomalley@tamu.edu', status_id: 1, uuid:'test'},
 ])
 
 # Create default meeting types
