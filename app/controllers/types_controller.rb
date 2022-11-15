@@ -3,12 +3,14 @@
 class TypesController < ApplicationController
   include Secured
   before_action :set_type, only: %i[show edit update destroy]
-  layout 'default_page'
+  layout "default_page"
 
   # GET /types or /types.json
   def index
-    @current_user = Account.find_by(uuid: session[:useruuid])
-    redirect_to('/dashboard') unless @current_user.status_id == 1
+    @current_user = Account.find_by uuid: session[:useruuid]
+    unless @current_user.status_id == 1
+      redirect_to "/dashboard"
+    end
     @types = Type.all
   end
 
