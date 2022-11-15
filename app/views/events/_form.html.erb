@@ -14,35 +14,37 @@
 			</div>
 		</div>
 	<% end %>
-	<div class="field">
-		<%= form.label :Title %>
-		<%= form.text_field :Title, class:"input-bordered input w-full max-w-xs", placeholder:"Event Title" %>
-	</div>
-	<div class="field">
-		<%= form.label :Description %>
-		<%= form.text_area :Description %>
-	</div>
-	<div class="field">
-		<%= form.label :Date %>
-		<%= form.date_select :Date %>
-	</div>
-	<div class="field">
-		<%= form.label :Time %>
-		<%= form.time_select :Time, {minute_step: 15, ampm: true} %>
-	</div>
-	<div class="field">
-		<%= form.label :Location %>
-		<%= form.text_field :Location %>
-	</div>
-	<div class="field">
-		<%= form.label :Points %>
-		<%= form.number_field :Points %>
-	</div>
-	<div class="field">
-		<%= form.label :type_id %>
-		<%= form.collection_select :type_id, Type.all, :id, :Value %>
-	</div>
+	<div class="flex flex-col gap-4 mb-4">
+    <div class="form-control">
+      <%= form.label :Title %>
+      <%= form.text_field :Title, class:"input-bordered input w-full max-w-xs", placeholder:"Event Title" %>
+    </div>
+    <div class="form-control">
+      <%= form.label :Description %>
+      <%= form.text_area :Description, class:'max-w-xs' %>
+    </div>
+    <div class="form-control">
+      <%= form.label :Date, class:'label-text' %>
+      <div class="flex flex-row gap-2"><%= form.date_select :Date %></div>
+    </div>
+    <div class="form-control">
+      <%= form.label :Time, class:'label-text' %>
+      <div class="flex flex-row gap-2 align-center"><%= form.time_select :Time, {minute_step: 15, ampm: true} %></div>
+    </div>
+    <div class="form-control">
+      <%= form.label :Location, class:'label-text' %>
+      <%= form.text_field :Location, class:"input-bordered input w-full max-w-xs" %>
+    </div>
+    <div class="form-control">
+      <%= form.label :Points, class:'label-text' %>
+      <%= form.number_field :Points, class:"input-bordered input w-full max-w-xs" %>
+    </div>
+    <div class="form-control">
+      <%= form.label :type_id, class:'label-text' %>
+      <%= form.collection_select :type_id, Type.all, :id, :Value %>
+    </div>
+  </div>
 	<div class="actions">
-		<%= form.submit %>
+		<%= form.submit class:'btn btn-primary' %>
 	</div>
 <% end %>

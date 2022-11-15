@@ -8,7 +8,11 @@ class EventsController < ApplicationController
   # GET /events or /events.json
   def index
     @current_user = Account.find_by uuid: session[:useruuid]
-    @events = Event.all.order(:Date)
+    if @current_user.status_id == 1
+      @events = Event.all.order(:Date)
+    else
+      @events = Event.where.not(type_id: 5).order(:Date)
+    end
   end
 
   # GET /events/1 or /events/1.json

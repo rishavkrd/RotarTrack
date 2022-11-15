@@ -22,20 +22,18 @@
 			</thead>
 			<tbody>
 				<% @events.each do |event| %>
-					<tr>
-						<% unless event.type_id == 5 %>
-							<td><%= event.Title %></td>
-							<td><%= event.Description %></td>
-							<td><%= event.Date.strftime("%b %-d") %></td>
-							<td><%= event.Time.strftime("%I:%M %p") %></td>
-							<td><%= event.Location %></td>
-							<td><%= event.Points %></td>
-							<td><span class="badge badge-ghost"><%= event.type.Value %></span></td>
-							<td><%= link_to 'Show', event, class:'btn btn-sm btn-ghost' %></td>
-							<% if @current_user.status_id == 1 and @current_user.status_id == 2 %>
-								<td><%= link_to 'Edit', edit_event_path(event), class:'btn btn-sm btn-ghost' %></td>
-								<td><%= link_to 'Archive', event, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-sm btn-error' %></td>
-							<% end %>
+					<tr class="<%= "line-through text-slate-500" if event.type_id == 5%><%= "font-italic text-slate-500" if event.Date < DateTime.now%>">
+						<td><%= event.Title %></td>
+						<td><%= event.Description %></td>
+						<td><%= event.Date.strftime("%b %-d") %></td>
+						<td><%= event.Time.strftime("%I:%M %p") %></td>
+						<td><%= event.Location %></td>
+						<td><%= event.Points %></td>
+						<td><span class="badge badge-ghost"><%= event.type.Value %></span></td>
+						<td><%= link_to 'Show', event, class:'btn btn-sm btn-ghost' %></td>
+						<% if @current_user.status_id == 1 or @current_user.status_id == 2 %>
+							<td><%= link_to 'Edit', edit_event_path(event), class:"btn btn-sm btn-ghost" %></td>
+							<td><%= link_to 'Archive', event, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-error #{'btn-disabled' if event.type_id == 5}" %></td>
 						<% end %>
 					</tr>
 				<% end %>
