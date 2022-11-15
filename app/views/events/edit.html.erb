@@ -1,4 +1,10 @@
-<h1>Editing Event</h1>
+<div class="text-sm breadcrumbs mb-8">
+  <ul>
+    <li><a href="/events">Events</a></li> 
+    <li><a href="<%= event_path(@event)%>"><%= @event.Title %></a></li>
+    <li>Edit</li>
+  </ul>
+</div>
 
 <%= render 'form', event: @event %>
 

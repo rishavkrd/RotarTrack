@@ -33,7 +33,7 @@ class PointsController < ApplicationController
 
     respond_to do |format|
       if @point.save
-        format.html { redirect_to(point_url(@point), notice: 'Point was successfully created.') }
+        format.html { redirect_to(point_url(@point), success: 'Point was successfully created.') }
         format.json { render(:show, status: :created, location: @point) }
       else
         format.html { render(:new, status: :unprocessable_entity) }
@@ -46,7 +46,7 @@ class PointsController < ApplicationController
   def update
     respond_to do |format|
       if @point.update(point_params)
-        format.html { redirect_to(point_url(@point), notice: 'Point was successfully updated.') }
+        format.html { redirect_to(point_url(@point), success: 'Point was successfully updated.') }
         format.json { render(:show, status: :ok, location: @point) }
       else
         format.html { render(:edit, status: :unprocessable_entity) }
@@ -60,7 +60,7 @@ class PointsController < ApplicationController
     @point.destroy!
 
     respond_to do |format|
-      format.html { redirect_to(points_url, notice: 'Point was successfully destroyed.') }
+      format.html { redirect_to(points_url, success: 'Point was successfully destroyed.') }
       format.json { head(:no_content) }
     end
   end

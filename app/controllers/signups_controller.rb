@@ -36,13 +36,13 @@ class SignupsController < ApplicationController
     convertedTime = DateTime.new(signupTime.year, signupTime.month, signupTime.day, signupTime.hour, signupTime.min, signupTime.sec)
     if (convertedTime > cutoffDateTime)
       respond_to do |format|
-        format.html { redirect_to({ :action => "new"}, notice: "Cannot sign up for event within 6 hours of start time") }
+        format.html { redirect_to(event_path(@signup.event), error: "Cannot sign up for event within 6 hours of start time") }
         format.json { render :new, status: :unprocessable_entity, location: @signup }
       end
     else
       respond_to do |format|
         if (@signup.save)
-          format.html { redirect_to signup_url(@signup), notice: "Signup was successfully created." }
+          format.html { redirect_to(@signup.event, success: 'You have registered successfully for the event.') }
           format.json { render :show, status: :created, location: @signup }
         else
           format.html { render(:new, status: :unprocessable_entity) }
@@ -60,13 +60,13 @@ class SignupsController < ApplicationController
     convertedTime = DateTime.new(signupTime.year, signupTime.month, signupTime.day, signupTime.hour, signupTime.min, signupTime.sec)
     if (convertedTime > cutoffDateTime)
       respond_to do |format|
-        format.html { redirect_to({ :action => "edit"}, notice: "Cannot sign up for event within 6 hours of start time") }
+        format.html { redirect_to({ :action => "edit"}, error: "Cannot sign up for event within 6 hours of start time") }
         format.json { render :edit, status: :unprocessable_entity, location: @signup }
       end
     else
       respond_to do |format|
         if (@signup.save)
-          format.html { redirect_to signup_url(@signup), notice: "Signup was successfully created." }
+          format.html { redirect_to(@signup.event, success: 'Sigup successfully edited.') }
           format.json { render :show, status: :created, location: @signup }
         else
           format.html { render(:edit, status: :unprocessable_entity) }
@@ -81,7 +81,7 @@ class SignupsController < ApplicationController
     @signup.destroy!
 
     respond_to do |format|
-      format.html { redirect_to(signups_url, notice: 'Signup was successfully destroyed.') }
+      format.html { redirect_to(@signup.event, success: 'Event has successfully been dropped.') }
       format.json { head(:no_content) }
     end
   end
