@@ -73,7 +73,10 @@ https://devcenter.heroku.com/articles/git
 
 ## CI/CD ##
 
-TBD
+CI/CD enables the proper implementation of Agile methodologies as any latest updates can be integrated to the code base present in GitHub, whenever we merge the newly developed branch into the main branch. 
+
+This automated testing (Rubocop, RSpec, etc.) is made possible by GitHub workflow which is setup in the workflows folder. It has setup instructions and a set of tests which need to be run when a development branch is merged into the main. Hero continuously monitors the main branch of GitHub hence, when a new branch is merged into the main branch, Heroku will automatically test and deploy the new product on the website. Thus, instead of waiting for the complete product to be developed, we can launch the product in stages and be able to get it reviewed as the development progresses. 
+
 
 ## Support ##
 
