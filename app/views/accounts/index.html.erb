@@ -27,7 +27,7 @@
 						<td><%= link_to 'Show', account, class:'btn btn-sm btn-ghost' %></td>
 						<td><%= link_to 'Edit', edit_account_path(account), class:'btn btn-sm btn-ghost' %></td>
 						<td><%= link_to 'Add Points', new_point_path(account_id: account.id), class:'btn btn-sm btn-ghost' %></td>
-						<% unless account.status_id == 4 %>
+						<% unless account.status_id == 4 and account.id != @current_user.id %>
 							<td><%= link_to 'Archive', account, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-sm btn-error' %></td>
 						<% end %>
 					</tr>
