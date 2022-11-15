@@ -34,6 +34,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit;
+    @current_user = Account.find_by uuid: session[:useruuid]
     unless @current_user.status_id == 2
       redirect_to "/dashboard"
     end
