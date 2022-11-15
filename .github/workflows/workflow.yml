@@ -43,15 +43,7 @@ jobs:
         run: bundler exec rspec .
 
       - name: Run rubocop
-        run: bundler exec rubocop -A --disable-uncorrectable --out rubocop.txt
-      - name: Add modified files
-        run: git add .
-      - name: Add username
-        run: git config user.name "Daniel A" && git config user.email "darmenta258@gmail.com"
-      - name: Commit mod files
-        run: git commit -m "ran rubocop"
-      - name: push to the repo
-        run: git push origin rubocop
+        run: bundler exec rubocop --force-exclusion vendor/*/** --out rubocop.txt
       - name: Upload coverage results
         uses: actions/upload-artifact@master
         if: always()
