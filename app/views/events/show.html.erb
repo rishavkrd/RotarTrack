@@ -60,9 +60,9 @@
 					<a class="hover:underline mb-8"><%= @event.Location  %></a>
 				</div>
 				<% if !@hasSignedUp %>
-					<%= link_to 'Sign Up', new_signup_path(account_id: @account.id, event_id: @event.id), class:'btn btn-block btn-sm' %>
+					<%= link_to 'Sign Up', new_signup_path(account_id: @account.id, event_id: @event.id), class:"btn btn-block btn-sm #{'btn-disabled' if @event.Date < DateTime.now}" %>
 				<% else %>
-					<%= link_to 'Drop Event', signup_path(@signup), method: :delete, data: { confirm: 'Are you certain you want to drop the event?' }, class:'btn btn-block btn-sm btn-error' %>
+					<%= link_to 'Drop Event', signup_path(@signup), method: :delete, data: { confirm: 'Are you certain you want to drop the event?' }, class:"btn btn-block btn-sm btn-error #{'btn-disabled' if @event.Date < DateTime.now}" %>
 				<% end %>
 			</div>
 		</div>
