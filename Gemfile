@@ -41,7 +41,7 @@ group :development, :test do
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
 end
 
 group :development do
@@ -74,6 +74,6 @@ gem 'omniauth-auth0', '~> 3.0'
 # prevents forged authentication requests
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 
-gem "tailwindcss-rails", "~> 2.0"
-gem "escompress"
+gem 'escompress'
 gem 'ransack'
+gem 'tailwindcss-rails', '~> 2.0'
