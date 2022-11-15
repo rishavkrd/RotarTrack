@@ -21,7 +21,7 @@ class ProfileController < ApplicationController
     @account = Account.new(:UIN => params[:account][:UIN], :FirstName => params[:account][:FirstName], :LastName => params[:account][:LastName], :PhoneNumber => params[:account][:PhoneNumber], :Email => get_user_email, :status_id => member_id, :uuid => session[:useruuid])
     respond_to do |format|
       if @account.save
-        format.html { redirect_to("/dashboard", notice: 'Account was successfully created.') }
+        format.html { redirect_to("/dashboard", success: 'Account was successfully created.') }
         format.json { render(:show, status: :created, location: @account) }
       else
         format.html { render(:create, status: :unprocessable_entity) }
