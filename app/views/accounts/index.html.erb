@@ -3,16 +3,20 @@
 		<p id="notice"><%= notice %></p>
 		<div class="flex flex-row justify-between">
 			<h2 class="card-title">Accounts</h2>
+			
 			<%= link_to 'New Account', new_account_path, class:'btn float-right mb-4'%>
 		</div>
+
 		<table class="table w-full">
+	
 			<thead>
 				<tr>
-					<th>Name</th>
-					<th>Role</th>
+				<!-- Sort links provided by ransack for account sorting -->
+					<th><%= sort_link(@q, :LastName, "Name", default_order: :asc) %></th>
+					<th><%= sort_link(@q, :status_id, "Role")%></th>
 					<th>Phone Number</th>
-					<th>Email</th>
-					<th>UIN</th>
+					<th><%= sort_link(@q, :Email, "Email")%></th>
+					<th><%= sort_link(@q, :UIN, "UIN")%></th>
 					<th colspan="4"></th>
 				</tr>
 			</thead>

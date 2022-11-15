@@ -7,8 +7,9 @@ class AccountsController < ApplicationController
 
   # GET /accounts or /accounts.json
   def index
-    
-    @accounts = Account.all
+    # Implemented ransack for sorting
+    @q = Account.ransack(params[:q])
+    @accounts = @q.result(distinct: true)
     @current_user = @accounts.find_by uuid: session[:useruuid]
 
     unless @current_user.status_id == 2 or @current_user.status_id == 1
