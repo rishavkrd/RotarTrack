@@ -5,6 +5,8 @@ class ProfileController < ApplicationController
   def create
     redirect_to('/') if session[:userinfo].blank?
     @user = session[:userinfo]
+    email = @user["email"] 
+    render('/profile/error') unless email.end_with?("@tamu.edu")
     user_uid = session[:useruuid]
     curruser = Account.find_by(uuid: user_uid)
     if curruser

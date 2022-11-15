@@ -12,14 +12,10 @@ end
 
 # Create accounts
 Account.create!([
-  { UIN: 123456789, FirstName: 'Joe', LastName: 'Smith', PhoneNumber: 1234567890, Email: 'joe@smith.com', status_id: 2 , uuid: 'TEST_ACCOUNT_01' },
-  { UIN: 123456789, FirstName: 'Rishav', LastName: 'Dokania', PhoneNumber: 1234567890, Email: 'rishavkrd11@tamu.edu', status_id: 1, uuid: 'TEST_ACCOUNT_02' },
-  { UIN: 123456789, FirstName: 'Sam', LastName: 'McDonalds', PhoneNumber: 1234567890, Email: 'sam@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_03' },
-  { UIN: 123456789, FirstName: 'John', LastName: 'Goodman', PhoneNumber: 1234567890, Email: 'john@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_04' },
-  { UIN: 123456789, FirstName: 'Henry', LastName: 'Ford', PhoneNumber: 1234567890, Email: 'henry@ford.com', status_id: 2, uuid:'TEST_ACCOUNT_05' },
-  { UIN: 123456789, FirstName: 'Tom', LastName: 'Hanks', PhoneNumber: 1234567890, Email: 'tom@tu.edu', status_id: 2, uuid:'TEST_ACCOUNT_06' },
-  { UIN: 123456789, FirstName: 'Ryan', LastName: 'Crowell', PhoneNumber: 1234567890, Email: 'rdcrowell13@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_07'},
-  { UIN: 526009857, FirstName: 'Ryan', LastName: 'O\'Malley', PhoneNumber: 8155575141, Email: 'rdomalley@tamu.edu', status_id: 1, uuid:'test'},
+  { UIN: 167421892, FirstName: 'Joe', LastName: 'Smith', PhoneNumber: 1234567890, Email: 'joe@smith.com', status_id: 2 , uuid: 'TEST_ACCOUNT_01' },
+  { UIN: 718276728, FirstName: 'Rishav', LastName: 'Dokania', PhoneNumber: 8729106896, Email: 'rishavkrd11@tamu.edu', status_id: 1, uuid: 'TEST_ACCOUNT_02' },
+  { UIN: 123458729, FirstName: 'Sam', LastName: 'McDonalds', PhoneNumber: 5784297498, Email: 'sam@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_03' },
+  { UIN: 162719977, FirstName: 'John', LastName: 'Goodman', PhoneNumber: 6767982934, Email: 'john@tamu.edu', status_id: 2, uuid:'TEST_ACCOUNT_04' },
 ])
 
 # Create default meeting types
