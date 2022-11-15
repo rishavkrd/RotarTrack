@@ -1,6 +1,10 @@
-<h1>Editing Account</h1>
+<div class="text-sm breadcrumbs mb-8">
+  <ul>
+    <li><a href="/accounts">Accounts</a></li> 
+    <li>Edit</li>
+    <li><%= @account.FirstName %> <%=@account.LastName %></li>
+  </ul>
+</div>
+<h1 class="text-2xl mb-8">Editing Account</h1>
 
 <%= render 'form', account: @account %>
-
-<%= link_to 'Show', @account %> |
-<%= link_to 'Back', '/dashboard' %>

@@ -3,9 +3,14 @@
 class StatusesController < ApplicationController
   include Secured
   before_action :set_status, only: %i[show edit update destroy]
+  layout "default_page"
 
   # GET /statuses or /statuses.json
   def index
+    @current_user = Account.find_by uuid: session[:useruuid]
+    unless @current_user.status_id == 1
+      redirect_to "/dashboard"
+    end
     @statuses = Status.all
   end
 
