@@ -7,6 +7,7 @@ class PointsController < ApplicationController
 
   # GET /points or /points.json
   def index
+
     @current_user = Account.find_by uuid: session[:useruuid]
     unless @current_user.status_id == 1
       redirect_to "/dashboard"
@@ -19,12 +20,23 @@ class PointsController < ApplicationController
 
   # GET /points/new
   def new
+    @accounts = Account.all
+    @current_user = @accounts.find_by uuid: session[:useruuid]
     @point = Point.new
     @account = Account.find(params[:account_id])
+    unless @current_user.status_id == 2
+      render 'invalid'
+    end
   end
 
   # GET /points/1/edit
-  def edit; end
+  def edit
+    @accounts = Account.all
+    @current_user = @accounts.find_by uuid: session[:useruuid]
+    unless @current_user.status_id == 2
+      render 'invalid'
+    end
+  end
 
   # POST /points or /points.json
   def create
@@ -47,6 +59,9 @@ class PointsController < ApplicationController
 
   # PATCH/PUT /points/1 or /points/1.json
   def update
+    unless @current_user.status_id == 2
+      render 'invalid'
+    end
     respond_to do |format|
       if @point.update(point_params)
         format.html { redirect_to(point_url(@point), success: 'Point was successfully updated.') }
@@ -60,6 +75,11 @@ class PointsController < ApplicationController
 
   # DELETE /points/1 or /points/1.json
   def destroy
+    @accounts = Account.all
+    @current_user = @accounts.find_by uuid: session[:useruuid]
+    unless @current_user.status_id == 2
+      render 'invalid'
+    end
     @point.destroy!
 
     respond_to do |format|
