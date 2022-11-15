@@ -3,12 +3,12 @@
 require 'rails_helper'
 
 # rubocop:todo Style/InlineComment
-RSpec.describe('Auth0s', type: :request) do # rubocop:todo RSpec/EmptyExampleGroup, Style/InlineComment
+RSpec.describe('Auth0s', type: :request) do # rubocop:todo Style/InlineComment
   # rubocop:enable Style/InlineComment
-  describe "GET /callback" do
-    it "returns http success" do
-      get "/auth/auth0/callback"
-      expect(response).to have_http_status(302) #needs to be fixed to :success
+  describe 'GET /callback' do
+    it 'returns http success' do
+      get '/auth/auth0/callback'
+      expect(response).to(have_http_status(:found)) # needs to be fixed to :success # rubocop:todo Style/InlineComment
     end
   end
 

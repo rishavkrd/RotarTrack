@@ -7,7 +7,7 @@ class Auth0Controller < ApplicationController
     # In this code, you will pull the raw_info supplied from the id_token and assign it to the session.
     # Refer to https://github.com/auth0/omniauth-auth0#authentication-hash for complete information on 'omniauth.auth' contents.
     auth_info = request.env['omniauth.auth']
-    puts auth_info[:uid]
+    Rails.logger.debug(auth_info[:uid])
     session[:userinfo] = auth_info['extra']['raw_info']
     session[:useruuid] = auth_info[:uid]
 
@@ -21,7 +21,7 @@ class Auth0Controller < ApplicationController
 
   def logout
     reset_session
-    $current_user = nil
+    $current_user = nil # rubocop:todo Style/GlobalVars
     redirect_to(logout_url)
   end
 
@@ -44,11 +44,11 @@ class Auth0Controller < ApplicationController
     user_by_email = Account.find_by(Email: user_email)
 
     if user
-      $current_user = Account.find_by uuid: session[:useruuid]
+      $current_user = Account.find_by(uuid: session[:useruuid] # rubocop:todo Style/GlobalVars)
       redirect_to('/dashboard')
     elsif user_by_email
       user_by_email.uuid = user_uid
-      user_by_email.save
+      user_by_email.save!
       redirect_to('/dashboard')
     else
       redirect_to('/profile/create')
