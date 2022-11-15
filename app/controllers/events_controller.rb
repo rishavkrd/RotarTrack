@@ -24,11 +24,20 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
+    @current_user = Account.find_by uuid: session[:useruuid]
+    unless @current_user.status_id == 2
+      redirect_to "/dashboard"
+    end
+
     @event = Event.new
   end
 
   # GET /events/1/edit
-  def edit; end
+  def edit;
+    unless @current_user.status_id == 2
+      redirect_to "/dashboard"
+    end
+  end
 
   # POST /events or /events.json
   def create
