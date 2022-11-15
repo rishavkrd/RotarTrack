@@ -12,19 +12,21 @@
   <% end %>
   
   <div class="field">
-  <%= form.hidden_field :event_id, value: @event.id%>
+
+    <%= form.hidden_field :event_id, value: @event_id%>
   </div>
   
   <div class="field">
-  <%= form.hidden_field :account_id, value: @account.id%>
+    <%= form.hidden_field :account_id, value: @account_id%>
+
   </div>
 
-  <div class="field">
-    <%= form.label :Pickup %>
-    <%= form.check_box :Pickup %>
+  <div class="form-control mb-8 flex flex-row gap-4">
+    <%= form.label "I will need a ride:", class:'label-text' %>
+    <%= form.check_box :Pickup, class:'checkbox' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:'btn'%>
   </div>
 <% end %>
