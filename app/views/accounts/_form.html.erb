@@ -1,3 +1,4 @@
+<% if @account.uuid == session[:useruuid] || @account.status_id == 2 %>
 <%= form_with(model: account) do |form| %>
 	<% if account.errors.any? %>
 		<div id="error_explanation">
@@ -40,4 +41,7 @@
 			<%= form.submit class: 'btn btn-primary' %>
 		</div>
 	</div>
+<% end %>
+<% else %>
+  <h1> Sorry, you are not an officer, therfore, you cannot view this page.</h1>
 <% end %>
