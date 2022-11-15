@@ -19,15 +19,17 @@
 			<tbody>
 				<% @accounts.each do |account| %>
 					<tr>
-						<td><%= account.FirstName%> <%= account.LastName%></td>
-						<td><%= account.status.Value.capitalize() %></td>
-						<td><%= number_to_phone(account.PhoneNumber, area_code: true) %></td>
-						<td><%= account.Email %></td>
-						<td><%= account.UIN %></td>
+						<td class="<%= "text-slate-400 italic" if account.status_id == 4 %>"><%= account.FirstName%> <%= account.LastName%></td>
+						<td class="<%= "text-slate-400 italic" if account.status_id == 4 %>"><p class="badge badge-ghost"><%= account.status.Value.capitalize() %></p></td>
+						<td class="<%= "text-slate-400 italic" if account.status_id == 4 %>"><%= number_to_phone(account.PhoneNumber, area_code: true) %></td>
+						<td class="<%= "text-slate-400 italic" if account.status_id == 4 %>"><%= account.Email %></td>
+						<td class="<%= "text-slate-400 italic" if account.status_id == 4 %>"><%= account.UIN %></td>
 						<td><%= link_to 'Show', account, class:'btn btn-sm btn-ghost' %></td>
 						<td><%= link_to 'Edit', edit_account_path(account), class:'btn btn-sm btn-ghost' %></td>
 						<td><%= link_to 'Add Points', new_point_path(account_id: account.id), class:'btn btn-sm btn-ghost' %></td>
-						<td><%= link_to 'Archive', account, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-sm btn-error' %></td>
+						<% unless account.status_id == 4 %>
+							<td><%= link_to 'Archive', account, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-sm btn-error' %></td>
+						<% end %>
 					</tr>
 				<% end %>
 			</tbody>
