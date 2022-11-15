@@ -19,11 +19,6 @@
     <%= form.collection_select :event_id, Event.all, :id, :Title %>
   </div>
 
-  <div class="field">
-    <%= form.label :Points %>
-    <%= form.text_field :Points %>
-  </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
