@@ -14,7 +14,7 @@ class EventsController < ApplicationController
   # GET /events/1 or /events/1.json
   def show
     @current_user = Account.find_by uuid: session[:useruuid]
-    @signups = Signup.all
+    @signups = Signup.where(event_id: @event.id)
     @user = session[:userinfo]
     usr_email = @user['email']
     @account = Account.find_by(Email: usr_email)
@@ -41,7 +41,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to(event_url(@event), success: 'Event was successfully created.') }
+        format.html { redirect_back fallback_location: '/dashboard', success: 'Event was successfully created.' }
         format.json { render(:show, status: :created, location: @event) }
       else
         format.html { render(:new, status: :unprocessable_entity) }
@@ -54,7 +54,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to(event_url(@event), success: 'Event was successfully updated.') }
+        format.html { redirect_back fallback_location: '/dashboard', success: 'Event was successfully updated.' }
         format.json { render(:show, status: :ok, location: @event) }
       else
         format.html { render(:edit, status: :unprocessable_entity) }
@@ -70,7 +70,7 @@ class EventsController < ApplicationController
       # @event.destroy!
       @event.update(:type_id => 5)
       respond_to do |format|
-        format.html { redirect_to(dashboard_path, success: 'Event was successfully made archived.') }
+        format.html { redirect_back fallback_location: '/dashboard', success: 'Event was successfully made archived.' }
         format.json { head(:no_content) }
       end
     else 

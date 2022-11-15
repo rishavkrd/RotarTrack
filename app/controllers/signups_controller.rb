@@ -20,6 +20,8 @@ class SignupsController < ApplicationController
   # GET /signups/new
   def new
     @signup = Signup.new
+    @account_id = params[:account_id]
+    @event_id = params[:event_id]
     @account = Account.find(params[:account_id])
     @event = Event.find(params[:event_id])
   end
@@ -30,7 +32,8 @@ class SignupsController < ApplicationController
   # POST /signups or /signups.json
   def create
     @signup = Signup.new(signup_params)
-    eventDateTime = DateTime.new(@signup.event.Date.year, @signup.event.Date.month, @signup.event.Date.day, @signup.event.Time.hour, @signup.event.Time.min, @signup.event.Time.sec)
+    event = Event.find(@signup.event_id)
+    eventDateTime = DateTime.new(event.Date.year, event.Date.month, event.Date.day, event.Time.hour, event.Time.min, event.Time.sec)
     cutoffDateTime = eventDateTime - (6/24.0)
     signupTime = DateTime.now.in_time_zone("Central Time (US & Canada)")
     convertedTime = DateTime.new(signupTime.year, signupTime.month, signupTime.day, signupTime.hour, signupTime.min, signupTime.sec)
@@ -78,10 +81,20 @@ class SignupsController < ApplicationController
 
   # DELETE /signups/1 or /signups/1.json
   def destroy
+    event = Event.find(@signup.event_id)
+    if event.Date < DateTime.now
+      redirect_back fallback_location: '/dashboard', error: 'You can not unregister for an event that has already occured.'
+      return
+    end
     @signup.destroy!
+    
+    points = Point.find_by(account_id: @signup.account_id, event_id: @signup.event_id)
+    if points
+      points.destroy!
+    end
 
     respond_to do |format|
-      format.html { redirect_to(@signup.event, success: 'Event has successfully been dropped.') }
+      format.html { redirect_back fallback_location: '/dashboard', success: 'Event has successfully been dropped.' }
       format.json { head(:no_content) }
     end
   end

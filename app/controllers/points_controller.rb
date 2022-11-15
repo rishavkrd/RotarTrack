@@ -29,11 +29,14 @@ class PointsController < ApplicationController
   # POST /points or /points.json
   def create
     @point = Point.new(point_params)
-    
+    event_points = Event.find(@point.event_id).Points
+    @point.Points = event_points
 
     respond_to do |format|
-      if @point.save
-        format.html { redirect_to(point_url(@point), success: 'Point was successfully created.') }
+      if Point.find_by(event_id: @point.event_id, account_id: @point.account_id)
+        format.html { redirect_back fallback_location: '/dashboard', error: 'User has already been marked present.' }
+      elsif @point.save
+        format.html { redirect_back fallback_location: '/dashboard', success: 'Point was successfully created.' }
         format.json { render(:show, status: :created, location: @point) }
       else
         format.html { render(:new, status: :unprocessable_entity) }
@@ -60,7 +63,7 @@ class PointsController < ApplicationController
     @point.destroy!
 
     respond_to do |format|
-      format.html { redirect_to(points_url, success: 'Point was successfully destroyed.') }
+      format.html { redirect_back fallback_location: '/dashboard', success: 'Point was successfully destroyed.' }
       format.json { head(:no_content) }
     end
   end
@@ -74,6 +77,6 @@ class PointsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def point_params
-    params.require(:point).permit(:account_id, :event_id, :Points)
+    params.require(:point).permit(:account_id, :event_id)
   end
 end

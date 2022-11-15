@@ -1,52 +1,48 @@
 <%= form_with(model: event) do |form| %>
-  <% if event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
-      <ul>
-        <% event.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :Title %>
-    <%= form.text_field :Title, class:"input-bordered input w-full max-w-xs", placeholder:"Event Title" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :Description %>
-    <%= form.text_area :Description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :Date %>
-    <%= form.date_select :Date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :Time %>
-    <%= form.time_select :Time, {minute_step: 15, ampm: true} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :Location %>
-    <%= form.text_field :Location %>
-  </div>
-
-  <div class="field">
-    <%= form.label :Points %>
-    <%= form.number_field :Points %>
-  </div>
-
-  <div class="field">
-    <%= form.label :type_id %>
-    <%= form.collection_select :type_id, Type.all, :id, :Value %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+	<% if event.errors.any? %>
+		<div class="alert alert-error" id="error_explanation">
+			<div>
+				<svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+				<span>
+          <p><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</p>
+          <span>
+            <% event.errors.each do |error| %>
+              <p><%= error.full_message %></p>
+            <% end %>
+          </span>
+        </span>
+			</div>
+		</div>
+	<% end %>
+	<div class="field">
+		<%= form.label :Title %>
+		<%= form.text_field :Title, class:"input-bordered input w-full max-w-xs", placeholder:"Event Title" %>
+	</div>
+	<div class="field">
+		<%= form.label :Description %>
+		<%= form.text_area :Description %>
+	</div>
+	<div class="field">
+		<%= form.label :Date %>
+		<%= form.date_select :Date %>
+	</div>
+	<div class="field">
+		<%= form.label :Time %>
+		<%= form.time_select :Time, {minute_step: 15, ampm: true} %>
+	</div>
+	<div class="field">
+		<%= form.label :Location %>
+		<%= form.text_field :Location %>
+	</div>
+	<div class="field">
+		<%= form.label :Points %>
+		<%= form.number_field :Points %>
+	</div>
+	<div class="field">
+		<%= form.label :type_id %>
+		<%= form.collection_select :type_id, Type.all, :id, :Value %>
+	</div>
+	<div class="actions">
+		<%= form.submit %>
+	</div>
 <% end %>
