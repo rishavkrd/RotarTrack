@@ -2,46 +2,51 @@
 
 class EventsController < ApplicationController
   include Secured
-  layout 'default_page'
+  layout "default_page"
   before_action :set_event, only: %i[show edit update destroy]
 
   # GET /events or /events.json
   def index
-    @current_user = Account.find_by(uuid: session[:useruuid])
-    @events = if @current_user.status_id == 1
-                Event.all.order(:Date)
-              else
-                Event.where.not(type_id: 5).order(:Date)
-              end
+    @current_user = Account.find_by uuid: session[:useruuid]
+    if @current_user.status_id == 1
+      @events = Event.all.order(:Date)
+    else
+      @events = Event.where.not(type_id: 5).order(:Date)
+    end
   end
 
   # GET /events/1 or /events/1.json
   def show
-    @current_user = Account.find_by(uuid: session[:useruuid])
+    @current_user = Account.find_by uuid: session[:useruuid]
     @signups = Signup.where(event_id: @event.id)
     @user = session[:userinfo]
     usr_email = @user['email']
     @account = Account.find_by(Email: usr_email)
-    @hasSignedUp = false # rubocop:todo Naming/VariableName, Style/InlineComment
+    @hasSignedUp = false
     @signup = Signup.find_by(event_id: params[:id], account_id: @current_user.id)
-
+    
     if @signup
-      @hasSignedUp = true # rubocop:todo Naming/VariableName, Style/InlineComment
+      @hasSignedUp = true
     end
+
   end
 
   # GET /events/new
   def new
-    @current_user = Account.find_by(uuid: session[:useruuid])
-    redirect_to('/dashboard') unless @current_user.status_id == 2
+    @current_user = Account.find_by uuid: session[:useruuid]
+    unless @current_user.status_id == 2
+      redirect_to "/dashboard"
+    end
 
     @event = Event.new
   end
 
   # GET /events/1/edit
-  def edit
-    @current_user = Account.find_by(uuid: session[:useruuid])
-    redirect_to('/dashboard') unless @current_user.status_id == 2
+  def edit;
+    @current_user = Account.find_by uuid: session[:useruuid]
+    unless @current_user.status_id == 2
+      redirect_to "/dashboard"
+    end
   end
 
   # POST /events or /events.json
@@ -50,7 +55,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_back(fallback_location: '/dashboard', success: 'Event was successfully created.') }
+        format.html { redirect_back fallback_location: '/dashboard', success: 'Event was successfully created.' }
         format.json { render(:show, status: :created, location: @event) }
       else
         format.html { render(:new, status: :unprocessable_entity) }
@@ -63,7 +68,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_back(fallback_location: '/dashboard', success: 'Event was successfully updated.') }
+        format.html { redirect_back fallback_location: '/dashboard', success: 'Event was successfully updated.' }
         format.json { render(:show, status: :ok, location: @event) }
       else
         format.html { render(:edit, status: :unprocessable_entity) }
@@ -74,16 +79,16 @@ class EventsController < ApplicationController
 
   # DELETE /events/1 or /events/1.json
   def destroy
-    current_user = Account.find_by(uuid: session[:useruuid])
-    if (current_user.status_id == 1) || (current_user.status_id == 2)
+    current_user = Account.find_by uuid: session[:useruuid]
+    if current_user.status_id == 1 or current_user.status_id == 2
       # @event.destroy!
-      @event.update!(type_id: 5)
+      @event.update(:type_id => 5)
       respond_to do |format|
-        format.html { redirect_back(fallback_location: '/dashboard', success: 'Event was successfully made archived.') }
+        format.html { redirect_back fallback_location: '/dashboard', success: 'Event was successfully made archived.' }
         format.json { head(:no_content) }
       end
-    else
-      redirect_to('/events', error: 'Only Admins and Officers can delete events.')
+    else 
+      redirect_to "/events", error: "Only Admins and Officers can delete events."
     end
   end
 
