@@ -34,7 +34,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @current_user = Account.find_by uuid: session[:useruuid]
-    unless @current_user.status_id == 2
+    unless @current_user.status_id == 2 or @current_user.status_id == 1
       redirect_to "/dashboard"
     end
 
@@ -44,7 +44,7 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit;
     @current_user = Account.find_by uuid: session[:useruuid]
-    unless @current_user.status_id == 2
+    unless @current_user.status_id == 2 or @current_user.status_id == 1
       redirect_to "/dashboard"
     end
   end
