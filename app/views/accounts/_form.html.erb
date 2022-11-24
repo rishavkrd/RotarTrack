@@ -1,4 +1,4 @@
-<% if @account.uuid == session[:useruuid] || @account.status_id == 2 %>
+<% if @account.uuid == session[:useruuid] || @current_user.status_id == 2 || @current_user.status_id == 1 %>
 <%= form_with(model: account) do |form| %>
 	<% if account.errors.any? %>
 		<div class="alert" id="error_explanation">
