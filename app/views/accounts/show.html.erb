@@ -90,7 +90,6 @@
 								<td><%= point.event.Date.strftime("%b %-d") %></td>
 								<td><%= point.Points %></td>
                                 <% if @current_user.status_id == 1 or @current_user.status_id == 2 %>
-								    <td><%= link_to 'Edit', edit_point_path(point), class:'btn btn-ghost btn-sm' %></td>
 								    <td><%= link_to 'Delete', point, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-error btn-sm' %></td>
                                 <% end %>
 							</tr>
