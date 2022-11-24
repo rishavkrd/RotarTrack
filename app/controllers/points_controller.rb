@@ -42,8 +42,9 @@ class PointsController < ApplicationController
   def create
     @point = Point.new(point_params)
     event_points = Event.find(@point.event_id).Points
-    @point.Points = event_points
-
+    if (!@point.Points)
+      @point.Points = event_points
+    end
     respond_to do |format|
       if Point.find_by(event_id: @point.event_id, account_id: @point.account_id)
         format.html { redirect_back fallback_location: '/dashboard', error: 'User has already been marked present.' }
@@ -97,6 +98,6 @@ class PointsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def point_params
-    params.require(:point).permit(:account_id, :event_id)
+    params.require(:point).permit(:account_id, :event_id, :Points)
   end
 end
