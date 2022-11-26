@@ -7,7 +7,7 @@ class DashboardController < ApplicationController
     $current_user = Account.find_by uuid: session[:useruuid]
     @user = session[:userinfo]
     @uid = session[:useruuid]
-    notinactive = Event.where.not(type_id: 5)
+    notinactive = Event.where.not(type_id: 5).order(:Date)
     @events = notinactive.where(Date: (Time.now.in_time_zone("Central Time (US & Canada)")..)).order(:Date).limit(3)
     usr_email = @user['email']
     @account = Account.find_by uuid: session[:useruuid]
