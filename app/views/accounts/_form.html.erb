@@ -33,10 +33,12 @@
 			<%= form.label "TAMU UIN", class: 'label-text' %>
 			<%= form.number_field :UIN, class:"input-bordered input w-full max-w-xs", placeholder:'123456789'%>
 		</div>
+            <% if @current_user.status_id == 2 || @current_user.status_id == 1 %>
 		<div class="form-control w-full max-w-xs mb-8">
 			<%= form.label :status_id, class:'label-text' %>
 			<%= form.collection_select :status_id,  Status.all, :id, :Value %>
 		</div>
+            <% end %>
 		<div class="actions">
 			<%= form.submit class: 'btn btn-primary' %>
 		</div>
