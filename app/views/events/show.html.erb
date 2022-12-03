@@ -80,7 +80,7 @@
 							<% if @current_user.status_id == 1 or @current_user.status_id == 2 %>
 								<th>Email</th>
 								<th>Phone Number</th>
-					                <% end %>
+				    	<% end %>
 							<th>Needs a Ride</th>
 							<th colspan="6"></th>
 						</tr>
@@ -93,7 +93,7 @@
 								<% if @current_user.status_id == 1 or @current_user.status_id == 2 %>
 									<td><%= signup.account.Email %></td>
 									<td><%= signup.account.PhoneNumber %></td>
-						                <% end %>
+                <% end %>
 								<td><%= convertBool(signup.Pickup) %></td>
 								<% if signup.account_id == @account.id %>
 									<% @hasSignedUp = true%>
