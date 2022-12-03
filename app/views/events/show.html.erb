@@ -77,10 +77,10 @@
 					<thead>
 						<tr>
 							<th>Account</th>
-							<% if @current_user.status_id == 1 or @current_user.status_id == 2 %>
-								<th>Email</th>
-								<th>Phone Number</th>
-				    	<% end %>
+								<% if @current_user.status_id == 1 or @current_user.status_id == 2 %>
+							<th>Email</th>
+							<th>Phone Number</th>
+                  <% end %>
 							<th>Needs a Ride</th>
 							<th colspan="6"></th>
 						</tr>
@@ -91,9 +91,9 @@
 								<% next if signup.event_id != @event.id %>
 								<td><%= signup.account.FirstName.capitalize() + " " + signup.account.LastName.capitalize() %></td>
 								<% if @current_user.status_id == 1 or @current_user.status_id == 2 %>
-									<td><%= signup.account.Email %></td>
-									<td><%= signup.account.PhoneNumber %></td>
-                <% end %>
+								<td><%= signup.account.Email %></td>
+								<td><%= signup.account.PhoneNumber %></td>
+                  <% end %>
 								<td><%= convertBool(signup.Pickup) %></td>
 								<% if signup.account_id == @account.id %>
 									<% @hasSignedUp = true%>
