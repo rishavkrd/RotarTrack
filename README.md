@@ -15,7 +15,7 @@ Git Bash can be downloaded from this website: https://git-scm.com/downloads.
 - Navigate to the directory where you would like the repository to reside.    
 - Download this code repository by using git: `git clone https://github.com/rishavkrd/RotarTrack.git`.
 
-### Execute the Code
+### Installation
 
 Run the following command in Powershell if using Windows or the terminal using Linux/Mac:
 
@@ -27,6 +27,8 @@ Next, the proper dependencies are required. Type `bundle install`
   
 Next, we need a package manager for our application. In this case, it is Yarn. Type `rails webpacker:install`. This will take between 5 to 15 minutes. No need to panic. You can go and do something else in the meantime while this builds in the background.
 
+### Execute your code
+
 We need to create the database. We will do this by typing `rails db:create`.
 
 Next, run the migrations for the database by typing `rails db:migrate`.
@@ -36,7 +38,13 @@ Seed the database values by typing `rails db:seed`.
 Finally, run `./bin/dev`
 
 The application can be seen using a browser and navigating to http://localhost:3000/
- 
+
+## Environmental files/variables
+
+We have environment variables setup for Authentication. The tutorial can be found here: https://auth0.com/docs/quickstart/webapp/rails/01-login
+
+The tutorial above will help you understand how we encrypted the website!
+
 ## Requirements ##
 
 This code has been run and tested on:
