@@ -25,7 +25,7 @@ Once the Docker Image has started, type `cd csce431\RotarTrack`. To make sure th
   
 Next, the proper dependencies are required. Type `bundle install`
   
-Next, we need the correct server. In this case, it is Yarn. Type `rails webpacker:install`. This will take between 5 to 15 minutes. No need to panic. You can go and do something else in the meantime while this builds in the background.
+Next, we need a package manager for our application. In this case, it is Yarn. Type `rails webpacker:install`. This will take between 5 to 15 minutes. No need to panic. You can go and do something else in the meantime while this builds in the background.
 
 We need to create the database. We will do this by typing `rails db:create`.
 
@@ -58,7 +58,7 @@ This code has been run and tested on:
 
 An RSpec test suite is available and can be ran using:
 
-  `rspec spec/`
+  `rspec spec`
 
 ## Deployment ##
 
